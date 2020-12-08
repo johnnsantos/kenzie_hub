@@ -1,11 +1,10 @@
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from "react-router-dom";
 
 const Routers = () => {
-  
   return (
     <>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <h1>Bora Codar</h1>
         </Route>
       </Switch>
@@ -13,4 +12,3 @@ const Routers = () => {
   );
 };
 export default Routers;
-
