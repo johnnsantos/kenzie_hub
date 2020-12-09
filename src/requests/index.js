@@ -8,9 +8,11 @@ export const signUpUser = (data) => {
   axios.post(`${baseURL}/users`, data).then((res) => console.log(res));
 };
 
-export const getUsersList = async () => {
-  let res = await axios.get(`${baseURL}/users`);
-  return res.data;
+export const getUsersList = async (nextURL) => {
+  const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
+  let res = await axios.get(`${URL}`);
+  console.log(res);
+  return res;
 };
 
 export const login = () => {
