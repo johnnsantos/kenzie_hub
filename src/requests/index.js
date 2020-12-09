@@ -14,8 +14,16 @@ export const getUsersList = async (nextURL) => {
   return res;
 };
 
-export const login = () => {
-  axios.post(`${baseURL}/sessions`).then((res) => console.log(res));
+export const login = async (data) => {
+  try {
+    let res = await axios.post(`${baseURL}/sessions`, data);
+    window.localStorage.setItem("authorizationToken", res.token);
+    return res.status === 201 && "Login efetuado com sucesso";
+  } catch (error) {
+    if (error.message === "Incorrect email / password combination") {
+      return "Email ou senha incorretos.";
+    }
+  }
 };
 
 export const addTechs = (data) => {
