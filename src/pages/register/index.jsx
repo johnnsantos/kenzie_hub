@@ -2,11 +2,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 const Register = () => {
   //const dispatch = useDispatch();
-  const [mudule, setModule] = useState("");
 
   const schema = yup.object().shape({
     email: yup
@@ -16,6 +14,10 @@ const Register = () => {
     password: yup
       .string()
       .min(6, "Must have at leat 6 characters")
+      .matches(
+        /^(?=.*?[a-z])(?=.*?[#?!@$ %^&*-]).{1,}$/,
+        "At least one special character"
+      )
       .required("This field is required!"),
 
     password_confirmation: yup
@@ -36,12 +38,6 @@ const Register = () => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const getModule = () => {
-    const aux = document.getElementById("modules").value;
-    console.log(aux);
-    setModule(aux);
-  };
 
   const sendForm = () => {};
 
@@ -97,7 +93,7 @@ const Register = () => {
         ></input>
         <span>{errors.contact?.message}</span>
         <br />
-        <select name="course_module" id="modules" onChange={getModule}>
+        <select name="course_module" id="modules" ref={register}>
           <option value="Primeiro módulo (Introdução ao Frontend)">
             Q1 Frontend Introduction
           </option>
