@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-
+import Button from "@material-ui/core/Button";
 const Register = () => {
   //const dispatch = useDispatch();
 
@@ -53,73 +53,75 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit(sendForm)}>
-        <input
-          placeholder="E-mail"
-          name="email"
-          ref={register}
-          type="email"
-        ></input>
-        <span>{errors.email?.message}</span>
-        <br />
-        <input
-          placeholder="Password"
-          name="password"
-          ref={register}
-          type="password"
-        ></input>
-        <span>{errors.password?.message}</span>
-        <br />
-        <input
-          placeholder="ConfirmPassword"
-          name="password_confirmation"
-          ref={register}
-          type="password"
-        ></input>
-        <span>{errors.password_confirmation?.message}</span>
-        <br />
-        <input
-          placeholder="Name"
-          name="name"
-          ref={register}
-          type="string"
-        ></input>
-        <span>{errors.name?.message}</span>
-        <br />
-        <input
-          placeholder="Bio"
-          name="bio"
-          ref={register}
-          type="string"
-        ></input>
-        <span>{errors.bio?.message}</span>
-        <br />
-        <input
-          placeholder="Contact"
-          name="contact"
-          ref={register}
-          type="url"
-        ></input>
-        <span>{errors.contact?.message}</span>
-        <br />
-        <select name="course_module" id="modules" ref={register}>
-          <option value="Primeiro módulo (Introdução ao Frontend)">
-            Q1 Frontend Introduction
-          </option>
-          <option value="Segundo módulo (Frontend Avançado)">
-            Q2 Frontend Advanced
-          </option>
-          <option value="Terceiro módulo (Introdução ao Backend)">
-            Q3 Backend Introduction
-          </option>
-          <option value="Quarto módulo (Backend Avançado)">
-            Q4 Backend Advanced
-          </option>
-        </select>
-        <span>{errors.course_module?.message}</span>
-        <br />
-        <button htmlType="submit">Send</button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(sendForm)}>
+          <input
+            placeholder="E-mail"
+            name="email"
+            ref={register}
+            type="email"
+          ></input>
+          <span>{errors.email?.message}</span>
+          <br />
+          <input
+            placeholder="Password"
+            name="password"
+            ref={register}
+            type="password"
+          ></input>
+          <span>{errors.password?.message}</span>
+          <br />
+          <input
+            placeholder="ConfirmPassword"
+            name="password_confirmation"
+            ref={register}
+            type="password"
+          ></input>
+          <span>{errors.password_confirmation?.message}</span>
+          <br />
+          <input
+            placeholder="Name"
+            name="name"
+            ref={register}
+            type="string"
+          ></input>
+          <span>{errors.name?.message}</span>
+          <br />
+          <input
+            placeholder="Bio"
+            name="bio"
+            ref={register}
+            type="string"
+          ></input>
+          <span>{errors.bio?.message}</span>
+          <br />
+          <input
+            placeholder="Linkedin url"
+            name="contact"
+            ref={register}
+            type="url"
+          ></input>
+          <span>{errors.contact?.message}</span>
+          <br />
+          <select name="course_module" id="modules" ref={register}>
+            <option value="Primeiro módulo (Introdução ao Frontend)">
+              Q1 Frontend Introduction
+            </option>
+            <option value="Segundo módulo (Frontend Avançado)">
+              Q2 Frontend Advanced
+            </option>
+            <option value="Terceiro módulo (Introdução ao Backend)">
+              Q3 Backend Introduction
+            </option>
+            <option value="Quarto módulo (Backend Avançado)">
+              Q4 Backend Advanced
+            </option>
+          </select>
+          <span>{errors.course_module?.message}</span>
+          <br />
+          <Button htmlType="submit">Send</Button>
+        </form>
+      </div>
     </div>
   );
 };
