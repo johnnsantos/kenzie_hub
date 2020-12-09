@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
 import Header from "../components/header";
 
+import Home from "../pages/home";
+
 const Routers = () => {
   const { devs } = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
@@ -13,11 +15,14 @@ const Routers = () => {
   useEffect(() => {
     dispatch(handleUsersThunk(nextURL, setNextURL));
   }, [devs]);
+
   return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
       </Switch>
     </>
   );

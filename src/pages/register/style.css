@@ -1,0 +1,26 @@
+.render {
+  background-color: #e8f1f2;
+  color: #34495e;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.warning {
+  color: red;
+}
+
+.send {
+  background-color: #34495e;
+  color: #e8f1f2;
+  font-size: 16px;
+  width: 100px;
+  height: 25px;
+  border-radius: 1rem;
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+.send:hover {
+  background-color: #05668d;
+  color: #e8f1f2;
+}
