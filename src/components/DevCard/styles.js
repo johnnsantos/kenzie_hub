@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Card, CardMedia, Button } from "@material-ui/core";
 
 export const StyledCard = styled(Card)`
-  background-color: #f5fcff;
+  background-color: #fdfdfd;
   cursor: pointer;
   &:hover {
     box-shadow: 1px 1px 10px #34495e;
