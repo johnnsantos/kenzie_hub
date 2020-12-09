@@ -4,8 +4,24 @@ const token = window.localStorage.getItem("authorizationToken");
 
 const baseURL = "https://kenziehub.me";
 
-export const signUpUser = (data) => {
-  axios.post(`${baseURL}/users`, data);
+export const signUpUser = async (data) => {
+  try {
+    let res = await axios.post(`${baseURL}/users`, data);
+    return res.status === 201 && "Usuário cadastrado com sucesso";
+  } catch (error) {
+    if (error.message === "contact is required") {
+      return "Contato é um campo obrigatório";
+    }
+    if (error.message === " course_module is required") {
+      return "modulo do curso é um campo obrigatório";
+    }
+    if (error.message === "password: minimum is 6 characters") {
+      return "A senha deve ter 6 dígitos";
+    }
+    if (error.message === "Email already exists") {
+      return "Email ja cadastrado";
+    }
+  }
 };
 
 export const getUsersList = async (nextURL) => {
@@ -17,8 +33,8 @@ export const getUsersList = async (nextURL) => {
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
-    window.localStorage.setItem("authorizationToken", res.token);
-    return res.status === 201 && "Login efetuado com sucesso";
+    window.localStorage.setItem("authorizationToken", res.data.token);
+    return "Login efetuado com sucesso";
   } catch (error) {
     if (error.message === "Incorrect email / password combination") {
       return "Email ou senha incorretos.";

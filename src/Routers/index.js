@@ -2,7 +2,6 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
-import Header from "../components/header";
 
 import Home from "../pages/home";
 
@@ -18,7 +17,6 @@ const Routers = () => {
 
   return (
     <>
-      <Header />
       <Switch>
         <Route exact path="/">
           <Home />
