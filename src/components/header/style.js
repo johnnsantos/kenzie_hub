@@ -62,6 +62,11 @@ export const Container = styled.div`
         color: white;
       }
 
+      :last-child:hover {
+        transition: 0.15s;
+        background-color: #004c99;
+      }
+
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
         /* background-color: rgba(0, 54, 107, 0.85); */
