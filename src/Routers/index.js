@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
 
+import Home from "../pages/home";
+
 const Routers = () => {
   const { devs } = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ const Routers = () => {
     <>
       <Switch>
         <Route exact path="/">
-          <h1>Bora Codar</h1>
+          <Home />
         </Route>
       </Switch>
     </>
