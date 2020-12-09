@@ -6,7 +6,7 @@ import "./register.css";
 import { signUpUser } from "requests";
 
 const Register = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup
