@@ -10,15 +10,11 @@ import { StyledCard, StyledCardMedia, StyledButton } from "./styles";
 import PersonIcon from "@material-ui/icons/Person";
 
 const DevCard = (props) => {
-  // const { name, image, key, module, tecnologies } = props;
+  const { name, image, module, stacks, isHome } = props;
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
       <StyledCard>
-        <StyledCardMedia
-          image={
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          }
-        />
+        <StyledCardMedia image={image} />
         <CardContent>
           <Box m={1}>
             <Typography
@@ -27,7 +23,18 @@ const DevCard = (props) => {
               component="p"
               align="center"
             >
-              Joselito Adalberto
+              {name}
+            </Typography>
+          </Box>
+          <Divider />
+          <Box m={1}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              component="p"
+              align="center"
+            >
+              {module}
             </Typography>
           </Box>
 
@@ -39,35 +46,25 @@ const DevCard = (props) => {
               component="p"
               align="center"
             >
-              Primeiro módulo (Introdução ao Frontend)
-            </Typography>
-          </Box>
-
-          <Divider />
-          <Box m={1}>
-            <Typography
-              variant="subtitle1"
-              color="textPrimary"
-              component="p"
-              align="center"
-            >
-              React | HTML | CSS
+              {stacks}
             </Typography>
           </Box>
         </CardContent>
-        <CardActions>
-          <Box m="auto" mb={1}>
-            <StyledButton
-              variant="contained"
-              color="primary"
-              size="large"
-              disableElevation
-              startIcon={<PersonIcon />}
-            >
-              Ver perfil
-            </StyledButton>
-          </Box>
-        </CardActions>
+        {!isHome && (
+          <CardActions>
+            <Box m="auto" mb={1}>
+              <StyledButton
+                variant="contained"
+                color="primary"
+                size="large"
+                disableElevation
+                startIcon={<PersonIcon />}
+              >
+                Ver perfil
+              </StyledButton>
+            </Box>
+          </CardActions>
+        )}
       </StyledCard>
     </Grid>
   );
