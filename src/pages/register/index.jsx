@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 const Register = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
+  const [mudule, setModule] = useState("");
 
-  const schema = yup.object.shape({
+  const schema = yup.object().shape({
     email: yup
       .string()
       .email("Must be a valid email!")
@@ -32,24 +34,24 @@ const Register = () => {
 
     contact: yup.string().required("This field is required!"),
 
-    course_module: yup
-      .string()
-      .matches(
-        "Primeiro módulo (Introdução ao Frontend)" ||
-          "Segundo módulo (Frontend Avançado)" ||
-          "Terceiro módulo (Introdução ao Backend)" ||
-          "Quarto módulo (Backend Avançado)"
-      ),
+    course_module: yup.string().required("This field is required!"),
   });
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const getModule = () => {
+    const aux = document.getElementById("modules").value;
+    console.log(aux);
+    setModule(aux);
+  };
+
   const sendForm = () => {};
 
   return (
     <div>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit(sendForm)}>
         <input
           placeholder="E-mail"
@@ -73,7 +75,7 @@ const Register = () => {
           ref={register}
           type="password"
         ></input>
-        <span>{errors.password_confirmation.message}</span>
+        <span>{errors.password_confirmation?.message}</span>
         <br />
         <input
           placeholder="Name"
@@ -99,15 +101,26 @@ const Register = () => {
         ></input>
         <span>{errors.contact?.message}</span>
         <br />
-        <select id="cars" name="cars">
-          <option value="Primeiro módulo (Introdução ao Frontend)">Q1</option>
-          <option value="Segundo módulo (Frontend Avançado)">Q2</option>
-          <option value="Terceiro módulo (Introdução ao Backend)">Q3</option>
-          <option value="Quarto módulo (Backend Avançado)">Q4</option>
+        <select name="course_module" id="modules" onChange={getModule}>
+          <option value="Primeiro módulo (Introdução ao Frontend)">
+            Q1 Frontend Introduction
+          </option>
+          <option value="Segundo módulo (Frontend Avançado)">
+            Q2 Frontend Advanced
+          </option>
+          <option value="Terceiro módulo (Introdução ao Backend)">
+            Q3 Backend Introduction
+          </option>
+          <option value="Quarto módulo (Backend Avançado)">
+            Q4 Backend Advanced
+          </option>
         </select>
-
+        <span>{errors.course_module?.message}</span>
+        <br />
         <button htmlType="submit">Send</button>
       </form>
     </div>
   );
 };
+
+export default Register;
