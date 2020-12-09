@@ -27,7 +27,11 @@ const Register = () => {
     name: yup
       .string()
       .min(6, "Must have 6 characters!")
-      .required("This field is required!"),
+      .required("This field is required!")
+      .matches(
+        /^[a-z ,.'-]+$/i,
+        "Special characters or numbers ar not allowed."
+      ),
     bio: yup.string().required("This field is required!"),
 
     contact: yup.string().required("This field is required!"),
