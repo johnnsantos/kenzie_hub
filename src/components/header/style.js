@@ -13,7 +13,7 @@ export const Container = styled.div`
   background-color: transparent;
   /* background-color: #34495e; */
   padding: 0.3rem;
-  height: 80px;
+  height: 60px;
   width: 100%;
 
   .headerLogo {
@@ -42,11 +42,11 @@ export const Container = styled.div`
     li {
       text-transform: uppercase;
       text-align: center;
-      font-size: 16px;
+      font-size: 15px;
       /* color: #e8f1f2; */
       font-weight: bold;
       margin: 0 0.5rem;
-      padding: 0.5rem 1.3rem;
+      padding: 0.3rem 1.3rem;
       /* border-radius: 2px; */
       cursor: pointer;
       transition: 0.25s;
