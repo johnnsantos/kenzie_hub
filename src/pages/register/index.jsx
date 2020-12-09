@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-//import { useDispatch } from "react-redux";
-import "./style.css";
+import { useDispatch } from "react-redux";
+import "./register.css";
+import { signUpUser } from "requests";
 
 const Register = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup
@@ -46,7 +47,10 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const sendForm = () => {};
+  const sendForm = (data) => {
+    delete data.password_confirmation;
+    dispatch(signUpUser(data));
+  };
 
   return (
     <div className="render">
