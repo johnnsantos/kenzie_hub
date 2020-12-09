@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const token = 0;
+const token = window.localStorage.getItem("authorizationToken");
 
 const baseURL = "https://kenziehub.me";
 
 export const signUpUser = (data) => {
-  axios.post(`${baseURL}/users`, data).then((res) => console.log(res));
+  axios.post(`${baseURL}/users`, data);
 };
 
 export const getUsersList = async (nextURL) => {
