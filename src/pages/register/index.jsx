@@ -16,10 +16,6 @@ const Register = () => {
     password: yup
       .string()
       .min(6, "Must have at leat 6 characters")
-      .matches(
-        /^(?=.*?[a-z])(?=.*?[#?!@$ %^&*-]).{1,}$/,
-        "At least one special character"
-      )
       .required("This field is required!"),
 
     password_confirmation: yup
