@@ -15,9 +15,7 @@ const Routers = () => {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <h1>Bora Codar</h1>
-        </Route>
+        <Route exact path="/"></Route>
       </Switch>
     </>
   );
