@@ -6,6 +6,9 @@ export const handleUsersThunk = (nextURL, setNextURL) => async (
   _getState
 ) => {
   const list = await getUsersList(nextURL);
-  setNextURL(list.nextUrl);
-  dispatch(handleUsers(list.data));
+
+  if (list.data.length !== 0) {
+    setNextURL(list.headers.nexturl);
+    dispatch(handleUsers(list.data));
+  }
 };

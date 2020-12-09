@@ -12,7 +12,8 @@ const Routers = () => {
 
   useEffect(() => {
     dispatch(handleUsersThunk(nextURL, setNextURL));
-  }, [nextURL]);
+    console.log(devs);
+  }, [devs]);
   return (
     <>
       <Switch>
