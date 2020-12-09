@@ -32,9 +32,14 @@ const Register = () => {
         /^[a-z ,.'-]+$/i,
         "Special characters or numbers ar not allowed."
       ),
-    bio: yup.string().required("This field is required!"),
+    bio: yup.string().min(20).max(100).required("This field is required!"),
 
-    contact: yup.string().required("This field is required!"),
+    contact: yup
+      .string()
+      .matches(
+        /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+      )
+      .required("This field is required!"),
 
     course_module: yup.string().required("This field is required!"),
   });
@@ -93,7 +98,7 @@ const Register = () => {
           placeholder="Contact"
           name="contact"
           ref={register}
-          type="string"
+          type="url"
         ></input>
         <span>{errors.contact?.message}</span>
         <br />
