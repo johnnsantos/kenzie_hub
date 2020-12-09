@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import Button from "@material-ui/core/Button";
+//import { useDispatch } from "react-redux";
+import "./style.css";
+
 const Register = () => {
   //const dispatch = useDispatch();
 
@@ -14,10 +15,6 @@ const Register = () => {
     password: yup
       .string()
       .min(6, "Must have at leat 6 characters")
-      .matches(
-        /^(?=.*?[a-z])(?=.*?[#?!@$ %^&*-]).{1,}$/,
-        "At least one special character"
-      )
       .required("This field is required!"),
 
     password_confirmation: yup
@@ -37,7 +34,8 @@ const Register = () => {
     contact: yup
       .string()
       .matches(
-        /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
+        "Must be a valid linkedin url!"
       )
       .required("This field is required!"),
 
@@ -51,9 +49,9 @@ const Register = () => {
   const sendForm = () => {};
 
   return (
-    <div>
+    <div className="render">
       <h1>Register</h1>
-      <div>
+      <div className="align">
         <form onSubmit={handleSubmit(sendForm)}>
           <input
             placeholder="E-mail"
@@ -61,7 +59,7 @@ const Register = () => {
             ref={register}
             type="email"
           ></input>
-          <span>{errors.email?.message}</span>
+          <span className="warning">{errors.email?.message}</span>
           <br />
           <input
             placeholder="Password"
@@ -69,7 +67,7 @@ const Register = () => {
             ref={register}
             type="password"
           ></input>
-          <span>{errors.password?.message}</span>
+          <span className="warning">{errors.password?.message}</span>
           <br />
           <input
             placeholder="ConfirmPassword"
@@ -77,7 +75,9 @@ const Register = () => {
             ref={register}
             type="password"
           ></input>
-          <span>{errors.password_confirmation?.message}</span>
+          <span className="warning">
+            {errors.password_confirmation?.message}
+          </span>
           <br />
           <input
             placeholder="Name"
@@ -85,7 +85,7 @@ const Register = () => {
             ref={register}
             type="string"
           ></input>
-          <span>{errors.name?.message}</span>
+          <span className="warning">{errors.name?.message}</span>
           <br />
           <input
             placeholder="Bio"
@@ -93,7 +93,7 @@ const Register = () => {
             ref={register}
             type="string"
           ></input>
-          <span>{errors.bio?.message}</span>
+          <span className="warning">{errors.bio?.message}</span>
           <br />
           <input
             placeholder="Linkedin url"
@@ -101,7 +101,7 @@ const Register = () => {
             ref={register}
             type="url"
           ></input>
-          <span>{errors.contact?.message}</span>
+          <span className="warning">{errors.contact?.message}</span>
           <br />
           <select name="course_module" id="modules" ref={register}>
             <option value="Primeiro módulo (Introdução ao Frontend)">
@@ -117,9 +117,12 @@ const Register = () => {
               Q4 Backend Advanced
             </option>
           </select>
-          <span>{errors.course_module?.message}</span>
+          <span className="warning">{errors.course_module?.message}</span>
           <br />
-          <Button htmlType="submit">Send</Button>
+          <br />
+          <button className="send" htmlType="submit">
+            Send
+          </button>
         </form>
       </div>
     </div>
