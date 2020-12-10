@@ -5,8 +5,10 @@ import DisplayDev from "../../components/DisplayDev";
 import DevCard from "../../components/DevCard";
 
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  const [devNumber, setDevNumber] = useState(3);
   const { devs } = useSelector((state) => state.reducer);
   const history = useHistory();
   return (
@@ -28,8 +30,8 @@ const Home = () => {
           <button onClick={() => history.push("/register")}>Cadastre-se</button>
         </div>
       </Container>
-      <DisplayDev isHome>
-        {devs.slice(devs.length - 3, devs.length).map((dev, index) => (
+      <DisplayDev isHome setDevNumber={setDevNumber} devNumber={devNumber}>
+        {devs.slice(0, devNumber).map((dev, index) => (
           <DevCard
             isHome
             key={index}
