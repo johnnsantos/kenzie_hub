@@ -8,6 +8,7 @@ import Home from "../pages/home";
 import Register from "../pages/register";
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
+import UsersAuthenticated from "../pages/UsersAuthenticated";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
@@ -36,7 +37,7 @@ const Routers = () => {
               <Home />
             </Route>
             <Route exact path="/devs">
-              <h1>devs page</h1>
+              <UsersAuthenticated />
             </Route>
           </Switch>
         </>
