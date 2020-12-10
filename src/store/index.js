@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import reducer from "./modules/infoDevs/reducers";
+import Users from "./modules/infoDevs/reducers";
+import User from "./modules/infoUser/reducers";
 
-const reducers = combineReducers({ reducer });
+const reducers = combineReducers({ Users, User });
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
