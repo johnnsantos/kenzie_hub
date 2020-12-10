@@ -76,7 +76,7 @@ const HeaderAuthenticated = () => {
       </List>
       <Divider />
       <List>
-        {["Sobre", "Devs", "Profile"].map((text, index) => (
+        {["About", "Devs", "Profile"].map((text, index) => (
           <ListItem
             button
             key={text}

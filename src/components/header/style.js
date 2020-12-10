@@ -39,20 +39,21 @@ export const Container = styled.div`
   .headerList ul {
     display: flex;
     list-style: none;
+    align-items: center;
 
     li {
       text-transform: uppercase;
       text-align: center;
       font-size: 15px;
-      /* color: #e8f1f2; */
       font-weight: bold;
       margin: 0 0.5rem;
-      padding: 0.3rem 1.3rem;
-      /* border-radius: 2px; */
+      padding: 0.5rem 1.3rem;
       cursor: pointer;
       transition: 0.25s;
       box-sizing: border-box;
       color: #00356b;
+      /* color: #e8f1f2; */
+      /* border-radius: 2px; */
       /* background-color: #00356b; */
       /* padding: 27px 1.3rem; */
 

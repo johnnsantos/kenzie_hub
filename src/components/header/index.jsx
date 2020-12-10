@@ -12,10 +12,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InfoIcon from "@material-ui/icons/Info";
+import Divider from "@material-ui/core/Divider";
+
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import AddIcon from "@material-ui/icons/Add";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import HomeIcon from "@material-ui/icons/Home";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 
 const useStyles = makeStyles({
   list: {
@@ -58,13 +61,26 @@ const Header = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Sobre", "Login", "Register"].map((text, index) => (
-          <ListItem button key={text}>
+        {["Home"].map((text, index) => (
+          <ListItem button key={text} onClick={() => history.push("/")}>
+            <ListItemIcon>{index === 0 && <HomeIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["About", "Login", "Register"].map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            onClick={() => history.push(`/${text.toLowerCase()}`)}
+          >
             <ListItemIcon>
               {index === 0 ? (
-                <InfoIcon />
+                <LiveHelpIcon />
               ) : index === 1 ? (
-                <PlayArrowIcon />
+                <ArrowForwardIosIcon />
               ) : (
                 <AddIcon />
               )}
