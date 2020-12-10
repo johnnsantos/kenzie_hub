@@ -11,6 +11,7 @@ import HeaderAuthenticated from "../components/headerAuthenticated";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
+  console.log(devs);
   const dispatch = useDispatch();
   const location = useLocation();
   let token = window.localStorage.getItem("authorizationToken");
