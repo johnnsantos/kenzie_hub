@@ -17,7 +17,7 @@ import {
   NewTextField,
   StyledButton,
   OuterDiv,
-} from "../../components/LoginForm/styles ";
+} from "../../components/LoginForm/styles";
 import "../../img/DevCard/signup.svg";
 
 const Register = () => {
