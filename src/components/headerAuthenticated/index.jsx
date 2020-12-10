@@ -9,16 +9,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import AddIcon from "@material-ui/icons/Add";
+import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import HomeIcon from "@material-ui/icons/Home";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import LiveHelpIcon from "@material-ui/icons/LiveHelp";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles({
   list: {
@@ -29,16 +30,21 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = () => {
+const HeaderAuthenticated = () => {
   const history = useHistory();
-
   const classes = useStyles();
+
   const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
+
+  const logout = () => {
+    window.localStorage.setItem("authorizationToken", "");
+    history.push("/");
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -70,7 +76,7 @@ const Header = () => {
       </List>
       <Divider />
       <List>
-        {["About", "Login", "Register"].map((text, index) => (
+        {["About", "Devs", "Profile"].map((text, index) => (
           <ListItem
             button
             key={text}
@@ -80,11 +86,20 @@ const Header = () => {
               {index === 0 ? (
                 <LiveHelpIcon />
               ) : index === 1 ? (
-                <ArrowForwardIosIcon />
+                <AssignmentIcon />
               ) : (
-                <AddIcon />
+                <AccountBoxIcon />
               )}
             </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["Logout"].map((text, index) => (
+          <ListItem button key={text} onClick={logout}>
+            <ListItemIcon>{index === 0 && <ExitToAppIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -102,9 +117,13 @@ const Header = () => {
         <ul>
           <li>Sobre</li>
 
-          <li onClick={() => history.push("/login")}>Login</li>
+          <li onClick={() => history.push("/devs")}>Devs</li>
 
-          <li onClick={() => history.push("/register")}>Register</li>
+          <li onClick={() => history.push("/#")}>Profile/ Username</li>
+
+          <li onClick={logout}>
+            <ExitToAppIcon />
+          </li>
         </ul>
       </div>
       <div className="headerDropDown">
@@ -127,4 +146,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderAuthenticated;

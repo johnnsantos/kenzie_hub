@@ -38,11 +38,12 @@ export const Container = styled.div`
 
   .headerList ul {
     display: flex;
-    list-style: none;
     align-items: center;
+    list-style: none;
 
     li {
       text-transform: uppercase;
+
       text-align: center;
       font-size: 15px;
       font-weight: bold;
@@ -57,22 +58,28 @@ export const Container = styled.div`
       /* background-color: #00356b; */
       /* padding: 27px 1.3rem; */
 
-      :last-child {
+      :nth-last-child(2) {
         border: 1px solid transparent;
         background-color: #00356b;
         border-radius: 2px;
         color: white;
       }
 
-      :last-child:hover {
+      :nth-last-child(2):hover {
         transition: 0.15s;
         background-color: #004c99;
       }
 
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
-        /* background-color: rgba(0, 54, 107, 0.85); */
-        /* background-color: rgba(232, 241, 242, 0.1); */
+      }
+
+      :last-child {
+        border: 1px solid transparent;
+      }
+
+      :last-child:hover {
+        border-bottom: 1px solid #00356b;
       }
     }
   }
