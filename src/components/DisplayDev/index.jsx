@@ -5,7 +5,7 @@ import { StyledButton } from "./styles";
 const DisplayDev = (props) => {
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth={props.isHome ? "md" : "lg"}>
         <Box m={3}>
           <Typography
             variant="h5"
@@ -19,10 +19,9 @@ const DisplayDev = (props) => {
         <Grid
           container
           direction="row"
-          alignItems="center"
+          alignItems="stretch"
           justify="center"
-          spacing={3}
-          flex={"1"}
+          spacing={4}
         >
           {props.children}
         </Grid>
@@ -36,7 +35,7 @@ const DisplayDev = (props) => {
               size="large"
               disableElevation
             >
-              Cadastre-se também!
+              Faça login para ver mais!
             </StyledButton>
           </Grid>
         )}
