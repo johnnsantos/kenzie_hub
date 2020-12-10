@@ -15,20 +15,20 @@ const Register = () => {
       .required("This field is required!"),
     password: yup
       .string()
-      .min(6, "Must have at leat 6 characters")
+      .min(6, "Must have at least 6 characters!")
       .required("This field is required!"),
 
     password_confirmation: yup
       .string()
       .required()
-      .oneOf([yup.ref("password")], "Passwords must match"),
+      .oneOf([yup.ref("password")], "Passwords must match!"),
     name: yup
       .string()
       .min(6, "Must have 6 characters!")
       .required("This field is required!")
       .matches(
         /^[a-z ,.'-]+$/i,
-        "Special characters or numbers ar not allowed."
+        "Special characters or numbers ar not allowed!"
       ),
     bio: yup.string().min(20).max(100).required("This field is required!"),
 
