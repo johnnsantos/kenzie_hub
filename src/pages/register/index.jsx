@@ -64,7 +64,7 @@ const Register = () => {
 
   return (
     <OuterDiv>
-      <div className="render">
+      <div>
         <NewTypography variant="h3">Register</NewTypography>
         <div className="align">
           <form onSubmit={handleSubmit(sendForm)}>
