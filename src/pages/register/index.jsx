@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import "./style.css";
 import { signUpUser } from "../../requests";
+import { useDispatch } from "react-redux";
 import EmailIcon from "@material-ui/icons/Email";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
@@ -20,6 +21,7 @@ import {
 
 const Register = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -61,13 +63,13 @@ const Register = () => {
 
   const sendForm = (data) => {
     delete data.password_confirmation;
-
+    dispatch(signUpUser(data));
     history.push("/login");
   };
 
   return (
     <OuterDiv>
-      <div className="render">
+      <div className="logo">
         <NewTypography variant="h3">Register</NewTypography>
         <br />
         <div>
