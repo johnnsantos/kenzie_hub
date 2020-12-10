@@ -1,8 +1,15 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import "./register.css";
-import { signUpUser } from "requests";
+//import { signUpUser } from "requests";
+import EmailIcon from "@material-ui/icons/Email";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
+import BookIcon from "@material-ui/icons/Book";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import SchoolIcon from "@material-ui/icons/School";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -12,7 +19,7 @@ const Register = () => {
       .required("This field is required!"),
     password: yup
       .string()
-      .min(6, "Must have at leat 6 characters")
+      .min(6, "Must have at least 6 characters")
       .required("This field is required!"),
 
     password_confirmation: yup
@@ -21,7 +28,7 @@ const Register = () => {
       .oneOf([yup.ref("password")], "Passwords must match"),
     name: yup
       .string()
-      .min(6, "Must have 6 characters!")
+      .min(6, "Must have at least 6 characters!")
       .required("This field is required!")
       .matches(
         /^[a-z ,.'-]+$/i,
@@ -54,71 +61,90 @@ const Register = () => {
       <h1>Register</h1>
       <div className="align">
         <form onSubmit={handleSubmit(sendForm)}>
-          <input
-            placeholder="E-mail"
-            name="email"
-            ref={register}
-            type="email"
-          ></input>
-          <span className="warning">{errors.email?.message}</span>
+          <div className="inputs">
+            <EmailIcon />
+            <input
+              placeholder="E-mail"
+              name="email"
+              ref={register}
+              type="email"
+            ></input>
+            <div className="warning">{errors.email?.message}</div>
+          </div>
           <br />
-          <input
-            placeholder="Password"
-            name="password"
-            ref={register}
-            type="password"
-          ></input>
-          <span className="warning">{errors.password?.message}</span>
+          <div className="inputs">
+            <LockOutlinedIcon />
+            <input
+              placeholder="Password"
+              name="password"
+              ref={register}
+              type="password"
+            ></input>
+          </div>
+          <div className="warning">{errors.password?.message}</div>
           <br />
-          <input
-            placeholder="ConfirmPassword"
-            name="password_confirmation"
-            ref={register}
-            type="password"
-          ></input>
-          <span className="warning">
-            {errors.password_confirmation?.message}
-          </span>
+          <div className="inputs">
+            <LockOutlinedIcon />
+            <input
+              placeholder="ConfirmPassword"
+              name="password_confirmation"
+              ref={register}
+              type="password"
+            ></input>
+          </div>
+          <div className="warning">{errors.password_confirmation?.message}</div>
           <br />
-          <input
-            placeholder="Name"
-            name="name"
-            ref={register}
-            type="string"
-          ></input>
-          <span className="warning">{errors.name?.message}</span>
+          <div className="inputs">
+            <AccountCircleIcon />
+            <input
+              placeholder="Name"
+              name="name"
+              ref={register}
+              type="string"
+            ></input>
+            <div className="warning">{errors.name?.message}</div>
+          </div>
           <br />
-          <input
-            placeholder="Bio"
-            name="bio"
-            ref={register}
-            type="string"
-          ></input>
-          <span className="warning">{errors.bio?.message}</span>
+          <div className="inputs">
+            <BookIcon />
+            <input
+              placeholder="Bio"
+              name="bio"
+              ref={register}
+              type="string"
+            ></input>
+            <div className="warning">{errors.bio?.message}</div>
+          </div>
           <br />
-          <input
-            placeholder="Linkedin url"
-            name="contact"
-            ref={register}
-            type="url"
-          ></input>
-          <span className="warning">{errors.contact?.message}</span>
+          <div className="inputs">
+            <WorkOutlinedIcon />
+            <input
+              placeholder="Linkedin url"
+              name="contact"
+              ref={register}
+              type="url"
+            ></input>
+            <div className="warning">{errors.contact?.message}</div>
+          </div>
           <br />
-          <select name="course_module" id="modules" ref={register}>
-            <option value="Primeiro módulo (Introdução ao Frontend)">
-              Q1 Frontend Introduction
-            </option>
-            <option value="Segundo módulo (Frontend Avançado)">
-              Q2 Frontend Advanced
-            </option>
-            <option value="Terceiro módulo (Introdução ao Backend)">
-              Q3 Backend Introduction
-            </option>
-            <option value="Quarto módulo (Backend Avançado)">
-              Q4 Backend Advanced
-            </option>
-          </select>
-          <span className="warning">{errors.course_module?.message}</span>
+          <div className="inputs">
+            <SchoolIcon />{" "}
+            <select name="course_module" id="modules" ref={register}>
+              <option value="Primeiro módulo (Introdução ao Frontend)">
+                Q1 Frontend Introduction
+              </option>
+              <option value="Segundo módulo (Frontend Avançado)">
+                Q2 Frontend Advanced
+              </option>
+              <option value="Terceiro módulo (Introdução ao Backend)">
+                Q3 Backend Introduction
+              </option>
+              <option value="Quarto módulo (Backend Avançado)">
+                Q4 Backend Advanced
+              </option>
+            </select>
+          </div>
+          <div className="warning">{errors.course_module?.message}</div>
           <br />
           <br />
           <button className="send" htmlType="submit">
