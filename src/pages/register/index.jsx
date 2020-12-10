@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
 import "./register.css";
 //import { signUpUser } from "requests";
 import EmailIcon from "@material-ui/icons/Email";
