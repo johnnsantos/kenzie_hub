@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Home = () => {
   const [devNumber, setDevNumber] = useState(3);
-  const { devs } = useSelector((state) => state.reducer);
+  const { devs } = useSelector((state) => state.Users);
   const history = useHistory();
   return (
     <>
