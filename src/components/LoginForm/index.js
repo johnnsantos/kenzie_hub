@@ -33,8 +33,8 @@ const LoginForm = ({ setAuthentication }) => {
 
   const handleLogin = async (data) => {
     const resLogin = await login(data);
-    console.log(resLogin);
     setMessage(resLogin);
+    history.push("/devs");
   };
 
   return (
