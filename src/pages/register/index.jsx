@@ -17,7 +17,7 @@ import {
   NewTextField,
   StyledButton,
   OuterDiv,
-} from "../Login/styles";
+} from "../../components/LoginForm/styles";
 
 const Register = () => {
   const history = useHistory();
