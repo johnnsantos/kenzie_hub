@@ -7,6 +7,7 @@ import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
 import Home from "../pages/home";
 import Register from "../pages/register";
 import Header from "../components/header";
+import HeaderAuthenticated from "../components/headerAuthenticated";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.reducer);
@@ -27,14 +28,17 @@ const Routers = () => {
   return (
     <>
       {token ? (
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/devs">
-            <h1>devs page</h1>
-          </Route>
-        </Switch>
+        <>
+          <HeaderAuthenticated />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/devs">
+              <h1>devs page</h1>
+            </Route>
+          </Switch>
+        </>
       ) : (
         <>
           <Header />
