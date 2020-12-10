@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
 import "./register.css";
 //import { signUpUser } from "requests";
 import EmailIcon from "@material-ui/icons/Email";
@@ -13,8 +12,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SchoolIcon from "@material-ui/icons/School";
 
 const Register = () => {
-  // const dispatch = useDispatch();
-  const history = useHistory();
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -56,9 +53,7 @@ const Register = () => {
 
   const sendForm = (data) => {
     delete data.password_confirmation;
-    console.log(data);
-    // dispatch(signUpUser(data));
-    history.push("/login");
+    signUpUser(data);
   };
 
   return (
