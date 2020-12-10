@@ -12,6 +12,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SchoolIcon from "@material-ui/icons/School";
 
 const Register = () => {
+  const history = useHistory();
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -53,7 +54,8 @@ const Register = () => {
 
   const sendForm = (data) => {
     delete data.password_confirmation;
-    signUpUser(data);
+    history.push("/login");
+    // signUpUser(data);
   };
 
   return (
