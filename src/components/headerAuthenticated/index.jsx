@@ -3,6 +3,7 @@ import KenzieLogo from "../../img/kenzieLogo.png";
 
 import { useState, Fragment } from "react";
 import { useHistory } from "react-router-dom";
+import { FloatingMenu } from "../floatingCards";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,6 +21,11 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+import EditIcon from "@material-ui/icons/Edit";
+import ViewListIcon from "@material-ui/icons/ViewList";
+import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import LanguageIcon from "@material-ui/icons/Language";
 
 const useStyles = makeStyles({
   list: {
@@ -76,11 +82,15 @@ const HeaderAuthenticated = () => {
       </List>
       <Divider />
       <List>
-        {["About", "Devs", "Profile"].map((text, index) => (
+        {["About", "Explore", "Profile"].map((text, index) => (
           <ListItem
             button
             key={text}
-            onClick={() => history.push(`/${text.toLowerCase()}`)}
+            onClick={() =>
+              text.toLowerCase() !== "explore"
+                ? history.push(`/${text.toLowerCase()}`)
+                : history.push(`/devs`)
+            }
           >
             <ListItemIcon>
               {index === 0 ? (
@@ -115,17 +125,31 @@ const HeaderAuthenticated = () => {
       </div>
       <div className="headerList">
         <ul>
-          <li>Sobre</li>
+          <li onClick={() => history.push("/devs")}>Explore</li>
 
-          <li onClick={() => history.push("/devs")}>Devs</li>
-
-          <li onClick={() => history.push("/#")}>Profile/ Username</li>
-
-          <li onClick={logout}>
-            <ExitToAppIcon />
-          </li>
+          <FloatingMenu
+            icon1={<ViewListIcon />}
+            icon2={<LanguageIcon />}
+            option1={"Add Stack"}
+            option2={"Add Technology"}
+            mainIcon={<AddToPhotosIcon />}
+            action1={"/#"}
+            action2={"/#"}
+          />
+          <FloatingMenu
+            icon1={<EditIcon />}
+            icon2={<ExitToAppIcon />}
+            option1={"Edit Profile"}
+            option2={"Logout"}
+            mainIcon={"User/Image"}
+            action1={"/#"}
+            action2={logout}
+          />
         </ul>
       </div>
+
+      {/* mobile header */}
+
       <div className="headerDropDown">
         {["right"].map((anchor) => (
           <Fragment key={anchor}>
