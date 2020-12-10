@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import "./register.css";
-import { signUpUser } from "requests";
+//import { signUpUser } from "requests";
 import EmailIcon from "@material-ui/icons/Email";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
