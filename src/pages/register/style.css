@@ -24,3 +24,10 @@
   background-color: #05668d;
   color: #e8f1f2;
 }
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
