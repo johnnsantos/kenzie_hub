@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import "./register.css";
-//import { signUpUser } from "requests";
 import EmailIcon from "@material-ui/icons/Email";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
@@ -55,7 +54,6 @@ const Register = () => {
   const sendForm = (data) => {
     delete data.password_confirmation;
     history.push("/login");
-    // signUpUser(data);
   };
 
   return (
@@ -71,8 +69,8 @@ const Register = () => {
               ref={register}
               type="email"
             ></input>
-            <div className="warning">{errors.email?.message}</div>
           </div>
+          <div className="warning">{errors.email?.message}</div>
           <br />
           <div className="inputs">
             <LockOutlinedIcon />
@@ -104,8 +102,8 @@ const Register = () => {
               ref={register}
               type="string"
             ></input>
-            <div className="warning">{errors.name?.message}</div>
           </div>
+          <div className="warning">{errors.name?.message}</div>
           <br />
           <div className="inputs">
             <BookIcon />
@@ -115,8 +113,8 @@ const Register = () => {
               ref={register}
               type="string"
             ></input>
-            <div className="warning">{errors.bio?.message}</div>
           </div>
+          <div className="warning">{errors.bio?.message}</div>
           <br />
           <div className="inputs">
             <WorkOutlinedIcon />
@@ -126,8 +124,8 @@ const Register = () => {
               ref={register}
               type="url"
             ></input>
-            <div className="warning">{errors.contact?.message}</div>
           </div>
+          <div className="warning">{errors.contact?.message}</div>
           <br />
           <div className="inputs">
             <SchoolIcon />{" "}
