@@ -2,6 +2,7 @@ import { Container } from "./style";
 import KenzieLogo from "../../img/kenzieLogo.png";
 
 import { useState, Fragment } from "react";
+import { useHistory } from "react-router-dom";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,6 +27,8 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
+  const history = useHistory();
+
   const classes = useStyles();
   const [state, setState] = useState({
     top: false,
@@ -75,15 +78,17 @@ const Header = () => {
 
   return (
     <Container>
-      <div className="headerLogo">
+      <div onClick={() => history.push("/")} className="headerLogo">
         <img height="50px" src={KenzieLogo} alt="Kenzie Academy Logo" />
         <h1>Kenzie Hub</h1>
       </div>
       <div className="headerList">
         <ul>
           <li>Sobre</li>
-          <li>Login</li>
-          <li>Register</li>
+
+          <li onClick={() => history.push("/login")}>Login</li>
+
+          <li onClick={() => history.push("/register")}>Register</li>
         </ul>
       </div>
       <div className="headerDropDown">

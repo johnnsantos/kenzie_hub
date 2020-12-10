@@ -19,6 +19,7 @@ export const Container = styled.div`
   .headerLogo {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   img {

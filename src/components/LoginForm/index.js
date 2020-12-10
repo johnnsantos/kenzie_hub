@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { login } from "../../requests";
 
 import { TextField, Typography, Button, Card } from "@material-ui/core/";
 
@@ -10,6 +11,8 @@ const baseURL = "https://kenziehub.me";
 
 const LoginForm = ({ setAuthentication }) => {
   const history = useHistory();
+  const [message, setMessage] = useState("");
+
   const {
     register,
     unregister,
@@ -28,29 +31,17 @@ const LoginForm = ({ setAuthentication }) => {
     };
   }, [register, unregister]);
 
-  const tryLogin = (data) => {
-    console.log(data);
-    axios
-      .post(`${baseURL}/sessions`, { ...data })
-      .then((res) => {
-        window.localStorage.setItem("authToken", res.token);
-        console.log(window.localStorage);
-        setAuthentication(true);
-        history.push("/");
-        return res.status === 200 && console.log("Login efetuado com sucesso");
-      })
-      .catch((err) =>
-        setError("password", {
-          message: "usuário não autenticado",
-        })
-      );
+  const handleLogin = async (data) => {
+    const resLogin = await login(data);
+    console.log(resLogin);
+    setMessage(resLogin);
   };
 
   return (
     <OuterDiv>
       <NewTypography variant="h3">Login</NewTypography>
-
-      <form onSubmit={handleSubmit(tryLogin)}>
+      {message}
+      <form onSubmit={handleSubmit(handleLogin)}>
         <div>
           <NewTextField
             variant="outlined"
