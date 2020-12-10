@@ -12,12 +12,7 @@ import BookIcon from "@material-ui/icons/Book";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SchoolIcon from "@material-ui/icons/School";
 import Select from "@material-ui/core/Select";
-import {
-  NewTypography,
-  NewTextField,
-  StyledButton,
-  OuterDiv,
-} from "../../components/LoginForm/styles";
+import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
 
 const Register = () => {
@@ -69,12 +64,12 @@ const Register = () => {
   };
 
   return (
-    <OuterDiv>
-      <div className="logo">
-        <div className="render">
-          <NewTypography variant="h3">Register</NewTypography>
-          <br />
-          <div>
+    <div className="logo">
+      <div className="render">
+        <NewTypography variant="h3">Register</NewTypography>
+        <br />
+        <div>
+          <OuterDiv>
             <form onSubmit={handleSubmit(sendForm)}>
               <div className="inputs">
                 <EmailIcon />
@@ -173,10 +168,10 @@ const Register = () => {
                 Send
               </StyledButton>
             </form>
-          </div>
+          </OuterDiv>
         </div>
       </div>
-    </OuterDiv>
+    </div>
   );
 };
 
