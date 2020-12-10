@@ -25,6 +25,7 @@ const DevCard = (props) => {
               color="textPrimary"
               component="p"
               align="center"
+              noWrap
             >
               {name}
             </Typography>
@@ -32,10 +33,11 @@ const DevCard = (props) => {
           <Divider />
           <Box m={1}>
             <Typography
-              variant="subtitle1"
+              variant="caption"
               color="textPrimary"
               component="p"
               align="center"
+              noWrap
             >
               {module}
             </Typography>
@@ -43,7 +45,7 @@ const DevCard = (props) => {
           <Divider />
           <Box m={1}>
             <Typography
-              variant="body1"
+              variant="caption"
               color="textPrimary"
               component="p"
               align="center"
