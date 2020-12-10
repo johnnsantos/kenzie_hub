@@ -3,9 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { login } from "../../requests";
 
-import { TextField, Typography, Button, Card } from "@material-ui/core/";
-
-import styled from "styled-components";
+import { NewTypography, NewTextField, OuterDiv, StyledButton } from "./styles";
 import axios from "axios";
 const baseURL = "https://kenziehub.me";
 
@@ -80,34 +78,3 @@ const LoginForm = ({ setAuthentication }) => {
 };
 
 export default LoginForm;
-
-export const OuterDiv = styled(Card)`
-  width: 70vw;
-  background-color: #e8f1f2 !important;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0 auto;
-`;
-
-export const NewTypography = styled(Typography)`
-  color: #34495e;
-`;
-
-export const NewTextField = styled(TextField)`
-  color: #34495e;
-  background-color: #fff;
-  label {
-    color: #05668d !important;
-  }
-  div > fieldset {
-    border-color: #05668d !important;
-  }
-`;
-
-export const StyledButton = styled(Button)`
-  background-color: #05668d !important;
-  margin: 1.3rem !important;
-  &:hover {
-    background-color: #05668d;
-  }
-`;
