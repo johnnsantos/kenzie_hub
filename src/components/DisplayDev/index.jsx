@@ -5,7 +5,6 @@ import { StyledButton } from "./styles";
 import { useHistory } from "react-router-dom";
 
 const DisplayDev = (props) => {
-  const history = useHistory();
   return (
     <>
       <Container maxWidth={props.isHome ? "md" : "lg"}>
