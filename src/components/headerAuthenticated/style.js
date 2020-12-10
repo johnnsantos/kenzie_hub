@@ -43,6 +43,7 @@ export const Container = styled.div`
 
     li {
       text-transform: uppercase;
+
       text-align: center;
       font-size: 15px;
       font-weight: bold;
@@ -71,6 +72,10 @@ export const Container = styled.div`
 
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
+      }
+
+      :last-child {
+        border: 1px solid transparent;
       }
 
       :last-child:hover {
