@@ -2,23 +2,16 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { login } from "../../requests";
+import { handleUserThunk } from "../../store/modules/infoUser/thunks";
+import { useDispatch } from "react-redux";
 
 import { NewTypography, NewTextField, OuterDiv, StyledButton } from "./styles";
-import axios from "axios";
-const baseURL = "https://kenziehub.me";
 
-const LoginForm = ({ setAuthentication }) => {
+const LoginForm = () => {
   const history = useHistory();
   const [message, setMessage] = useState("");
 
-  const {
-    register,
-    unregister,
-    handleSubmit,
-    setValue,
-    errors,
-    setError,
-  } = useForm();
+  const { register, unregister, handleSubmit, setValue, errors } = useForm();
 
   useEffect(() => {
     register("email", { required: "O email está em branco" });
@@ -29,9 +22,11 @@ const LoginForm = ({ setAuthentication }) => {
     };
   }, [register, unregister]);
 
+  const dispatch = useDispatch();
   const handleLogin = async (data) => {
     const resLogin = await login(data);
-    setMessage(resLogin);
+    setMessage(resLogin.message);
+    dispatch(handleUserThunk(resLogin.user));
     history.push("/devs");
   };
 
