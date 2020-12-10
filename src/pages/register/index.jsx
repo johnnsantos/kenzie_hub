@@ -9,12 +9,13 @@ import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
 import BookIcon from "@material-ui/icons/Book";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SchoolIcon from "@material-ui/icons/School";
+import Select from "@material-ui/core/Select";
 import {
   NewTypography,
   NewTextField,
   StyledButton,
   OuterDiv,
-} from "../Login/index";
+} from "../style/styles";
 
 const Register = () => {
   const history = useHistory();
@@ -59,6 +60,7 @@ const Register = () => {
 
   const sendForm = (data) => {
     delete data.password_confirmation;
+
     history.push("/login");
   };
 
@@ -66,25 +68,26 @@ const Register = () => {
     <OuterDiv>
       <div>
         <NewTypography variant="h3">Register</NewTypography>
-        <div className="align">
+        <br />
+        <div>
           <form onSubmit={handleSubmit(sendForm)}>
             <div className="inputs">
               <EmailIcon />
               <NewTextField
                 placeholder="E-mail"
                 name="email"
-                ref={register}
+                inputRef={register}
                 type="email"
               ></NewTextField>
             </div>
             <div className="warning">{errors.email?.message}</div>
             <br />
-            <div className="inputs">
+            <div>
               <LockOutlinedIcon />
               <NewTextField
                 placeholder="Password"
                 name="password"
-                ref={register}
+                inputRef={register}
                 type="password"
               ></NewTextField>
             </div>
@@ -95,7 +98,7 @@ const Register = () => {
               <NewTextField
                 placeholder="ConfirmPassword"
                 name="password_confirmation"
-                ref={register}
+                inputRef={register}
                 type="password"
               ></NewTextField>
             </div>
@@ -108,7 +111,7 @@ const Register = () => {
               <NewTextField
                 placeholder="Name"
                 name="name"
-                ref={register}
+                inputRef={register}
                 type="string"
               ></NewTextField>
             </div>
@@ -119,7 +122,7 @@ const Register = () => {
               <NewTextField
                 placeholder="Bio"
                 name="bio"
-                ref={register}
+                inputRef={register}
                 type="string"
               ></NewTextField>
             </div>
@@ -127,18 +130,23 @@ const Register = () => {
             <br />
             <div className="inputs">
               <WorkOutlinedIcon />
-              <input
+              <NewTextField
                 placeholder="Linkedin url"
                 name="contact"
-                ref={register}
+                inputRef={register}
                 type="url"
-              ></input>
+              ></NewTextField>
             </div>
             <div className="warning">{errors.contact?.message}</div>
             <br />
             <div className="inputs">
               <SchoolIcon />{" "}
-              <select name="course_module" id="modules" ref={register}>
+              <Select
+                name="course_module"
+                id="modules"
+                ref={register}
+                defaultValue={"Primeiro módulo (Introdução ao Frontend)"}
+              >
                 <option value="Primeiro módulo (Introdução ao Frontend)">
                   Q1 Frontend Introduction
                 </option>
@@ -151,12 +159,12 @@ const Register = () => {
                 <option value="Quarto módulo (Backend Avançado)">
                   Q4 Backend Advanced
                 </option>
-              </select>
+              </Select>
             </div>
             <div className="warning">{errors.course_module?.message}</div>
             <br />
-            <br />
-            <StyledButton className="send" htmlType="submit">
+
+            <StyledButton className="send" type="submit">
               Send
             </StyledButton>
           </form>
