@@ -37,11 +37,9 @@ const DisplayDev = (props) => {
               color="primary"
               size="large"
               disableElevation
-              onClick={() => {
-                history.push("/login");
-              }}
+              onClick={() => props.setDevNumber(props.devNumber + 3)}
             >
-              Faça login para ver mais!
+              Ver Mais
             </StyledButton>
           </Grid>
         )}
