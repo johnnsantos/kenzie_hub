@@ -1,11 +1,5 @@
 .render {
-  background-color: #e8f1f2;
-  color: #34495e;
-  text-align: center;
-  width: 500px;
-  height: 600px;
-  margin-left: 55%;
-  margin-top: 10%;
+  background-image: url("../../img/background-cadastro.png");
 }
 
 .align {
