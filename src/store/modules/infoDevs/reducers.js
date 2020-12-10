@@ -1,12 +1,12 @@
-import { Users } from "./types";
+import { users } from "./types";
 
 const defaultState = { devs: [] };
 
-const reducer = (state = defaultState, action) => {
+const Users = (state = defaultState, action) => {
   const { list, type } = action;
   const { devs } = state;
   switch (type) {
-    case Users:
+    case users:
       return { devs: [...devs, ...list] };
 
     default:
@@ -14,4 +14,4 @@ const reducer = (state = defaultState, action) => {
   }
 };
 
-export default reducer;
+export default Users;

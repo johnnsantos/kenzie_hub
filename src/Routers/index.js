@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import Login from "../pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -10,7 +10,8 @@ import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 
 const Routers = () => {
-  const { devs } = useSelector((state) => state.reducer);
+  const { devs } = useSelector((state) => state.Users);
+  console.log(devs);
   const dispatch = useDispatch();
   const location = useLocation();
   let token = window.localStorage.getItem("authorizationToken");

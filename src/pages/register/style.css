@@ -2,11 +2,20 @@
   background-color: #e8f1f2;
   color: #34495e;
   text-align: center;
+  width: 500px;
+  height: 600px;
+  margin-left: 55%;
+  margin-top: 10%;
+}
+
+.align {
   margin: 0 auto;
 }
 
 .warning {
   color: red;
+  font-size: 10px;
+  opacity: 70%;
 }
 
 .send {
@@ -29,5 +38,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
+}
+
+.logo {
+  background-image: url("../../img/background-cadastro.png");
+  background-repeat: no-repeat;
+  width: 799px;
+  height: 534px;
   margin: 0 auto;
 }
