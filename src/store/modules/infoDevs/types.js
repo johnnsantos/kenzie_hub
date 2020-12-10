@@ -1,1 +1,1 @@
-export const Users = "@infoDevs/Users";
+export const users = "@infoDevs/Users";

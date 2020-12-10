@@ -1,8 +1,8 @@
-import { Users } from "./types";
+import { users } from "./types";
 
 export const handleUsers = (devsList) => {
   return {
-    type: Users,
+    type: users,
     list: devsList,
   };
 };

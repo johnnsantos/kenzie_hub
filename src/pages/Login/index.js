@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import LoginForm from "../../components/LoginForm";
 import { useHistory } from "react-router-dom";
-import backgroundLogin from "../../img/background-login.png";
-import styled from "styled-components";
+import backgroundLogin from "../../img/login.svg";
+import { StyledDiv, StyledImg } from "./styles";
+
 const baseURL = "https://kenziehub.me";
 const Login = () => {
   const [isAuthenticated, setAuthentication] = useState(undefined);
@@ -30,17 +31,13 @@ const Login = () => {
   }
   if (isAuthenticated === false) {
     return (
-      <>
-        <LoginForm setAuthentication={setAuthentication} />;
-        <ImgAbsolute src={backgroundLogin} />
-      </>
+      <StyledDiv>
+        <StyledImg src={backgroundLogin} />
+        <LoginForm setAuthentication={setAuthentication} />
+      </StyledDiv>
     );
   }
   //rotas autenticadas
 };
 
 export default Login;
-
-export const ImgAbsolute = styled.img`
-  position: absolute !important;
-`;
