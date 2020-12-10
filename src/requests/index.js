@@ -34,6 +34,7 @@ export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
     window.localStorage.setItem("authorizationToken", res.data.token);
+
     return "Login efetuado com sucesso";
   } catch (error) {
     if (error.message === "Incorrect email / password combination") {

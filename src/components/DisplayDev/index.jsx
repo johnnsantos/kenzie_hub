@@ -2,7 +2,10 @@
 import { Grid, Container, Typography, Box } from "@material-ui/core";
 import { StyledButton } from "./styles";
 
+import { useHistory } from "react-router-dom";
+
 const DisplayDev = (props) => {
+  const history = useHistory();
   return (
     <>
       <Container maxWidth={props.isHome ? "md" : "lg"}>
@@ -34,6 +37,9 @@ const DisplayDev = (props) => {
               color="primary"
               size="large"
               disableElevation
+              onClick={() => {
+                history.push("/login");
+              }}
             >
               Faça login para ver mais!
             </StyledButton>
