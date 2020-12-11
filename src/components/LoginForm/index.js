@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { login } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "../../helpers";
 
 import { NewTypography, NewTextField, OuterDiv, StyledButton } from "./styles";
 
@@ -11,22 +13,24 @@ const LoginForm = () => {
   const history = useHistory();
   const [message, setMessage] = useState("");
 
-  const { register, unregister, handleSubmit, setValue, errors } = useForm();
+  const { register, unregister, handleSubmit, setValue, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   useEffect(() => {
     register("email", { required: "O email está em branco" });
     register("password", { required: "A senha está em branco" });
     return () => {
       unregister("email");
-      unregister("passoword");
+      unregister("password");
     };
   }, [register, unregister]);
 
   const dispatch = useDispatch();
   const handleLogin = async (data) => {
     const resLogin = await login(data);
-    setMessage(resLogin.message);
-    dispatch(handleUserThunk(resLogin.user));
+    resLogin && setMessage(resLogin.message);
+    resLogin && dispatch(handleUserThunk(resLogin.user));
     history.push("/devs");
   };
 
@@ -45,8 +49,8 @@ const LoginForm = () => {
             inputRef={register}
             onChange={(e) => setValue("email", e.target.value)}
           />
-          {errors.user && (
-            <p style={{ color: "red" }}> {errors.user.message} </p>
+          {errors.email && (
+            <p style={{ color: "red" }}> {errors.email.message} </p>
           )}
         </div>
         <div>
@@ -64,7 +68,6 @@ const LoginForm = () => {
           )}
         </div>
         <StyledButton color="primary" variant="contained" type="submit">
-          {" "}
           Entrar
         </StyledButton>
       </form>
