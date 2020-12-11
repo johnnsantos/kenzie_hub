@@ -59,6 +59,7 @@ const Register = () => {
 
   const sendForm = (data) => {
     delete data.password_confirmation;
+    console.log(data);
     dispatch(signUpUser(data));
     history.push("/login");
   };
