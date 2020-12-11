@@ -129,14 +129,14 @@ const HeaderAuthenticated = () => {
       <div className="headerList">
         <ul>
           <li onClick={() => history.push("/devs")}>
-            <h3>Explore</h3>
+            <h3>Explorar</h3>
           </li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}
             icon2={<LanguageIcon />}
-            option1={"Add Stack"}
-            option2={"Add Technology"}
+            option1={"Adicionar Stack"}
+            option2={"Adicionar Tecnologia"}
             mainIcon={<AddToPhotosIcon />}
             action1={"/#"}
             action2={"/#"}
@@ -144,10 +144,16 @@ const HeaderAuthenticated = () => {
           <FloatingMenu
             icon1={<EditIcon />}
             icon2={<ExitToAppIcon />}
-            option1={"Edit Profile"}
-            option2={"Logout"}
-            mainIcon={userLoged.name}
-            image={userLoged.avatar_url}
+            option1={"Editar Perfil"}
+            option2={"Sair"}
+            mainIcon={
+              userLoged.name ? userLoged.name.split(" ")[0] : "Loading..."
+            }
+            image={
+              userLoged.avatar_url
+                ? userLoged.avatar_url
+                : "https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"
+            }
             action1={"/#"}
             action2={logout}
           />

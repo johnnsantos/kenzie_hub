@@ -1,0 +1,50 @@
+.root {
+  width: 90%;
+  max-width: 1400px;
+  margin: 3vh auto;
+  display: flex;
+}
+
+.profile {
+  width: 50%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  border-right: 2px solid #34495e;
+}
+
+.profile-data {
+  width: 100%;
+  display: block;
+  padding: 5%;
+}
+
+.profile-about {
+  display: block;
+  padding: 5%;
+}
+
+.section {
+  text-align: center;
+  width: 50%;
+  margin-left: 2vw;
+}
+
+.technologies-title {
+  border-bottom: 2px solid #34495e;
+}
+
+@media only screen and (max-width: 600px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile {
+    width: 100%;
+    border: none;
+  }
+  .section {
+    width: 100%;
+  }
+}
