@@ -4,6 +4,7 @@ import KenzieLogo from "../../img/kenzieLogo.png";
 import { useState, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import { FloatingMenu } from "../floatingCards";
+import { useSelector } from "react-redux";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,6 +40,9 @@ const useStyles = makeStyles({
 const HeaderAuthenticated = () => {
   const history = useHistory();
   const classes = useStyles();
+
+  const { userLoged } = useSelector((state) => state.User);
+  console.log(userLoged);
 
   const [state, setState] = useState({
     top: false,
@@ -125,7 +129,9 @@ const HeaderAuthenticated = () => {
       </div>
       <div className="headerList">
         <ul>
-          <li onClick={() => history.push("/devs")}>Explore</li>
+          <li onClick={() => history.push("/devs")}>
+            <h3>Explore</h3>
+          </li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}
@@ -141,7 +147,8 @@ const HeaderAuthenticated = () => {
             icon2={<ExitToAppIcon />}
             option1={"Edit Profile"}
             option2={"Logout"}
-            mainIcon={"User/Image"}
+            mainIcon={userLoged.name}
+            image={userLoged.avatar_url}
             action1={"/#"}
             action2={logout}
           />
