@@ -145,18 +145,31 @@ const Register = () => {
                   name="course_module"
                   id="modules"
                   ref={register}
+                  className="select"
                   defaultValue={"Primeiro módulo (Introdução ao Frontend)"}
                 >
-                  <option value="Primeiro módulo (Introdução ao Frontend)">
+                  <option
+                    className="select"
+                    value="Primeiro módulo (Introdução ao Frontend)"
+                  >
                     Q1 Frontend Introduction
                   </option>
-                  <option value="Segundo módulo (Frontend Avançado)">
+                  <option
+                    className="select"
+                    value="Segundo módulo (Frontend Avançado)"
+                  >
                     Q2 Frontend Advanced
                   </option>
-                  <option value="Terceiro módulo (Introdução ao Backend)">
+                  <option
+                    className="select"
+                    value="Terceiro módulo (Introdução ao Backend)"
+                  >
                     Q3 Backend Introduction
                   </option>
-                  <option value="Quarto módulo (Backend Avançado)">
+                  <option
+                    className="select"
+                    value="Quarto módulo (Backend Avançado)"
+                  >
                     Q4 Backend Advanced
                   </option>
                 </Select>

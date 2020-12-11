@@ -7,6 +7,10 @@
   margin-left: 55%;
   margin-top: 10%;
   opacity: 95%;
+  @media (max-width: 650px) {
+    width: 70%;
+    height: 60%;
+  }
 }
 
 .align {
@@ -20,7 +24,7 @@
 }
 
 .send {
-  background-color: #34495e;
+  background-color: #05668d;
   color: #e8f1f2;
   font-size: 16px;
   width: 100px;
@@ -48,4 +52,8 @@
   width: 1120px;
   height: 699px;
   margin: 0 auto;
+}
+
+.select {
+  cursor: pointer;
 }
