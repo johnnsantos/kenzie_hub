@@ -1,8 +1,10 @@
 import { Typography } from "@material-ui/core";
 import { StyledAvatar } from "./styles";
 import "./styles.css";
+import { useParams } from "react-router-dom";
 
-const ProfilePage = () => {
+const ProfilePage = (user) => {
+  const { name, email, module, bio, stacks, works } = user;
   return (
     <div className="root">
       <div className="profile">

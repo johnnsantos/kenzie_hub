@@ -1,4 +1,4 @@
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, useParams } from "react-router-dom";
 import Login from "../pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import Register from "../pages/register";
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 import UsersAuthenticated from "../pages/UsersAuthenticated";
+import ProfilePage from "../pages/profilePage";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
@@ -48,6 +49,9 @@ const Routers = () => {
             </Route>
             <Route exact path="/devs">
               <UsersAuthenticated />
+            </Route>
+            <Route exact path={`/devs/teste`}>
+              <ProfilePage />
             </Route>
           </Switch>
         </>

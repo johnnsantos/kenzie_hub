@@ -66,7 +66,7 @@ const DevCard = (props) => {
                 disableElevation
                 startIcon={<PersonIcon />}
                 onClick={() => {
-                  history.push(`/users/${id}`);
+                  history.push(`/devs/${id}`);
                 }}
               >
                 Ver perfil
