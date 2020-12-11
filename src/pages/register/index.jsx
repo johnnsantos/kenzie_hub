@@ -65,19 +65,11 @@ const Register = () => {
 
   return (
     <div className="logo">
-<<<<<<< HEAD
-      <OuterDiv>
-        <div className="render">
-          <NewTypography variant="h3">Register</NewTypography>
-          <br />
-          <div>
-=======
       <div className="render">
         <NewTypography variant="h3">Register</NewTypography>
         <br />
         <div>
           <OuterDiv>
->>>>>>> 1ac48dfdccfe76495468047f74d68d88d8e83ca3
             <form onSubmit={handleSubmit(sendForm)}>
               <div className="inputs">
                 <EmailIcon />
@@ -178,11 +170,7 @@ const Register = () => {
             </form>
           </OuterDiv>
         </div>
-<<<<<<< HEAD
-      </OuterDiv>
-=======
       </div>
->>>>>>> 1ac48dfdccfe76495468047f74d68d88d8e83ca3
     </div>
   );
 };

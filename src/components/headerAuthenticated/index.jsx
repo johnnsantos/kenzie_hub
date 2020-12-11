@@ -42,7 +42,6 @@ const HeaderAuthenticated = () => {
   const classes = useStyles();
 
   const { userLoged } = useSelector((state) => state.User);
-  console.log(userLoged);
 
   const [state, setState] = useState({
     top: false,

@@ -14,7 +14,6 @@ import UsersAuthenticated from "../pages/UsersAuthenticated";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
-  console.log(devs);
   const dispatch = useDispatch();
   const location = useLocation();
   let token = window.localStorage.getItem("authorizationToken");
@@ -23,17 +22,20 @@ const Routers = () => {
 
   useEffect(() => {
     dispatch(handleUsersThunk(nextURL, setNextURL));
-  }, [devs]);
+  }, [nextURL]);
 
   useEffect(() => {
     token = window.localStorage.getItem("authorizationToken");
   }, [location]);
 
-  useEffect(() => {
-    let id = window.localStorage.getItem("ID");
-    const user = requestUser(id);
-    dispatch(handleUserThunk(user));
-  }, []);
+  useEffect(
+    () => async () => {
+      let id = window.localStorage.getItem("ID");
+      const user = await requestUser(id);
+      dispatch(handleUserThunk(user));
+    },
+    [nextURL]
+  );
 
   return (
     <>

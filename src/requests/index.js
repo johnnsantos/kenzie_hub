@@ -33,11 +33,8 @@ export const getUsersList = async (nextURL) => {
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
-    window.localStorage.setItem(
-      "authorizationToken",
-      JSON.stringify(res.data.token)
-    );
-    window.localStorage.setItem("ID", JSON.stringify(res.data.user.id));
+    window.localStorage.setItem("authorizationToken", res.data.token);
+    window.localStorage.setItem("ID", res.data.user.id);
     return { user: res.data.user, message: "Login efetuado com sucesso" };
   } catch (error) {
     console.log(error);
@@ -58,6 +55,6 @@ export const addTechs = (data) => {
 };
 
 export const requestUser = async (id) => {
-  let res = await axios.get(`${baseURL}/users/:${id}`);
+  let res = await axios.get(`${baseURL}/users/${id}`);
   return res.data;
 };
