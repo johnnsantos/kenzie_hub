@@ -68,6 +68,9 @@ const Routers = () => {
             <Route exact path="/register">
               <Register />
             </Route>
+            <Route exact path="/sobre">
+              <About />
+            </Route>
           </Switch>
         </>
       )}
