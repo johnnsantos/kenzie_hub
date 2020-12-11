@@ -70,7 +70,7 @@ const Header = () => {
       </List>
       <Divider />
       <List>
-        {["About", "Login", "Register"].map((text, index) => (
+        {["Sobre", "Entrar", "Criar Conta"].map((text, index) => (
           <ListItem
             button
             key={text}
@@ -100,7 +100,7 @@ const Header = () => {
       </div>
       <div className="headerList">
         <ul>
-          <li>Sobre</li>
+          <li onClick={() => history.push("/sobre")}>Sobre</li>
 
           <li onClick={() => history.push("/login")}>Entrar</li>
 

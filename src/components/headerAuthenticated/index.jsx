@@ -85,12 +85,12 @@ const HeaderAuthenticated = () => {
       </List>
       <Divider />
       <List>
-        {["About", "Explore", "Profile"].map((text, index) => (
+        {["Sobre", "Explorar", "Perfil"].map((text, index) => (
           <ListItem
             button
             key={text}
             onClick={() =>
-              text.toLowerCase() !== "explore"
+              text.toLowerCase() !== "explorar"
                 ? history.push(`/${text.toLowerCase()}`)
                 : history.push(`/devs`)
             }
@@ -128,6 +128,9 @@ const HeaderAuthenticated = () => {
       </div>
       <div className="headerList">
         <ul>
+          <li onClick={() => history.push("/sobre")}>
+            <h3>Sobre</h3>
+          </li>
           <li onClick={() => history.push("/devs")}>
             <h3>Explorar</h3>
           </li>
