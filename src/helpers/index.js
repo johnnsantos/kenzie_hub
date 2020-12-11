@@ -12,7 +12,7 @@ export const schema = yup.object().shape({
     .required("O campo de e-mail é obrigatório."),
   password: yup
     .string()
-    .min(6, "São necessários, pelo menos 6 caracteres.")
+    .min(6, "São necessários, pelo menos 6 caracteres para a senha.")
     .required("O campo de senha é obrigatório."),
 
   password_confirmation: yup
@@ -22,7 +22,7 @@ export const schema = yup.object().shape({
     .required("O campo de confirmação de senha é obrigatório."),
   name: yup
     .string()
-    .min(6, "São necessários, pelo menos 6 caracteres.")
+    .min(6, "Minimo de 6 caracteres para o nome.")
     .matches(
       /^[a-z ,.'-]+$/i,
       "Caracteres especiais e números não são permitidos."
@@ -30,8 +30,8 @@ export const schema = yup.object().shape({
     .required("O campo de Nome é obrigatório."),
   bio: yup
     .string()
-    .min(20)
-    .max(100)
+    .min(20, "Minimo de vinte caracteres para a Bio.")
+    .max(100, "Maximo de 100 caracteres para a Bio.")
     .required("O campo de biografia é obrigatório."),
 
   contact: yup

@@ -10,15 +10,17 @@ import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
 
 const Register = () => {
   const history = useHistory();
-
+  const [message, setMessage] = useState();
+  const [open, setOpen] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const [message, setMessage] = useState();
 
   const sendForm = (data) => {
     delete data.password_confirmation;
@@ -30,10 +32,19 @@ const Register = () => {
   const [module, setModule] = useState(
     "Primeiro módulo (Introdução ao Frontend)"
   );
+
+  const handleClick = () => {
+    if (open === false) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
   return (
     <div className="logo">
       <div className="render">
-        <NewTypography variant="h3">Register</NewTypography>
+        <NewTypography variant="h3">Cadastro</NewTypography>
         <br />
         <div>
           <OuterDiv>
@@ -98,12 +109,20 @@ const Register = () => {
                 </Select>
               </div>
               <StyledButton className="send" type="submit">
-                Send
+                Enviar
               </StyledButton>
             </form>
           </OuterDiv>
         </div>
       </div>
+      <MuiDialogTitle disableTypography>
+        <NewTypography variant="h6">{message}</NewTypography>
+        {open ? (
+          <IconButton aria-label="close" onClick={handleClick}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
     </div>
   );
 };
