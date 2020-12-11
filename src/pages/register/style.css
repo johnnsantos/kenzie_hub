@@ -2,11 +2,11 @@
   background-color: #e8f1f2;
   color: #34495e;
   text-align: center;
-  width: 500px;
-  height: 600px;
-  margin-left: 52%;
+  width: 40%;
+  height: 70%;
+  margin-left: 55%;
   margin-top: 10%;
-  opacity: 80%;
+  opacity: 95%;
 }
 
 .align {
@@ -15,7 +15,7 @@
 
 .warning {
   color: red;
-  font-size: 10px;
+  font-size: 11px;
   opacity: 70%;
 }
 

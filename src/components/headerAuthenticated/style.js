@@ -12,12 +12,17 @@ export const Container = styled.div`
   background-color: transparent;
   padding: 0.3rem;
   height: 60px;
-  width: 100%;
+  width: 90%;
+
+  .headerList {
+    margin: 0 2.5rem 0 0;
+  }
 
   .headerLogo {
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin: 0 0 0 2.5rem;
   }
 
   img {
@@ -49,7 +54,7 @@ export const Container = styled.div`
       transition: 0.25s;
       box-sizing: border-box;
       color: #00356b;
-
+      position: relative;
       :nth-last-child(1) {
         border: 1px solid transparent;
         background-color: #00356b;
@@ -64,6 +69,15 @@ export const Container = styled.div`
 
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
+      }
+
+      .profilePic {
+        position: absolute;
+        width: 50px;
+        top: 50%;
+        right: -45%;
+        transform: translateY(-50%);
+        border-radius: 100%;
       }
     }
   }
