@@ -33,9 +33,14 @@ export const getUsersList = async (nextURL) => {
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
-    window.localStorage.setItem("authorizationToken", res.data.token);
+    window.localStorage.setItem(
+      "authorizationToken",
+      JSON.stringify(res.data.token)
+    );
+    window.localStorage.setItem("ID", JSON.stringify(res.data.user.id));
     return { user: res.data.user, message: "Login efetuado com sucesso" };
   } catch (error) {
+    console.log(error);
     if (error.message === "Incorrect email / password combination") {
       return "Email ou senha incorretos.";
     }
@@ -50,4 +55,9 @@ export const addTechs = (data) => {
     },
   };
   axios.post(`${baseURL}/users/techs`, data, config);
+};
+
+export const requestUser = async (id) => {
+  let res = await axios.get(`${baseURL}/users/:${id}`);
+  return res.data;
 };

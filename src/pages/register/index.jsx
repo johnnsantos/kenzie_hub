@@ -69,8 +69,8 @@ const Register = () => {
   };
 
   return (
-    <OuterDiv>
-      <div className="logo">
+    <div className="logo">
+      <OuterDiv>
         <div className="render">
           <NewTypography variant="h3">Register</NewTypography>
           <br />
@@ -175,8 +175,8 @@ const Register = () => {
             </form>
           </div>
         </div>
-      </div>
-    </OuterDiv>
+      </OuterDiv>
+    </div>
   );
 };
 
