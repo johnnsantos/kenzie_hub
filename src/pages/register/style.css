@@ -2,10 +2,11 @@
   background-color: #e8f1f2;
   color: #34495e;
   text-align: center;
-  width: 500px;
-  height: 600px;
+  width: 40%;
+  height: 70%;
   margin-left: 55%;
   margin-top: 10%;
+  opacity: 95%;
 }
 
 .align {
@@ -14,7 +15,7 @@
 
 .warning {
   color: red;
-  font-size: 10px;
+  font-size: 11px;
   opacity: 70%;
 }
 
@@ -42,9 +43,9 @@
 }
 
 .logo {
-  background-image: url("../../img/background-cadastro.png");
+  background-image: url("../../img/signup.svg");
   background-repeat: no-repeat;
-  width: 799px;
-  height: 534px;
+  width: 1120px;
+  height: 699px;
   margin: 0 auto;
 }
