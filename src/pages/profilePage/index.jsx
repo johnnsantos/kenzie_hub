@@ -1,36 +1,63 @@
 import { Typography } from "@material-ui/core";
-import { StyledAvatar } from "./styles";
+import { Create } from "@material-ui/icons";
+import { StyledAvatar, StyledContainer } from "./styles";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import InfoProfile from "../../components/InfoProfile";
+import EditProfile from "../../components/EditProfile";
 
-const ProfilePage = (user) => {
+const ProfilePage = (prop) => {
+  const { User } = prop;
   const params = useParams();
   const { id } = params;
-  const users = useSelector((state) => state.Users);
-  const filtereduser = users.devs.filter((user) => user.id === id);
-  const {
-    avatar_url,
-    name,
-    email,
-    course_module,
-    bio,
-    techs,
-    works,
-  } = filtereduser[0];
+  const users = useSelector((state) => state.Users.devs);
+  const [filtereduser, setFilteredUser] = useState([
+    {
+      avatar_url: "",
+      name: "",
+      email: "",
+      course_module: "",
+      bio: "",
+      techs: "",
+      works: "",
+    },
+  ]);
+
+  useEffect(() => {
+    setFilteredUser(
+      users.length !== 0
+        ? users?.filter((user) => user.id === id)
+        : [
+            {
+              avatar_url: "",
+              name: "",
+              email: "",
+              course_module: "",
+              bio: "",
+              techs: "",
+              works: "",
+            },
+          ]
+    );
+    console.log(filtereduser);
+  }, [users, id]);
+
+  console.log(filtereduser);
+  const { techs, works } = filtereduser[0];
+
+  const [edit, setEdit] = useState(false);
+
   return (
     <div className="root">
-      <div className="profile">
-        <StyledAvatar src={avatar_url} />
-        <Typography variant="h5">{name}</Typography>
-        <div className="profile-data">
-          <Typography variant="h6">Email: {email}</Typography>
-          <Typography variant="h6">{course_module}</Typography>
-        </div>
-        <div className="profile-about">
-          <Typography variant="body1">{bio}</Typography>
-        </div>
-      </div>
+      <StyledContainer className="profile">
+        {User && edit === false ? (
+          <InfoProfile data={filtereduser[0]} setEdit={setEdit} />
+        ) : (
+          <EditProfile data={filtereduser[0]} setEdit={setEdit} />
+        )}
+      </StyledContainer>
       <div className="section">
         <div className="technologies-title">
           <Typography variant="h6">Tecnologias</Typography>

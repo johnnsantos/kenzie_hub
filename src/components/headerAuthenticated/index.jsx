@@ -157,7 +157,7 @@ const HeaderAuthenticated = () => {
                 ? userLoged.avatar_url
                 : "https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"
             }
-            action1={"/#"}
+            action1={`/edit/${userLoged.id}`}
             action2={logout}
           />
         </ul>
