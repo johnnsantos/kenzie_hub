@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
-import { schema } from "../../helpers";
+import { schemaRegister } from "../../helpers";
 import "./style.css";
 import { signUpUser } from "../../requests";
 import SchoolIcon from "@material-ui/icons/School";
@@ -15,7 +15,7 @@ const Register = () => {
   const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaRegister),
   });
 
   const [message, setMessage] = useState();
