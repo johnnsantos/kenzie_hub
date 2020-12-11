@@ -14,7 +14,6 @@ import UsersAuthenticated from "../pages/UsersAuthenticated";
 import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
 
-
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
   const dispatch = useDispatch();
@@ -54,10 +53,10 @@ const Routers = () => {
             </Route>
             <Route exact path={`/devs/:id`}>
               <ProfilePage />
-              </Route>
+            </Route>
             <Route exact path="/sobre">
               <About />
-             </Route>
+            </Route>
           </Switch>
         </>
       ) : (
