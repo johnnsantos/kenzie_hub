@@ -129,7 +129,7 @@ const HeaderAuthenticated = () => {
       <div className="headerList">
         <ul>
           <li onClick={() => history.push("/devs")}>
-            <h3>Explore</h3>
+            <h3>Explorar</h3>
           </li>
 
           <FloatingMenu
