@@ -10,30 +10,39 @@ import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
+import Alert from "@material-ui/lab/Alert";
 
 const Register = () => {
   const history = useHistory();
-
+  const [message, setMessage] = useState();
+  const [answer, setAnswer] = useState(false);
+  const [responseTrue, setResponseTrue] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schemaRegister),
   });
 
-  const [message, setMessage] = useState();
-
-  const sendForm = (data) => {
+  const sendForm = async (data) => {
     delete data.password_confirmation;
     data = { ...data, course_module: module };
-    setMessage(signUpUser(data));
-    history.push("/login");
+    await setMessage(signUpUser(data));
+    setAnswer(true);
+    console.log(message);
+    if (message === "Usuário cadastrado com sucesso") {
+      setResponseTrue(true);
+    }
+    setTimeout(() => {
+      history.push("/login");
+    }, 3000);
   };
 
   const [module, setModule] = useState(
     "Primeiro módulo (Introdução ao Frontend)"
   );
+
   return (
     <div className="logo">
       <div className="render">
-        <NewTypography variant="h3">Register</NewTypography>
+        <NewTypography variant="h3">Cadastro</NewTypography>
         <br />
         <div>
           <OuterDiv>
@@ -98,10 +107,23 @@ const Register = () => {
                 </Select>
               </div>
               <StyledButton className="send" type="submit">
-                Send
+                Enviar
               </StyledButton>
             </form>
           </OuterDiv>
+          {answer ? (
+            <div>
+              {responseTrue ? (
+                <Alert severity="success">
+                  Seu cadastro foi criado com sucesso!
+                </Alert>
+              ) : (
+                <Alert severity="error">
+                  Há algo de errado com seu cadastro!
+                </Alert>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
