@@ -5,7 +5,7 @@ import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
 import BookIcon from "@material-ui/icons/Book";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-export const schema = yup.object().shape({
+export const schemaRegister = yup.object().shape({
   email: yup
     .string()
     .email("Must be a valid email!")
@@ -32,6 +32,17 @@ export const schema = yup.object().shape({
       /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
       "Must be a valid linkedin url!"
     )
+    .required("This field is required!"),
+});
+
+export const schemaLogin = yup.object().shape({
+  email: yup
+    .string()
+    .email("Must be a valid email!")
+    .required("This field is required!"),
+  password: yup
+    .string()
+    .min(6, "Must have at least 6 characters")
     .required("This field is required!"),
 });
 

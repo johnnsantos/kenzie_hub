@@ -5,7 +5,7 @@ import { login } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "../../helpers";
+import { schemaLogin } from "../../helpers";
 
 import { NewTypography, NewTextField, OuterDiv, StyledButton } from "./styles";
 
@@ -14,7 +14,7 @@ const LoginForm = () => {
   const [message, setMessage] = useState("");
 
   const { register, unregister, handleSubmit, setValue, errors } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaLogin),
   });
 
   useEffect(() => {
@@ -33,6 +33,8 @@ const LoginForm = () => {
     resLogin && dispatch(handleUserThunk(resLogin.user));
     history.push("/devs");
   };
+
+  console.log(errors);
 
   return (
     <OuterDiv>
