@@ -30,17 +30,38 @@ export const getUsersList = async (nextURL) => {
   return res;
 };
 
+// export const login = async (data) => {
+//   try {
+//     let res = await axios.post(`${baseURL}/sessions`, data);
+//     window.localStorage.setItem("authorizationToken", res.data.token);
+//     window.localStorage.setItem("ID", res.data.user.id);
+
+//     return { user: res.data.user, message: "Login efetuado com sucesso" };
+//   } catch (error) {
+//     console.log(error);
+
+//     return "Email e/ou senha incorretos";
+//     if (error.message === "Incorrect email / password combination") {
+//       console.log(error.message);
+//       return "Email ou senha incorretos.";
+//     }
+//   }
+// };
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
     window.localStorage.setItem("authorizationToken", res.data.token);
     window.localStorage.setItem("ID", res.data.user.id);
-    return { user: res.data.user, message: "Login efetuado com sucesso" };
+
+    console.log(res.status);
+    return (
+      res.status === 200 && {
+        user: res.data.user,
+        message: "Login efetuado com sucesso",
+      }
+    );
   } catch (error) {
-    console.log(error);
-    if (error.message === "Incorrect email / password combination") {
-      return "Email ou senha incorretos.";
-    }
+    return { message: "Email e/ou senha incorretos." };
   }
 };
 
