@@ -10,36 +10,34 @@ import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import Alert from "@material-ui/lab/Alert";
 
 const Register = () => {
   const history = useHistory();
   const [message, setMessage] = useState();
-  const [open, setOpen] = useState(false);
+  const [answer, setAnswer] = useState(false);
+  const [responseTrue, setResponseTrue] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const sendForm = (data) => {
+  const sendForm = async (data) => {
     delete data.password_confirmation;
     data = { ...data, course_module: module };
-    setMessage(signUpUser(data));
-    history.push("/login");
+    await setMessage(signUpUser(data));
+    setAnswer(true);
+    console.log(message);
+    if (message === "Usuário cadastrado com sucesso") {
+      setResponseTrue(true);
+    }
+    setTimeout(() => {
+      history.push("/login");
+    }, 3000);
   };
 
   const [module, setModule] = useState(
     "Primeiro módulo (Introdução ao Frontend)"
   );
-
-  const handleClick = () => {
-    if (open === false) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  };
 
   return (
     <div className="logo">
@@ -113,16 +111,21 @@ const Register = () => {
               </StyledButton>
             </form>
           </OuterDiv>
+          {answer ? (
+            <div>
+              {responseTrue ? (
+                <Alert severity="success">
+                  Seu cadastro foi criado com sucesso!
+                </Alert>
+              ) : (
+                <Alert severity="error">
+                  Há algo de errado com seu cadastro!
+                </Alert>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
-      <MuiDialogTitle disableTypography>
-        <NewTypography variant="h6">{message}</NewTypography>
-        {open ? (
-          <IconButton aria-label="close" onClick={handleClick}>
-            <CloseIcon />
-          </IconButton>
-        ) : null}
-      </MuiDialogTitle>
     </div>
   );
 };
