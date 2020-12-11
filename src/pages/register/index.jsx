@@ -10,7 +10,6 @@ import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
-import { ErrorSharp } from "@material-ui/icons";
 
 const Register = () => {
   const history = useHistory();
@@ -19,11 +18,12 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
+  const [message, setMessage] = useState();
+
   const sendForm = (data) => {
     delete data.password_confirmation;
     data = { ...data, course_module: module };
-    console.log(data);
-    console.log(signUpUser(data));
+    setMessage(signUpUser(data));
     history.push("/login");
   };
 
