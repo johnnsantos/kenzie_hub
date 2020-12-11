@@ -102,9 +102,9 @@ const Header = () => {
         <ul>
           <li>Sobre</li>
 
-          <li onClick={() => history.push("/login")}>Login</li>
+          <li onClick={() => history.push("/login")}>Entrar</li>
 
-          <li onClick={() => history.push("/register")}>Register</li>
+          <li onClick={() => history.push("/register")}>Criar Conta</li>
         </ul>
       </div>
       <div className="headerDropDown">

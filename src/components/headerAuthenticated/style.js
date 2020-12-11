@@ -12,17 +12,12 @@ export const Container = styled.div`
   background-color: transparent;
   padding: 0.3rem;
   height: 60px;
-  width: 90%;
-
-  .headerList {
-    margin: 0 2.5rem 0 0;
-  }
+  width: 100%;
 
   .headerLogo {
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin: 0 0 0 2.5rem;
   }
 
   img {
@@ -65,6 +60,15 @@ export const Container = styled.div`
         background-color: #00356b;
         border-radius: 2px;
         color: white;
+
+        .profilePic {
+          position: absolute;
+          max-width: 50px;
+          top: 50%;
+          right: -45%;
+          transform: translateY(-50%);
+          border-radius: 100%;
+        }
       }
 
       :nth-last-child(1):hover {
@@ -77,26 +81,29 @@ export const Container = styled.div`
       }
 
       .profilePic {
-        position: absolute;
-        width: 50px;
-        top: 50%;
-        right: -45%;
-        transform: translateY(-50%);
-        border-radius: 100%;
       }
     }
   }
 
   @media (min-width: 768px) {
-    width: inherit;
-    margin: 0 2rem;
+    width: 95%;
+    margin: 0 auto;
+
+    .headerLogo {
+      margin: 0 0 0 2rem;
+    }
 
     .headerList {
       display: inherit;
+      margin: 0 2.5rem 0 0;
     }
 
     .headerDropDown {
       display: none;
     }
+  }
+
+  @media (max-width: 324px) {
+    padding: 1rem 0 1rem 0;
   }
 `;
