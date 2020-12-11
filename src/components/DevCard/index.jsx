@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import {
   CardActions,
   CardContent,
@@ -13,7 +13,8 @@ import DefaultAvatar from "../../img/DevCard/avatar.webp";
 
 const DevCard = (props) => {
   const history = useHistory();
-  const { name, image, module, stacks, isHome, index, id } = props;
+  const location = useLocation();
+  const { name, image, module, stacks, index, id } = props;
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
       <StyledCard key={index}>
@@ -55,7 +56,7 @@ const DevCard = (props) => {
             </Typography>
           </Box>
         </CardContent>
-        {!isHome && (
+        {location.pathname !== "/" && (
           <CardActions>
             <Box m="auto" mb={1}>
               <StyledButton
