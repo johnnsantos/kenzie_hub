@@ -55,6 +55,11 @@ export const Container = styled.div`
       box-sizing: border-box;
       color: #00356b;
       position: relative;
+
+      h3 {
+        margin: 0;
+      }
+
       :nth-last-child(1) {
         border: 1px solid transparent;
         background-color: #00356b;
