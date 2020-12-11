@@ -7,6 +7,10 @@
   margin-left: 55%;
   margin-top: 10%;
   opacity: 95%;
+  @media (max-width: 650px) {
+    width: 70%;
+    height: 60%;
+  }
 }
 
 .align {
