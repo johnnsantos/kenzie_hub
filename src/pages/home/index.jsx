@@ -1,15 +1,10 @@
-import { useSelector } from "react-redux";
 import bannerImg from "../../img/codeDark.svg";
 import { Container } from "./style";
 import DisplayDev from "../../components/DisplayDev";
-import DevCard from "../../components/DevCard";
 
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 
 const Home = () => {
-  const [devNumber, setDevNumber] = useState(3);
-  const { devs } = useSelector((state) => state.Users);
   const history = useHistory();
   return (
     <>
@@ -30,23 +25,7 @@ const Home = () => {
           <button onClick={() => history.push("/register")}>Cadastre-se</button>
         </div>
       </Container>
-      <DisplayDev isHome setDevNumber={setDevNumber} devNumber={devNumber}>
-        {devs.slice(0, devNumber).map((dev, index) => (
-          <DevCard
-            isHome
-            key={index}
-            id={dev.id}
-            name={dev.name}
-            image={dev.avatar_url}
-            module={dev.course_module}
-            stacks={
-              dev.techs.length !== 0
-                ? dev.techs.map((tech) => `${tech.title} | `)
-                : "Sem tecnologias ainda."
-            }
-          />
-        ))}
-      </DisplayDev>
+      <DisplayDev />
     </>
   );
 };
