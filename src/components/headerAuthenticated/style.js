@@ -22,10 +22,15 @@ export const Container = styled.div`
 
   img {
     margin-right: 1rem;
+    max-width: 50px;
   }
 
   h1 {
     color: gray;
+  }
+
+  h3 {
+    margin: 0;
   }
 
   .headerList {

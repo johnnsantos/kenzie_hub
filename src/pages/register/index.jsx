@@ -1,187 +1,129 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
-import * as yup from "yup";
+import { schemaRegister } from "../../helpers";
 import "./style.css";
 import { signUpUser } from "../../requests";
-import { useDispatch } from "react-redux";
-import EmailIcon from "@material-ui/icons/Email";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
-import BookIcon from "@material-ui/icons/Book";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SchoolIcon from "@material-ui/icons/School";
-import Select from "@material-ui/core/Select";
+import { Select, MenuItem } from "@material-ui/core";
 import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
 import "../../img/DevCard/signup.svg";
+import { dataRegister } from "../../helpers";
+import { useState } from "react";
+import Alert from "@material-ui/lab/Alert";
 
 const Register = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email("Must be a valid email!")
-      .required("This field is required!"),
-    password: yup
-      .string()
-      .min(6, "Must have at least 6 characters")
-      .required("This field is required!"),
-
-    password_confirmation: yup
-      .string()
-      .required()
-      .oneOf([yup.ref("password")], "Passwords must match"),
-    name: yup
-      .string()
-      .min(6, "Must have at least 6 characters!")
-      .required("This field is required!")
-      .matches(
-        /^[a-z ,.'-]+$/i,
-        "Special characters or numbers ar not allowed."
-      ),
-    bio: yup.string().min(20).max(100).required("This field is required!"),
-
-    contact: yup
-      .string()
-      .matches(
-        /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
-        "Must be a valid linkedin url!"
-      )
-      .required("This field is required!"),
-
-    course_module: yup.string().required("This field is required!"),
-  });
-
+  const [message, setMessage] = useState();
+  const [answer, setAnswer] = useState(false);
+  const [responseTrue, setResponseTrue] = useState(false);
   const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaRegister),
   });
 
-  const sendForm = (data) => {
+  const sendForm = async (data) => {
     delete data.password_confirmation;
-    dispatch(signUpUser(data));
-    history.push("/login");
+    data = { ...data, course_module: module };
+    await setMessage(signUpUser(data));
+    setAnswer(true);
+    console.log(message);
+    if (message === "Usuário cadastrado com sucesso") {
+      setResponseTrue(true);
+    }
+    setTimeout(() => {
+      history.push("/login");
+    }, 3000);
   };
+
+  const [module, setModule] = useState(
+    "Primeiro módulo (Introdução ao Frontend)"
+  );
 
   return (
     <div className="logo">
       <div className="render">
-        <NewTypography variant="h3">Register</NewTypography>
+        <NewTypography variant="h3">Cadastro</NewTypography>
         <br />
         <div>
           <OuterDiv>
             <form onSubmit={handleSubmit(sendForm)}>
-              <div className="inputs">
-                <EmailIcon />
-                <NewTextField
-                  placeholder="E-mail"
-                  name="email"
-                  inputRef={register}
-                  type="email"
-                ></NewTextField>
-              </div>
-              <div className="warning">{errors.email?.message}</div>
-              <br />
-              <div>
-                <LockOutlinedIcon />
-                <NewTextField
-                  placeholder="Password"
-                  name="password"
-                  inputRef={register}
-                  type="password"
-                ></NewTextField>
-              </div>
-              <div className="warning">{errors.password?.message}</div>
-              <br />
-              <div className="inputs">
-                <LockOutlinedIcon />
-                <NewTextField
-                  placeholder="ConfirmPassword"
-                  name="password_confirmation"
-                  inputRef={register}
-                  type="password"
-                ></NewTextField>
-              </div>
+              {dataRegister.map((input, index) => (
+                <div key={index} className="inputs">
+                  {input.icon}
+                  <NewTextField
+                    placeholder={input.placeholder}
+                    name={input.name}
+                    inputRef={register}
+                    type={input.type}
+                  ></NewTextField>
+                </div>
+              ))}
+
               <div className="warning">
-                {errors.password_confirmation?.message}
+                {errors.email?.message ||
+                  errors.password?.message ||
+                  errors.password_confirmation?.message ||
+                  errors.name?.message ||
+                  errors.bio?.message ||
+                  errors.contact?.message}
               </div>
-              <br />
-              <div className="inputs">
-                <AccountCircleIcon />
-                <NewTextField
-                  placeholder="Name"
-                  name="name"
-                  inputRef={register}
-                  type="string"
-                ></NewTextField>
-              </div>
-              <div className="warning">{errors.name?.message}</div>
-              <br />
-              <div className="inputs">
-                <BookIcon />
-                <NewTextField
-                  placeholder="Bio"
-                  name="bio"
-                  inputRef={register}
-                  type="string"
-                ></NewTextField>
-              </div>
-              <div className="warning">{errors.bio?.message}</div>
-              <br />
-              <div className="inputs">
-                <WorkOutlinedIcon />
-                <NewTextField
-                  placeholder="Linkedin url"
-                  name="contact"
-                  inputRef={register}
-                  type="url"
-                ></NewTextField>
-              </div>
-              <div className="warning">{errors.contact?.message}</div>
               <br />
               <div className="inputs">
                 <SchoolIcon />{" "}
                 <Select
                   name="course_module"
                   id="modules"
-                  ref={register}
                   className="select"
-                  defaultValue={"Primeiro módulo (Introdução ao Frontend)"}
+                  value={module}
+                  onChange={(e) => {
+                    setModule(e.target.value);
+                  }}
                 >
-                  <option
+                  <MenuItem
                     className="select"
                     value="Primeiro módulo (Introdução ao Frontend)"
+                    selected
                   >
-                    Q1 Frontend Introduction
-                  </option>
-                  <option
+                    Primeiro módulo (Introdução ao Frontend)
+                  </MenuItem>
+                  <MenuItem
                     className="select"
                     value="Segundo módulo (Frontend Avançado)"
                   >
-                    Q2 Frontend Advanced
-                  </option>
-                  <option
+                    Segundo módulo (Frontend Avançado)
+                  </MenuItem>
+                  <MenuItem
                     className="select"
                     value="Terceiro módulo (Introdução ao Backend)"
                   >
-                    Q3 Backend Introduction
-                  </option>
-                  <option
+                    Terceiro módulo (Introdução ao Backend)
+                  </MenuItem>
+                  <MenuItem
                     className="select"
                     value="Quarto módulo (Backend Avançado)"
                   >
-                    Q4 Backend Advanced
-                  </option>
+                    Quarto módulo (Backend Avançado)
+                  </MenuItem>
                 </Select>
               </div>
-              <div className="warning">{errors.course_module?.message}</div>
-              <br />
-
               <StyledButton className="send" type="submit">
-                Send
+                Enviar
               </StyledButton>
             </form>
           </OuterDiv>
+          {answer ? (
+            <div>
+              {responseTrue ? (
+                <Alert severity="success">
+                  Seu cadastro foi criado com sucesso!
+                </Alert>
+              ) : (
+                <Alert severity="error">
+                  Há algo de errado com seu cadastro!
+                </Alert>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
