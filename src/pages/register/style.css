@@ -49,8 +49,9 @@
 .logo {
   background-image: url("../../img/signup.svg");
   background-repeat: no-repeat;
-  width: 1120px;
+    width: 1120px;
   height: 699px;
+  margin: 0 auto;
   margin: 0 auto;
 }
 
