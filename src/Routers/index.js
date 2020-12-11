@@ -12,6 +12,8 @@ import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 import UsersAuthenticated from "../pages/UsersAuthenticated";
 import ProfilePage from "../pages/profilePage";
+import About from "../pages/about";
+
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
@@ -52,7 +54,10 @@ const Routers = () => {
             </Route>
             <Route exact path={`/devs/:id`}>
               <ProfilePage />
-            </Route>
+              </Route>
+            <Route exact path="/sobre">
+              <About />
+             </Route>
           </Switch>
         </>
       ) : (
@@ -67,6 +72,9 @@ const Routers = () => {
             </Route>
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/sobre">
+              <About />
             </Route>
           </Switch>
         </>
