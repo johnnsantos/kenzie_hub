@@ -1,4 +1,4 @@
-import { Route, Switch, useLocation, useParams } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import Login from "../pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -51,7 +51,7 @@ const Routers = () => {
             <Route exact path="/devs">
               <UsersAuthenticated />
             </Route>
-            <Route exact path={`/devs/teste`}>
+            <Route exact path={`/devs/:id`}>
               <ProfilePage />
             </Route>
             <Route exact path="/sobre">
