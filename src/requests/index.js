@@ -70,8 +70,17 @@ export const changeImage = async (data) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios
-    .patch(`${baseURL}/users/avatar`, data, config)
-    .catch((e) => console.error(e));
+  let res = await axios.patch(`${baseURL}/users/avatar`, data, config);
+  return res.data;
+};
+
+export const requestEditProfile = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/profile`, data, config);
   return res.data;
 };

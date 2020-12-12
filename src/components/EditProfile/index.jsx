@@ -7,10 +7,9 @@ import {
   StyledBookIcon,
   StyledWorkOutlinedIcon,
 } from "./styles";
-import { Typography } from "@material-ui/core";
 import { BookmarkBorder } from "@material-ui/icons/";
 import { useEffect, useState } from "react";
-import { changeImage } from "../../requests";
+import { changeImage, requestEditProfile } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -36,10 +35,17 @@ const EditProfile = ({ setEdit }) => {
     dispatch(handleUserThunk(user));
     setNewAvatar(user.avatar_url);
   };
+
+  const handleChanges = async () => {
+    const data = { name: newName, contact: newContact };
+    const user = await requestEditProfile(data);
+    dispatch(handleUserThunk(user));
+    setEdit(false);
+  };
   return (
     <>
       <StyledContainer>
-        <BookmarkBorder onClick={() => setEdit(false)} />
+        <BookmarkBorder onClick={handleChanges} />
         <StyledAvatar src={newAvatar} />
         <NewTextField
           value={newName}
