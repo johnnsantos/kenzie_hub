@@ -73,6 +73,5 @@ export const changeImage = async (data) => {
   let res = await axios
     .patch(`${baseURL}/users/avatar`, data, config)
     .catch((e) => console.error(e));
-  console.log(res);
   return res.data;
 };

@@ -1,4 +1,9 @@
-import { StyledAvatar, NewTextField } from "./styles";
+import {
+  StyledAvatar,
+  NewTextField,
+  StyledLabel,
+  StyledContainer,
+} from "./styles";
 import { Typography } from "@material-ui/core";
 import { BookmarkBorder } from "@material-ui/icons/";
 import { useEffect, useState } from "react";
@@ -8,15 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const EditProfile = ({ setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
-  const {
-    id,
-    avatar_url,
-    name,
-    email,
-    contact,
-    course_module,
-    bio,
-  } = userLoged;
+  const { avatar_url, name, email, contact, course_module, bio } = userLoged;
 
   const [newName, setNewName] = useState();
   const [newContact, setNewContact] = useState();
@@ -38,13 +35,18 @@ const EditProfile = ({ setEdit }) => {
   };
   return (
     <>
-      <BookmarkBorder onClick={() => setEdit(false)} />
-      <StyledAvatar src={newAvatar} />
-      <NewTextField
-        value={newName}
-        onChange={(e) => setNewName(e.target.value)}
-      />
-      <input type="file" onChange={handleImage} />
+      <StyledContainer>
+        <BookmarkBorder onClick={() => setEdit(false)} />
+        <StyledAvatar src={newAvatar} />
+        <NewTextField
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+        />
+        <StyledLabel for="changeImage">
+          <input id="changeImage" type="file" onChange={handleImage} />
+          Trocar imagem
+        </StyledLabel>
+      </StyledContainer>
       <div className="profile-data">
         <NewTextField value={email} />
         <NewTextField value={course_module} />
