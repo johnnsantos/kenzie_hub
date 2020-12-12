@@ -8,7 +8,6 @@ const InfoProfile = ({ data, setEdit, User }) => {
   const { avatar_url, name, email, contact, course_module, bio } = data;
   const { userLoged } = useSelector((state) => state.User);
   const params = useParams();
-  console.log(userLoged.id === params.id);
 
   return (
     <>

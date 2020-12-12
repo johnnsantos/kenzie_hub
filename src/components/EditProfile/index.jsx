@@ -3,9 +3,20 @@ import { Typography } from "@material-ui/core";
 import { BookmarkBorder } from "@material-ui/icons/";
 import { useEffect, useState } from "react";
 import { changeImage } from "../../requests";
+import { handleUserThunk } from "../../store/modules/infoUser/thunks";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditProfile = ({ data, setEdit }) => {
-  const { avatar_url, name, email, contact, course_module, bio } = data;
+const EditProfile = ({ setEdit }) => {
+  const { userLoged } = useSelector((state) => state.User);
+  const {
+    id,
+    avatar_url,
+    name,
+    email,
+    contact,
+    course_module,
+    bio,
+  } = userLoged;
 
   const [newName, setNewName] = useState();
   const [newContact, setNewContact] = useState();
@@ -15,14 +26,15 @@ const EditProfile = ({ data, setEdit }) => {
     setNewName(name);
     setNewContact(contact);
     setNewAvatar(avatar_url);
-  }, [data]);
+  }, [userLoged]);
 
-  const handleImage = (e) => {
+  const dispatch = useDispatch();
+  const handleImage = async (e) => {
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
-    console.log(data);
-    changeImage(data);
-    setNewAvatar(avatar_url);
+    const user = await changeImage(data);
+    dispatch(handleUserThunk(user));
+    setNewAvatar(user.avatar_url);
   };
   return (
     <>

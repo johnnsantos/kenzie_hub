@@ -74,5 +74,5 @@ export const changeImage = async (data) => {
     .patch(`${baseURL}/users/avatar`, data, config)
     .catch((e) => console.error(e));
   console.log(res);
-  return res;
+  return res.data;
 };

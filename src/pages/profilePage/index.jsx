@@ -40,10 +40,8 @@ const ProfilePage = (prop) => {
             },
           ]
     );
-    console.log(filtereduser);
   }, [users, id]);
 
-  console.log(filtereduser);
   const { techs, works } = filtereduser[0];
 
   const [edit, setEdit] = useState(false);
