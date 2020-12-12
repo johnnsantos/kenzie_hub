@@ -3,6 +3,7 @@
   max-width: 1400px;
   margin: 3vh auto;
   display: flex;
+  height: 80vh;
 }
 
 .profile {

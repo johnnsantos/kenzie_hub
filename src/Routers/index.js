@@ -57,6 +57,9 @@ const Routers = () => {
             <Route exact path="/sobre">
               <About />
             </Route>
+            <Route exact path="/edit/:id">
+              <ProfilePage />
+            </Route>
           </Switch>
         </>
       ) : (

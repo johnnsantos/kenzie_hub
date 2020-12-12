@@ -30,23 +30,6 @@ export const getUsersList = async (nextURL) => {
   return res;
 };
 
-// export const login = async (data) => {
-//   try {
-//     let res = await axios.post(`${baseURL}/sessions`, data);
-//     window.localStorage.setItem("authorizationToken", res.data.token);
-//     window.localStorage.setItem("ID", res.data.user.id);
-
-//     return { user: res.data.user, message: "Login efetuado com sucesso" };
-//   } catch (error) {
-//     console.log(error);
-
-//     return "Email e/ou senha incorretos";
-//     if (error.message === "Incorrect email / password combination") {
-//       console.log(error.message);
-//       return "Email ou senha incorretos.";
-//     }
-//   }
-// };
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
@@ -78,4 +61,18 @@ export const addTechs = (data) => {
 export const requestUser = async (id) => {
   let res = await axios.get(`${baseURL}/users/${id}`);
   return res.data;
+};
+
+export const changeImage = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios
+    .patch(`${baseURL}/users/avatar`, data, config)
+    .catch((e) => console.error(e));
+  console.log(res);
+  return res;
 };
