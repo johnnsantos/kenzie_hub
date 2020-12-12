@@ -3,6 +3,9 @@ import {
   NewTextField,
   StyledLabel,
   StyledContainer,
+  StyledEmailIcon,
+  StyledBookIcon,
+  StyledWorkOutlinedIcon,
 } from "./styles";
 import { Typography } from "@material-ui/core";
 import { BookmarkBorder } from "@material-ui/icons/";
@@ -48,15 +51,21 @@ const EditProfile = ({ setEdit }) => {
         </StyledLabel>
       </StyledContainer>
       <div className="profile-data">
-        <NewTextField value={email} />
-        <NewTextField value={course_module} />
-        <NewTextField
-          value={newContact}
-          onChange={(e) => setNewContact(e.target.value)}
-        />
-      </div>
-      <div className="profile-about">
-        <Typography variant="body1">{bio}</Typography>
+        <div>
+          <StyledEmailIcon />
+          <NewTextField noChange value={email} />
+        </div>
+        <div>
+          <StyledBookIcon />
+          <NewTextField noChange value={course_module} />
+        </div>
+        <div>
+          <StyledWorkOutlinedIcon />
+          <NewTextField
+            value={newContact}
+            onChange={(e) => setNewContact(e.target.value)}
+          />
+        </div>
       </div>
     </>
   );

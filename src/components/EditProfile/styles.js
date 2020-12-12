@@ -1,6 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Avatar } from "@material-ui/core";
 import { TextField } from "@material-ui/core/";
+import EmailIcon from "@material-ui/icons/Email";
+import BookIcon from "@material-ui/icons/Book";
+import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
 
 export const StyledAvatar = styled(Avatar)`
   width: 120px;
@@ -13,12 +16,20 @@ export const NewTextField = styled(TextField)`
   width: 70%;
   color: #34495e;
   background-color: #fff;
+  margin: 10px;
+  padding-left: 10px;
   label {
     color: #05668d !important;
   }
   div > fieldset {
     border-color: #05668d !important;
   }
+
+  ${({ noChange }) =>
+    noChange &&
+    css`
+      background-color: #e8f1f2;
+    `}
 `;
 
 export const StyledLabel = styled.label`
@@ -46,4 +57,19 @@ export const StyledContainer = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+`;
+
+export const StyledEmailIcon = styled(EmailIcon)`
+  position: initial !important;
+  margin-top: 10px;
+`;
+
+export const StyledBookIcon = styled(BookIcon)`
+  position: initial !important;
+  margin-top: 10px;
+`;
+
+export const StyledWorkOutlinedIcon = styled(WorkOutlinedIcon)`
+  position: initial !important;
+  margin-top: 10px;
 `;
