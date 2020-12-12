@@ -128,12 +128,9 @@ const HeaderAuthenticated = () => {
       </div>
       <div className="headerList">
         <ul>
-          <li onClick={() => history.push("/sobre")}>
-            <h3>Sobre</h3>
-          </li>
-          <li onClick={() => history.push("/devs")}>
-            <h3>Explorar</h3>
-          </li>
+          <li onClick={() => history.push("/sobre")}>Sobre</li>
+
+          <li onClick={() => history.push("/devs")}>Explorar</li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}

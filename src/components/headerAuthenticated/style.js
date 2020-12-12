@@ -11,8 +11,12 @@ export const Container = styled.div`
   box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.75);
   background-color: transparent;
   padding: 0.3rem;
-  height: 60px;
+  height: 80px;
   width: 100%;
+
+  .headerList {
+    margin: 0 2.5rem 0 0;
+  }
 
   .headerLogo {
     display: flex;
@@ -92,12 +96,9 @@ export const Container = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 95%;
-    margin: 0 auto;
-
-    .headerLogo {
-      margin: 0 0 0 2rem;
-    }
+    height: 60px;
+    width: inherit;
+    margin: 0 2rem;
 
     .headerList {
       display: inherit;
