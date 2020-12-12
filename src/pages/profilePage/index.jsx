@@ -52,10 +52,10 @@ const ProfilePage = (prop) => {
   return (
     <div className="root">
       <StyledContainer className="profile">
-        {User && edit === false ? (
-          <InfoProfile data={filtereduser[0]} setEdit={setEdit} />
+        {edit === false ? (
+          <InfoProfile data={filtereduser[0]} User={User} setEdit={setEdit} />
         ) : (
-          <EditProfile data={filtereduser[0]} setEdit={setEdit} />
+          <EditProfile data={filtereduser[0]} User={User} setEdit={setEdit} />
         )}
       </StyledContainer>
       <div className="section">

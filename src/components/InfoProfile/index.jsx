@@ -2,11 +2,11 @@ import { StyledAvatar } from "./styles";
 import { Typography } from "@material-ui/core";
 import { Create } from "@material-ui/icons";
 
-const InfoProfile = ({ data, setEdit }) => {
+const InfoProfile = ({ data, setEdit, User }) => {
   const { avatar_url, name, email, contact, course_module, bio } = data;
   return (
     <>
-      <Create onClick={() => setEdit(true)} />
+      {User && <Create onClick={() => setEdit(true)} />}
       <StyledAvatar src={avatar_url} />
       <Typography variant="h5">{name}</Typography>
       <div className="profile-data">
