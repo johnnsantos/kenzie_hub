@@ -35,12 +35,16 @@ export const login = async (data) => {
     let res = await axios.post(`${baseURL}/sessions`, data);
     window.localStorage.setItem("authorizationToken", res.data.token);
     window.localStorage.setItem("ID", res.data.user.id);
-    return { user: res.data.user, message: "Login efetuado com sucesso" };
+
+    console.log(res.status);
+    return (
+      res.status === 200 && {
+        user: res.data.user,
+        message: "Login efetuado com sucesso",
+      }
+    );
   } catch (error) {
-    console.log(error);
-    if (error.message === "Incorrect email / password combination") {
-      return "Email ou senha incorretos.";
-    }
+    return { message: "Email e/ou senha incorretos." };
   }
 };
 
@@ -57,4 +61,18 @@ export const addTechs = (data) => {
 export const requestUser = async (id) => {
   let res = await axios.get(`${baseURL}/users/${id}`);
   return res.data;
+};
+
+export const changeImage = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios
+    .patch(`${baseURL}/users/avatar`, data, config)
+    .catch((e) => console.error(e));
+  console.log(res);
+  return res;
 };

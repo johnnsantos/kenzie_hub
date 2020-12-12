@@ -11,6 +11,7 @@ import Register from "../pages/register";
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 import UsersAuthenticated from "../pages/UsersAuthenticated";
+import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
 
 const Routers = () => {
@@ -50,8 +51,14 @@ const Routers = () => {
             <Route exact path="/devs">
               <UsersAuthenticated />
             </Route>
+            <Route exact path={`/devs/:id`}>
+              <ProfilePage />
+            </Route>
             <Route exact path="/sobre">
               <About />
+            </Route>
+            <Route exact path="/edit/:id">
+              <ProfilePage />
             </Route>
           </Switch>
         </>

@@ -6,7 +6,7 @@ import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaLogin } from "../../helpers";
-
+import Alert from "@material-ui/lab/Alert";
 import { NewTypography, NewTextField, OuterDiv, StyledButton } from "./styles";
 
 const LoginForm = () => {
@@ -27,19 +27,20 @@ const LoginForm = () => {
   }, [register, unregister]);
 
   const dispatch = useDispatch();
+
   const handleLogin = async (data) => {
     const resLogin = await login(data);
+
     resLogin && setMessage(resLogin.message);
     resLogin && dispatch(handleUserThunk(resLogin.user));
-    history.push("/devs");
+    resLogin.message === "Login efetuado com sucesso" && history.push("/devs");
   };
 
-  console.log(errors);
+  //
 
   return (
     <OuterDiv>
       <NewTypography variant="h3">Login</NewTypography>
-      {message}
       <form onSubmit={handleSubmit(handleLogin)}>
         <div>
           <NewTextField
@@ -69,6 +70,9 @@ const LoginForm = () => {
             <p style={{ color: "red" }}>{errors.password.message}</p>
           )}
         </div>
+        {message === "Email e/ou senha incorretos." && (
+          <Alert severity="error">{message}</Alert>
+        )}
         <StyledButton color="primary" variant="contained" type="submit">
           Entrar
         </StyledButton>

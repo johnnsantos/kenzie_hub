@@ -7,7 +7,7 @@ const Users = (state = defaultState, action) => {
   const { devs } = state;
   switch (type) {
     case users:
-      return { devs: [...devs, ...list] };
+      return { devs: [...list] };
 
     default:
       return state;
