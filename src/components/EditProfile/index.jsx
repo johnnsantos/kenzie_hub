@@ -4,7 +4,7 @@ import { BookmarkBorder } from "@material-ui/icons/";
 import { useEffect, useState } from "react";
 import { changeImage } from "../../requests";
 
-const EditProfile = ({ data, setEdit, User }) => {
+const EditProfile = ({ data, setEdit }) => {
   const { avatar_url, name, email, contact, course_module, bio } = data;
 
   const [newName, setNewName] = useState();
@@ -26,7 +26,7 @@ const EditProfile = ({ data, setEdit, User }) => {
   };
   return (
     <>
-      {User && <BookmarkBorder onClick={() => setEdit(false)} />}
+      <BookmarkBorder onClick={() => setEdit(false)} />
       <StyledAvatar src={newAvatar} />
       <NewTextField
         value={newName}

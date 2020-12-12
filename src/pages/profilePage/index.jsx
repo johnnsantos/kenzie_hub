@@ -9,7 +9,6 @@ import InfoProfile from "../../components/InfoProfile";
 import EditProfile from "../../components/EditProfile";
 
 const ProfilePage = (prop) => {
-  const { User } = prop;
   const params = useParams();
   const { id } = params;
   const users = useSelector((state) => state.Users.devs);
@@ -53,9 +52,9 @@ const ProfilePage = (prop) => {
     <div className="root">
       <StyledContainer className="profile">
         {edit === false ? (
-          <InfoProfile data={filtereduser[0]} User={User} setEdit={setEdit} />
+          <InfoProfile data={filtereduser[0]} setEdit={setEdit} />
         ) : (
-          <EditProfile data={filtereduser[0]} User={User} setEdit={setEdit} />
+          <EditProfile data={filtereduser[0]} setEdit={setEdit} />
         )}
       </StyledContainer>
       <div className="section">

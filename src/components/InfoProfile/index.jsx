@@ -1,12 +1,18 @@
 import { StyledAvatar } from "./styles";
 import { Typography } from "@material-ui/core";
 import { Create } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const InfoProfile = ({ data, setEdit, User }) => {
   const { avatar_url, name, email, contact, course_module, bio } = data;
+  const { userLoged } = useSelector((state) => state.User);
+  const params = useParams();
+  console.log(userLoged.id === params.id);
+
   return (
     <>
-      {User && <Create onClick={() => setEdit(true)} />}
+      {userLoged.id === params.id && <Create onClick={() => setEdit(true)} />}
       <StyledAvatar src={avatar_url} />
       <Typography variant="h5">{name}</Typography>
       <div className="profile-data">
