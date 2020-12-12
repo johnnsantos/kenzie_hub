@@ -1,6 +1,8 @@
 import banner from "../../img/aboutBanner.svg";
 import logo from "../../img/kenzieLogo.png";
 
+import AboutCard from "../../components/aboutCard";
+
 import { Container } from "./style";
 
 const About = () => {
@@ -19,87 +21,18 @@ const About = () => {
         </div>
 
         <div className="team">
-          <div className="card">
-            <img
-              src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/6027914/avatar.png"
-              alt=""
-            />
-            <h1>Johnnatan Santos</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/johnnsantos/"
-            >
-              {" "}
-              <h2>Linkedin</h2>{" "}
-            </a>
-          </div>
-          <div className="card">
-            <img
-              src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/6515935/avatar.png"
-              alt=""
-            />
-            <h1>Matheus Gasparotto</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/matheusgasparotto/"
-            >
-              {" "}
-              <h2>Linkedin</h2>{" "}
-            </a>
-          </div>
-          <div className="card">
-            <img
-              src="https://gitlab.com/uploads/-/system/user/avatar/6533699/avatar.png"
-              alt=""
-            />
-            <h1>Yuri Baldini</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/yuri-baldini-67371918b/"
-            >
-              {" "}
-              <h2>Linkedin</h2>{" "}
-            </a>
-          </div>
-          <div className="card">
-            <img
-              src="https://gitlab.com/uploads/-/system/user/avatar/6535259/avatar.png"
-              alt=""
-            />
-            <h1>thiago jacques</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/thiago-linhares-jacques/"
-            >
-              {" "}
-              <h2>Linkedin</h2>{" "}
-            </a>
-          </div>
-          <div className="card">
-            <img
-              src="https://gitlab.com/uploads/-/system/user/avatar/6534080/avatar.png"
-              alt=""
-            />
-            <h1>Christian Sequeira</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/christian-smmc/"
-            >
-              {" "}
-              <h2>Linkedin</h2>{" "}
-            </a>
-          </div>
+          <AboutCard />
         </div>
         <div className="teamAnounce">
           <h1>Kenzie Academy</h1>
         </div>
-        <div className="kenzie">
-          <a target="_blank" rel="noreferrer" href="https://kenzie.com.br/">
+        <div className="kenzie left">
+          <a
+            className="kenzieButton"
+            target="_blank"
+            rel="noreferrer"
+            href="https://kenzie.com.br/"
+          >
             {" "}
             <img src={logo} alt="" width="100" />
           </a>
@@ -109,9 +42,13 @@ const About = () => {
           </h1>
         </div>
         <div className="teamAnounce">
-          <h1>Api</h1>
+          <h1 className="leftPanel">Kenzie Hub</h1>
         </div>
-        <div className="kenzie">
+        <div className="kenzie right">
+          <h1>
+            Foi a API utilizada neste projeto, feita por um dos facilitadores da
+            Kenzie, Gabriel Araújo
+          </h1>
           <a
             className="api"
             target="_blank"
@@ -120,10 +57,6 @@ const About = () => {
           >
             <h2>Kenzie Hub</h2>
           </a>
-          <h1>
-            Foi a API utilizada neste projeto, feita por um dos facilitadores da
-            Kenzie, Gabriel Araújo
-          </h1>
         </div>
       </div>
     </Container>

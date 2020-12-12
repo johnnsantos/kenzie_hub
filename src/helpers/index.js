@@ -84,3 +84,33 @@ export const dataRegister = [
     type: "url",
   },
 ];
+
+export const team = [
+  {
+    name: "Johnnatan Santos",
+    linkedin: "https://www.linkedin.com/in/johnnsantos/",
+    image:
+      "https://assets.gitlab-static.net/uploads/-/system/user/avatar/6027914/avatar.png",
+  },
+  {
+    name: "Matheus Gasparotto",
+    linkedin: "https://www.linkedin.com/in/matheusgasparotto/",
+    image:
+      "https://assets.gitlab-static.net/uploads/-/system/user/avatar/6515935/avatar.png",
+  },
+  {
+    name: "Yuri Baldini",
+    linkedin: "https://www.linkedin.com/in/yuri-baldini-67371918b/",
+    image: "https://gitlab.com/uploads/-/system/user/avatar/6533699/avatar.png",
+  },
+  {
+    name: "Thiago Jacques",
+    linkedin: "https://www.linkedin.com/in/thiago-linhares-jacques/",
+    image: "https://gitlab.com/uploads/-/system/user/avatar/6535259/avatar.png",
+  },
+  {
+    name: "Christian Sequeira",
+    linkedin: "https://www.linkedin.com/in/christian-smmc/",
+    image: "https://gitlab.com/uploads/-/system/user/avatar/6534080/avatar.png",
+  },
+];

@@ -100,7 +100,7 @@ const Header = () => {
       </div>
       <div className="headerList">
         <ul>
-          <li>Sobre</li>
+          <li onClick={() => history.push("/sobre")}>Sobre</li>
 
           <li onClick={() => history.push("/login")}>Login</li>
 
