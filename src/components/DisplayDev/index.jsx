@@ -3,14 +3,20 @@ import { Grid, Container, Typography, Box } from "@material-ui/core";
 import { StyledButton } from "./styles";
 
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DevCard from "../DevCard";
 import { useSelector } from "react-redux";
 
-const DisplayDev = () => {
+const DisplayDev = ({ search }) => {
+  const { devs } = useSelector((state) => state.Users);
+  const [arrDevs, setArrDevs] = useState(devs);
+
+  useEffect(() => {
+    search && setArrDevs(search.devs);
+  }, [search]);
+
   const [devNumber, setDevNumber] = useState(3);
   const location = useLocation();
-  const { devs } = useSelector((state) => state.Users);
   return (
     <>
       <Container maxWidth={location.pathname === "/" ? "md" : "lg"}>
@@ -32,7 +38,7 @@ const DisplayDev = () => {
           spacing={4}
         >
           {location.pathname === "/"
-            ? devs
+            ? arrDevs
                 .slice(0, devNumber)
                 .map((dev, index) => (
                   <DevCard
@@ -49,7 +55,7 @@ const DisplayDev = () => {
                     }
                   />
                 ))
-            : devs.map((dev, index) => (
+            : arrDevs.map((dev, index) => (
                 <DevCard
                   key={index}
                   id={dev.id}
