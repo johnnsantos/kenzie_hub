@@ -40,10 +40,8 @@ const ProfilePage = (prop) => {
             },
           ]
     );
-    console.log(filtereduser);
   }, [users, id]);
 
-  console.log(filtereduser);
   const { techs, works } = filtereduser[0];
 
   const [edit, setEdit] = useState(false);
@@ -54,7 +52,7 @@ const ProfilePage = (prop) => {
         {edit === false ? (
           <InfoProfile data={filtereduser[0]} setEdit={setEdit} />
         ) : (
-          <EditProfile data={filtereduser[0]} setEdit={setEdit} />
+          <EditProfile setEdit={setEdit} />
         )}
       </StyledContainer>
       <div className="section">

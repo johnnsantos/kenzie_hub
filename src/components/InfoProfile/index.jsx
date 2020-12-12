@@ -4,11 +4,11 @@ import { Create } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const InfoProfile = ({ data, setEdit, User }) => {
-  const { avatar_url, name, email, contact, course_module, bio } = data;
+const InfoProfile = ({ data, setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
   const params = useParams();
-  console.log(userLoged.id === params.id);
+  const { avatar_url, name, email, contact, course_module, bio } =
+    userLoged.id === params.id ? userLoged : data;
 
   return (
     <>

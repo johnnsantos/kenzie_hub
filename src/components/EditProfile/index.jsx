@@ -1,11 +1,21 @@
-import { StyledAvatar, NewTextField } from "./styles";
-import { Typography } from "@material-ui/core";
+import {
+  StyledAvatar,
+  NewTextField,
+  StyledLabel,
+  StyledContainer,
+  StyledEmailIcon,
+  StyledBookIcon,
+  StyledWorkOutlinedIcon,
+} from "./styles";
 import { BookmarkBorder } from "@material-ui/icons/";
 import { useEffect, useState } from "react";
-import { changeImage } from "../../requests";
+import { changeImage, requestEditProfile } from "../../requests";
+import { handleUserThunk } from "../../store/modules/infoUser/thunks";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditProfile = ({ data, setEdit }) => {
-  const { avatar_url, name, email, contact, course_module, bio } = data;
+const EditProfile = ({ setEdit }) => {
+  const { userLoged } = useSelector((state) => state.User);
+  const { avatar_url, name, email, contact, course_module, bio } = userLoged;
 
   const [newName, setNewName] = useState();
   const [newContact, setNewContact] = useState();
@@ -15,34 +25,53 @@ const EditProfile = ({ data, setEdit }) => {
     setNewName(name);
     setNewContact(contact);
     setNewAvatar(avatar_url);
-  }, [data]);
+  }, [userLoged]);
 
-  const handleImage = (e) => {
+  const dispatch = useDispatch();
+  const handleImage = async (e) => {
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
-    console.log(data);
-    changeImage(data);
-    setNewAvatar(avatar_url);
+    const user = await changeImage(data);
+    dispatch(handleUserThunk(user));
+    setNewAvatar(user.avatar_url);
+  };
+
+  const handleChanges = async () => {
+    const data = { name: newName, contact: newContact };
+    const user = await requestEditProfile(data);
+    dispatch(handleUserThunk(user));
+    setEdit(false);
   };
   return (
     <>
-      <BookmarkBorder onClick={() => setEdit(false)} />
-      <StyledAvatar src={newAvatar} />
-      <NewTextField
-        value={newName}
-        onChange={(e) => setNewName(e.target.value)}
-      />
-      <input type="file" onChange={handleImage} />
-      <div className="profile-data">
-        <NewTextField value={email} />
-        <NewTextField value={course_module} />
+      <StyledContainer>
+        <BookmarkBorder onClick={handleChanges} />
+        <StyledAvatar src={newAvatar} />
         <NewTextField
-          value={newContact}
-          onChange={(e) => setNewContact(e.target.value)}
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
         />
-      </div>
-      <div className="profile-about">
-        <Typography variant="body1">{bio}</Typography>
+        <StyledLabel for="changeImage">
+          <input id="changeImage" type="file" onChange={handleImage} />
+          Trocar imagem
+        </StyledLabel>
+      </StyledContainer>
+      <div className="profile-data">
+        <div>
+          <StyledEmailIcon />
+          <NewTextField noChange value={email} />
+        </div>
+        <div>
+          <StyledBookIcon />
+          <NewTextField noChange value={course_module} />
+        </div>
+        <div>
+          <StyledWorkOutlinedIcon />
+          <NewTextField
+            value={newContact}
+            onChange={(e) => setNewContact(e.target.value)}
+          />
+        </div>
       </div>
     </>
   );
