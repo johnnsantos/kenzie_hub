@@ -24,7 +24,7 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
-  img {
+  .kenzieLogoHeader {
     margin-right: 1rem;
     max-width: 50px;
   }
@@ -69,15 +69,17 @@ export const Container = styled.div`
         background-color: #00356b;
         border-radius: 2px;
         color: white;
+
         padding-right: 2rem;
 
         .profilePic {
+          margin-right: 1rem;
           position: absolute;
-          max-width: 50px;
+          height: 60px;
           top: 50%;
           right: -45%;
           transform: translateY(-50%);
-          border-radius: 100%;
+          clip-path: circle();
         }
       }
 
@@ -89,14 +91,11 @@ export const Container = styled.div`
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
       }
-
-      .profilePic {
-      }
     }
   }
 
   @media (min-width: 768px) {
-    height: 60px;
+    height: 70px;
     width: inherit;
     margin: 0 2rem;
 
