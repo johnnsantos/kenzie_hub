@@ -123,7 +123,12 @@ const HeaderAuthenticated = () => {
   return (
     <Container>
       <div onClick={() => history.push("/")} className="headerLogo">
-        <img height="50px" src={KenzieLogo} alt="Kenzie Academy Logo" />
+        <img
+          className="kenzieLogoHeader"
+          height="50px"
+          src={KenzieLogo}
+          alt="Kenzie Academy Logo"
+        />
         <h1>Kenzie Hub</h1>
       </div>
       <div className="headerList">
