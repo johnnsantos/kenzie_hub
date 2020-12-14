@@ -1,8 +1,9 @@
-import { StyledAvatar } from "./styles";
-import { Typography } from "@material-ui/core";
-import { Create } from "@material-ui/icons";
+import { StyledAvatar, ProfileHeader } from "./styles";
+import "./styles.css";
+import { Typography, IconButton } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import EditIcon from "@material-ui/icons/Edit";
 
 const InfoProfile = ({ data, setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
@@ -12,13 +13,24 @@ const InfoProfile = ({ data, setEdit }) => {
 
   return (
     <>
-      {userLoged.id === params.id && <Create onClick={() => setEdit(true)} />}
-      <StyledAvatar src={avatar_url} />
-      <Typography variant="h5">{name}</Typography>
+      <ProfileHeader>
+        <StyledAvatar src={avatar_url} />
+        <Typography variant="h5">
+          <span className="emphasis">{name}</span>
+        </Typography>
+      </ProfileHeader>
+      {userLoged.id === params.id && <EditIcon onClick={() => setEdit(true)} />}
       <div className="profile-data">
-        <Typography variant="h6">Email: {email}</Typography>
-        <Typography variant="h6">{course_module}</Typography>
-        <Typography variant="h6">{contact}</Typography>
+        <Typography variant="body1">
+          <span className="emphasis">Email: </span> {email}
+        </Typography>
+        <Typography variant="body1">
+          <span className="emphasis">Módulo: </span>
+          {course_module}
+        </Typography>
+        <Typography variant="body1">
+          <span className="emphasis">Contato: </span> {contact}
+        </Typography>
       </div>
       <div className="profile-about">
         <Typography variant="body1">{bio}</Typography>

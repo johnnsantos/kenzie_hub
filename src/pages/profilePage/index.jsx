@@ -1,12 +1,13 @@
 import { Typography } from "@material-ui/core";
-import { Create } from "@material-ui/icons";
-import { StyledAvatar, StyledContainer } from "./styles";
+import { StyledContainer } from "./styles";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import InfoProfile from "../../components/InfoProfile";
 import EditProfile from "../../components/EditProfile";
+import WorkIcon from "@material-ui/icons/Work";
+import ComputerIcon from "@material-ui/icons/Computer";
 
 const ProfilePage = (prop) => {
   const params = useParams();
@@ -57,6 +58,7 @@ const ProfilePage = (prop) => {
       </StyledContainer>
       <div className="section">
         <div className="technologies-title">
+          <ComputerIcon />
           <Typography variant="h6">Tecnologias</Typography>
         </div>
         <ul>
@@ -67,6 +69,7 @@ const ProfilePage = (prop) => {
           <li>test</li>
         </ul>
         <div className="technologies-title">
+          <WorkIcon />
           <Typography variant="h6">Trabalhos</Typography>
         </div>
         <ul>
