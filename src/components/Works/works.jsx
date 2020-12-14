@@ -1,9 +1,29 @@
-import { useHistory } from "react-router-dom";
 import "./works.css";
 import { NewTypography, StyledButton } from "../../style/styles";
 
 const Works = () => {
-  const history = useHistory();
+  const props = [
+    {
+      profile: "Jose",
+      work: "lorem epsulom",
+      link: "https://www.google.com.br/",
+    },
+    {
+      profile: "Pedro",
+      work: "lorem epsulom",
+      link: "https://www.google.com.br/",
+    },
+    {
+      profile: "João",
+      work: "lorem epsulom",
+      link: "https://www.google.com.br/",
+    },
+    {
+      profile: "Maria",
+      work: "lorem epsulom",
+      link: "https://www.google.com.br/",
+    },
+  ];
 
   return (
     <div className="outer">
@@ -12,73 +32,42 @@ const Works = () => {
       </NewTypography>
       <div className="render">
         <div className="card">
-          <h1>Perfil 1</h1>
-          <div className="textarea">
-            lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore
-          </div>
-          <StyledButton className="linkbutton">Link Deploy </StyledButton>
+          <h1>{props[0].profile}</h1>
+          <div className="textarea">{props[0].work}</div>
+          <StyledButton className="linkbutton">
+            <a target="_blank" href={props[3].link}>
+              Link Deploy
+            </a>
+          </StyledButton>
         </div>
         <div className="card">
-          <h1>Perfil 2</h1>
-          <div className="textarea">
-            lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore
-          </div>
-          <StyledButton className="linkbutton">Link Deploy </StyledButton>
+          <h1>{props[1].profile}</h1>
+          <div className="textarea">{props[1].work}</div>
+          <StyledButton className="linkbutton">
+            <a target="_blank" href={props[3].link}>
+              Link Deploy
+            </a>
+          </StyledButton>
         </div>
       </div>
       <div className="render">
         <div className="card">
-          <h1>Perfil 3</h1>
-          <div className="textarea">
-            lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore consectetur lorem ipsum dolor
-            sit amet consectetur adipiscing elit sed do eiusmod tempor
-            incididunt ut labore lorem ipsum dolor sit amet consectetur
-            adipiscing elit sed do eiusmod tempor incididunt ut labore lorem
-            ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
-            tempor incididunt ut labore lorem ipsum dolor sit amet consectetur
-            adipiscing elit sed do eiusmod tempor incididunt ut labore lorem
-            ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
-            tempor incididunt ut labore lorem ipsum dolor sit amet consectetur
-            adipiscing elit sed do eiusmod tempor incididunt ut labore
-          </div>
-          <StyledButton className="linkbutton">Link Deploy </StyledButton>
+          <h1>{props[2].profile}</h1>
+          <div className="textarea">{props[2].work}</div>
+          <StyledButton className="linkbutton">
+            <a target="_blank" href={props[3].link}>
+              Link Deploy
+            </a>
+          </StyledButton>
         </div>
         <div className="card">
-          <h1>Perfil 4</h1>
-          <div className="textarea">
-            lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet
-            consectetur adipiscing elit sed do eiusmod tempor incididunt ut
-            labore lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor incididunt ut labore
-          </div>
-          <StyledButton className="linkbutton">Link Deploy </StyledButton>
+          <h1>{props[3].profile}</h1>
+          <div className="textarea">{props[3].work}</div>
+          <StyledButton className="linkbutton">
+            <a target="_blank" href={props[3].link}>
+              Link Deploy
+            </a>
+          </StyledButton>
         </div>
       </div>
     </div>
