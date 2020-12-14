@@ -1,8 +1,16 @@
 import styled from "styled-components";
-import { Avatar } from "@material-ui/core";
 
-export const StyledAvatar = styled(Avatar)`
-  width: 120px;
-  height: 120px;
-  background-color: #5e7fbe;
+export const StyledContainer = styled.div`
+  justify-content: left;
+  svg {
+    position: absolute;
+    top: 14vh;
+    left: 45vw;
+    color: gray;
+
+    :hover {
+      color: #00356b;
+      cursor: pointer;
+    }
+  }
 `;

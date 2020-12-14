@@ -123,17 +123,19 @@ const HeaderAuthenticated = () => {
   return (
     <Container>
       <div onClick={() => history.push("/")} className="headerLogo">
-        <img height="50px" src={KenzieLogo} alt="Kenzie Academy Logo" />
+        <img
+          className="kenzieLogoHeader"
+          height="50px"
+          src={KenzieLogo}
+          alt="Kenzie Academy Logo"
+        />
         <h1>Kenzie Hub</h1>
       </div>
       <div className="headerList">
         <ul>
-          <li onClick={() => history.push("/sobre")}>
-            <h3>Sobre</h3>
-          </li>
-          <li onClick={() => history.push("/devs")}>
-            <h3>Explorar</h3>
-          </li>
+          <li onClick={() => history.push("/sobre")}>Sobre</li>
+
+          <li onClick={() => history.push("/devs")}>Explorar</li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}
@@ -157,7 +159,7 @@ const HeaderAuthenticated = () => {
                 ? userLoged.avatar_url
                 : "https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"
             }
-            action1={"/#"}
+            action1={`/edit/${userLoged.id}`}
             action2={logout}
           />
         </ul>

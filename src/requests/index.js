@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const token = window.localStorage.getItem("authorizationToken");
-
 const baseURL = "https://kenziehub.me";
+
+const token = () => {
+  return window.localStorage.getItem("authorizationToken");
+};
 
 export const signUpUser = async (data) => {
   try {
@@ -25,28 +27,12 @@ export const signUpUser = async (data) => {
 };
 
 export const getUsersList = async (nextURL) => {
+  const token = window.localStorage.getItem("authorizationToken");
   const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
   let res = await axios.get(`${URL}`);
   return res;
 };
 
-// export const login = async (data) => {
-//   try {
-//     let res = await axios.post(`${baseURL}/sessions`, data);
-//     window.localStorage.setItem("authorizationToken", res.data.token);
-//     window.localStorage.setItem("ID", res.data.user.id);
-
-//     return { user: res.data.user, message: "Login efetuado com sucesso" };
-//   } catch (error) {
-//     console.log(error);
-
-//     return "Email e/ou senha incorretos";
-//     if (error.message === "Incorrect email / password combination") {
-//       console.log(error.message);
-//       return "Email ou senha incorretos.";
-//     }
-//   }
-// };
 export const login = async (data) => {
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
@@ -66,10 +52,11 @@ export const login = async (data) => {
 };
 
 export const addTechs = (data) => {
+  const token = window.localStorage.getItem("authorizationToken");
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   axios.post(`${baseURL}/users/techs`, data, config);
@@ -77,5 +64,27 @@ export const addTechs = (data) => {
 
 export const requestUser = async (id) => {
   let res = await axios.get(`${baseURL}/users/${id}`);
+  return res.data;
+};
+
+export const changeImage = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.patch(`${baseURL}/users/avatar`, data, config);
+  return res.data;
+};
+
+export const requestEditProfile = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/profile`, data, config);
   return res.data;
 };

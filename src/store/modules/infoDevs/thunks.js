@@ -1,6 +1,7 @@
 import { handleUsers } from "./actions";
 import { getUsersList } from "../../../requests";
 
+const fullList = [];
 export const handleUsersThunk = (nextURL, setNextURL) => async (
   dispatch,
   _getState
@@ -9,6 +10,8 @@ export const handleUsersThunk = (nextURL, setNextURL) => async (
 
   if (list.data.length !== 0) {
     setNextURL(list.headers.nexturl);
-    dispatch(handleUsers(list.data));
+    fullList.push(...list.data);
+  } else {
+    dispatch(handleUsers(fullList));
   }
 };

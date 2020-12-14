@@ -24,9 +24,8 @@ const Register = () => {
   const sendForm = async (data) => {
     delete data.password_confirmation;
     data = { ...data, course_module: module };
-    await setMessage(signUpUser(data));
+    setMessage(await signUpUser(data));
     setAnswer(true);
-    console.log(message);
     if (message === "Usuário cadastrado com sucesso") {
       setResponseTrue(true);
     }
@@ -114,13 +113,9 @@ const Register = () => {
           {answer ? (
             <div>
               {responseTrue ? (
-                <Alert severity="success">
-                  Seu cadastro foi criado com sucesso!
-                </Alert>
+                <Alert severity="success">{message}</Alert>
               ) : (
-                <Alert severity="error">
-                  Há algo de errado com seu cadastro!
-                </Alert>
+                <Alert severity="error">{message}</Alert>
               )}
             </div>
           ) : null}
