@@ -75,10 +75,12 @@ export const Container = styled.div`
           margin-right: 0.8rem;
           position: absolute;
           height: 60px;
+          width: 60px;
           top: 50%;
           right: -45%;
           transform: translateY(-50%);
-          clip-path: circle();
+          border-radius: 50px;
+          object-fit: cover;
         }
       }
 
