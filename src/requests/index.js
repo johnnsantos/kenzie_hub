@@ -2,8 +2,11 @@ import axios from "axios";
 
 const baseURL = "https://kenziehub.me";
 
+const token = () => {
+  return window.localStorage.getItem("authorizationToken");
+};
+
 export const signUpUser = async (data) => {
-  const token = window.localStorage.getItem("authorizationToken");
   try {
     let res = await axios.post(`${baseURL}/users`, data);
     return res.status === 201 && "Usuário cadastrado com sucesso";
@@ -31,7 +34,6 @@ export const getUsersList = async (nextURL) => {
 };
 
 export const login = async (data) => {
-  const token = window.localStorage.getItem("authorizationToken");
   try {
     let res = await axios.post(`${baseURL}/sessions`, data);
     window.localStorage.setItem("authorizationToken", res.data.token);
@@ -54,24 +56,22 @@ export const addTechs = (data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   axios.post(`${baseURL}/users/techs`, data, config);
 };
 
 export const requestUser = async (id) => {
-  const token = window.localStorage.getItem("authorizationToken");
   let res = await axios.get(`${baseURL}/users/${id}`);
   return res.data;
 };
 
 export const changeImage = async (data) => {
-  const token = window.localStorage.getItem("authorizationToken");
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   let res = await axios.patch(`${baseURL}/users/avatar`, data, config);
@@ -79,11 +79,10 @@ export const changeImage = async (data) => {
 };
 
 export const requestEditProfile = async (data) => {
-  const token = window.localStorage.getItem("authorizationToken");
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   let res = await axios.put(`${baseURL}/profile`, data, config);
