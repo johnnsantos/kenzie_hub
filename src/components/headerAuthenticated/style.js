@@ -69,11 +69,10 @@ export const Container = styled.div`
         background-color: #00356b;
         border-radius: 2px;
         color: white;
-
-        padding-right: 2rem;
+        padding-right: 2.5rem;
 
         .profilePic {
-          margin-right: 1rem;
+          margin-right: 0.8rem;
           position: absolute;
           height: 60px;
           top: 50%;
