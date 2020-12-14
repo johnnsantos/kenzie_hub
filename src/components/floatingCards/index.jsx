@@ -62,6 +62,7 @@ export const FloatingMenu = ({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       <li onClick={handleClick}>
