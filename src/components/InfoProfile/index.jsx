@@ -1,9 +1,10 @@
 import { StyledAvatar, ProfileHeader } from "./styles";
 import "./styles.css";
-import { Typography, IconButton } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
+import DefaultAvatar from "../../img/DevCard/avatar.webp";
 
 const InfoProfile = ({ data, setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
@@ -14,7 +15,7 @@ const InfoProfile = ({ data, setEdit }) => {
   return (
     <>
       <ProfileHeader>
-        <StyledAvatar src={avatar_url} />
+        <StyledAvatar src={avatar_url ? avatar_url : DefaultAvatar} />
         <Typography variant="h5">
           <span className="emphasis">{name}</span>
         </Typography>
