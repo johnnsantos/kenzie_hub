@@ -13,9 +13,31 @@ export const ProfileHeader = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-evenly;
+  svg {
+    position: absolute;
+    top: 22vh;
+    left: 45vw;
+    color: gray;
+
+    :hover {
+      color: #00356b;
+      cursor: pointer;
+    }
+  }
 
   @media only screen and (max-width: 600px) {
     width: 90%;
     margin: 0 auto;
+  }
+`;
+
+export const StyledProfileData = styled.div`
+  width: 100%;
+  display: block;
+  padding: 5%;
+  p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
   }
 `;

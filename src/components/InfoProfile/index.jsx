@@ -1,9 +1,10 @@
-import { StyledAvatar, ProfileHeader } from "./styles";
+import { StyledAvatar, ProfileHeader, StyledProfileData } from "./styles";
 import "./styles.css";
-import { Typography, IconButton } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
+import { EmailOutlined, WorkOutline, BookOutlined } from "@material-ui/icons";
 
 const InfoProfile = ({ data, setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
@@ -18,20 +19,25 @@ const InfoProfile = ({ data, setEdit }) => {
         <Typography variant="h5">
           <span className="emphasis">{name}</span>
         </Typography>
+        {userLoged.id === params.id && (
+          <EditIcon onClick={() => setEdit(true)} />
+        )}
       </ProfileHeader>
-      {userLoged.id === params.id && <EditIcon onClick={() => setEdit(true)} />}
-      <div className="profile-data">
+      <StyledProfileData>
         <Typography variant="body1">
+          <EmailOutlined />
           <span className="emphasis">Email: </span> {email}
         </Typography>
         <Typography variant="body1">
+          <BookOutlined />
           <span className="emphasis">Módulo: </span>
           {course_module}
         </Typography>
         <Typography variant="body1">
+          <WorkOutline />
           <span className="emphasis">Contato: </span> {contact}
         </Typography>
-      </div>
+      </StyledProfileData>
       <div className="profile-about">
         <Typography variant="body1">{bio}</Typography>
       </div>
