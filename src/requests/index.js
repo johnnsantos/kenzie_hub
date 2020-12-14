@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const token = window.localStorage.getItem("authorizationToken");
-
 const baseURL = "https://kenziehub.me";
+
+const token = () => {
+  return window.localStorage.getItem("authorizationToken");
+};
 
 export const signUpUser = async (data) => {
   try {
@@ -25,6 +27,7 @@ export const signUpUser = async (data) => {
 };
 
 export const getUsersList = async (nextURL) => {
+  const token = window.localStorage.getItem("authorizationToken");
   const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
   let res = await axios.get(`${URL}`);
   return res;
@@ -49,10 +52,11 @@ export const login = async (data) => {
 };
 
 export const addTechs = (data) => {
+  const token = window.localStorage.getItem("authorizationToken");
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   axios.post(`${baseURL}/users/techs`, data, config);
@@ -67,7 +71,7 @@ export const changeImage = async (data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   let res = await axios.patch(`${baseURL}/users/avatar`, data, config);
@@ -78,7 +82,7 @@ export const requestEditProfile = async (data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   let res = await axios.put(`${baseURL}/profile`, data, config);
