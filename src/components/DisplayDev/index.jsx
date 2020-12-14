@@ -38,7 +38,7 @@ const DisplayDev = ({ search }) => {
           spacing={4}
         >
           {location.pathname === "/"
-            ? arrDevs
+            ? devs
                 .slice(0, devNumber)
                 .map((dev, index) => (
                   <DevCard

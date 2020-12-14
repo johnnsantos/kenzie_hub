@@ -1,9 +1,8 @@
 .root {
   width: 90%;
   max-width: 1400px;
-  margin: 3vh auto;
+  margin: 10vh auto;
   display: flex;
-  height: 80vh;
 }
 
 .profile {
@@ -33,7 +32,20 @@
 }
 
 .technologies-title {
-  border-bottom: 2px solid #34495e;
+  height: 35px;
+  background-color: rgb(232, 238, 243);
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #34495e;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.technologies-title svg {
+  color: #05668d;
+  font-size: 1.5rem;
+  margin-right: 15px;
 }
 
 @media only screen and (max-width: 600px) {

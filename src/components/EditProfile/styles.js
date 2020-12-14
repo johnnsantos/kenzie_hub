@@ -1,9 +1,6 @@
 import styled, { css } from "styled-components";
 import { Avatar } from "@material-ui/core";
 import { TextField } from "@material-ui/core/";
-import EmailIcon from "@material-ui/icons/Email";
-import BookIcon from "@material-ui/icons/Book";
-import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
 
 export const StyledAvatar = styled(Avatar)`
   width: 120px;
@@ -57,19 +54,26 @@ export const StyledContainer = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  svg {
+    position: absolute;
+    top: 22vh;
+    left: 45vw;
+    color: gray;
+
+    :hover {
+      color: #00356b;
+      cursor: pointer;
+    }
+  }
 `;
 
-export const StyledEmailIcon = styled(EmailIcon)`
-  position: initial !important;
-  margin-top: 10px;
-`;
+export const StyledProfileData = styled.div`
+  width: 100%;
+  display: block;
+  padding: 5%;
 
-export const StyledBookIcon = styled(BookIcon)`
-  position: initial !important;
-  margin-top: 10px;
-`;
-
-export const StyledWorkOutlinedIcon = styled(WorkOutlinedIcon)`
-  position: initial !important;
-  margin-top: 10px;
+  svg {
+    position: initial;
+    margin-top: 10px;
+  }
 `;

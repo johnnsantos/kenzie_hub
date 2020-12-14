@@ -3,11 +3,14 @@ import {
   NewTextField,
   StyledLabel,
   StyledContainer,
-  StyledEmailIcon,
-  StyledBookIcon,
-  StyledWorkOutlinedIcon,
+  StyledProfileData,
 } from "./styles";
-import { BookmarkBorder } from "@material-ui/icons/";
+import {
+  BookmarkBorder,
+  EmailOutlined,
+  WorkOutline,
+  BookOutlined,
+} from "@material-ui/icons/";
 import { useEffect, useState } from "react";
 import { changeImage, requestEditProfile } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
@@ -56,23 +59,23 @@ const EditProfile = ({ setEdit }) => {
           Trocar imagem
         </StyledLabel>
       </StyledContainer>
-      <div className="profile-data">
+      <StyledProfileData>
         <div>
-          <StyledEmailIcon />
+          <EmailOutlined />
           <NewTextField noChange value={email} />
         </div>
         <div>
-          <StyledBookIcon />
+          <BookOutlined />
           <NewTextField noChange value={course_module} />
         </div>
         <div>
-          <StyledWorkOutlinedIcon />
+          <WorkOutline />
           <NewTextField
             value={newContact}
             onChange={(e) => setNewContact(e.target.value)}
           />
         </div>
-      </div>
+      </StyledProfileData>
     </>
   );
 };
