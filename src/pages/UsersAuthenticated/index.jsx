@@ -23,7 +23,7 @@ const UsersAuthenticated = () => {
         <Search />
         <NewTextField />
       </SearchContainer>
-      <DisplayDev search={searchDevs} />;
+      <DisplayDev search={searchDevs} />
     </>
   );
 };

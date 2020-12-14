@@ -12,7 +12,7 @@ export const StyledCardContent = styled(CardContent)`
 `;
 export const StyledCard = styled(Card)`
   background-color: #e8f1f2;
-  width: inherit;
+  width: 100%;
   /* padding: 8px;
   padding-bottom: 0; */
   @media (max-width: 768px) {
