@@ -81,7 +81,6 @@ const Register = () => {
               <div className="inputs">
                 <SchoolIcon />{" "}
                 <Select
-                  className="Select"
                   name="course_module"
                   id="modules"
                   className="select"
