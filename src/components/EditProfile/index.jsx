@@ -13,10 +13,11 @@ import {
   SchoolOutlined,
 } from "@material-ui/icons/";
 import { MenuItem, Select } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { changeImage, requestEditProfile } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch, useSelector } from "react-redux";
+import { changeShowLoading } from "../../store/modules/Loading/actions";
 
 const EditProfile = ({ setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
@@ -27,27 +28,22 @@ const EditProfile = ({ setEdit }) => {
   const [newAvatar, setNewAvatar] = useState(avatar_url);
   const [newBio, setNewBio] = useState(bio);
   const [module, setModule] = useState(course_module);
-  console.log(module);
-
-  // useEffect(() => {
-  //   setNewName(name);
-  //   setNewContact(contact);
-  //   setNewAvatar(avatar_url);
-  //   setNewBio(bio);
-  //   setModule(course_module);
-  // }, [userLoged]);
+  const [newEmail, setEmail] = useState(email);
 
   const dispatch = useDispatch();
   const handleImage = async (e) => {
+    dispatch(changeShowLoading(true));
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
     const user = await changeImage(data);
     dispatch(handleUserThunk(user));
     setNewAvatar(user.avatar_url);
+    dispatch(changeShowLoading(false));
   };
 
   const handleChanges = async () => {
     const data = {
+      email: newEmail,
       name: newName,
       contact: newContact,
       bio: newBio,
@@ -74,7 +70,10 @@ const EditProfile = ({ setEdit }) => {
       <StyledProfileData>
         <div>
           <EmailOutlined />
-          <NewTextField noChange value={email} />
+          <NewTextField
+            value={newEmail}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div>
           <WorkOutline />
