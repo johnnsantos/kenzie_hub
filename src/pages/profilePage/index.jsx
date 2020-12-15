@@ -8,6 +8,7 @@ import InfoProfile from "../../components/InfoProfile";
 import WorkIcon from "@material-ui/icons/Work";
 import ComputerIcon from "@material-ui/icons/Computer";
 import TechCard from "../../components/TechCard";
+import Works from "../../components/Works/works";
 
 const ProfilePage = () => {
   const params = useParams();
@@ -69,13 +70,7 @@ const ProfilePage = () => {
           <WorkIcon />
           <Typography variant="h6">Trabalhos</Typography>
         </div>
-        <ul>
-          <li>Test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-        </ul>
+        <Works profile=" " work={works} link="" />
       </div>
     </div>
   );
