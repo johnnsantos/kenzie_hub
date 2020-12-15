@@ -1,29 +1,48 @@
 import styled from "styled-components";
 import { Card, CardMedia, Button } from "@material-ui/core";
 
-export const StyledCard = styled(Card)`
-  background-color: #fdfdfd;
-  cursor: pointer;
-  &:hover {
+export const Container = styled(Card)`
+  :hover {
     box-shadow: 1px 1px 10px #34495e;
   }
-`;
 
-export const StyledCardMedia = styled(CardMedia)`
-  border-radius: 50%;
-  transition: 0.5s all;
-  height: 40px;
-  margin: 5% auto;
-  padding-left: 40%;
-  padding-top: 40%;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .render {
+    display: flex;
+    flex-direction: inherit;
+    margin-left: auto;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
 
-  &:hover {
-    border-radius: 0;
-    transition: 0.5s all;
+  .card {
+    width: 100%;
+    height: 100%;
+    border: solid #34495e 2px;
+    text-align: center;
+    border-radius: 2rem;
+  }
+
+  .outer {
+    text-align: center;
+    background-color: #e8f1f2;
+  }
+
+  .linkbutton {
+    margin-top: 3%;
+  }
+
+  .textarea {
+    width: 95%;
+    height: 65%;
+
+    margin-left: 2%;
+  }
+
+  .delete {
+    margin-left: 90%;
+    cursor: pointer;
   }
 `;
 

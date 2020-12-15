@@ -98,6 +98,17 @@ export const deleteTechs = async (id) => {
   return res;
 };
 
+export const deleteWorks = async (id) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.delete(`${baseURL}/users/works/${id}`, config);
+  return res;
+};
+
 export const editTechs = async (id, data) => {
   const config = {
     headers: {

@@ -7,6 +7,7 @@ import EditProfile from "../../components/EditProfile";
 import WorkIcon from "@material-ui/icons/Work";
 import ComputerIcon from "@material-ui/icons/Computer";
 import TechCard from "../../components/TechCard";
+import Works from "../../components/Works/works";
 
 const ProfilePage = () => {
   const { userLoged } = useSelector((state) => state.User);
@@ -37,13 +38,10 @@ const ProfilePage = () => {
           <WorkIcon />
           <Typography variant="h6">Trabalhos</Typography>
         </div>
-        <ul>
-          <li>Test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-        </ul>
+        <div className="techScroll">
+          {works !== "" &&
+            works?.map((work, index) => <Works key={index} work={work} />)}
+        </div>
       </div>
     </div>
   );

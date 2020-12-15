@@ -70,7 +70,17 @@ const ProfilePage = () => {
           <WorkIcon />
           <Typography variant="h6">Trabalhos</Typography>
         </div>
-        <Works profile=" " work={works} link="" />
+        <div className="techScroll">
+          {works !== "" &&
+            works?.map((work, index) => (
+              <Works
+                key={index}
+                work={work}
+                setFilteredUser={setFilteredUser}
+              />
+            ))}
+        </div>
+        {/* <Works profile=" " work={works} link="" /> */}
       </div>
     </div>
   );
