@@ -26,10 +26,9 @@ export const signUpUser = async (data) => {
   }
 };
 
-export const getUsersList = async (nextURL) => {
-  const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
-  let res = await axios.get(`${URL}`);
-  return res;
+export const getUsersList = async () => {
+  let res = await axios.get(`${baseURL}/users?perPage=1000000000`);
+  return res.data;
 };
 
 export const login = async (data) => {

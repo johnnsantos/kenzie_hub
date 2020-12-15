@@ -12,10 +12,11 @@ import { deleteTechs, requestUser, editTechs } from "../../requests";
 import { useParams } from "react-router-dom";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { Select, MenuItem } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const TechCard = ({ tech }) => {
   const { status, title, id } = tech;
+  const idUserLoged = useSelector((state) => state.User.id);
   const params = useParams();
   const [newStatus, setNewStatus] = useState(status);
   const [editable, setEdit] = useState(false);
@@ -41,7 +42,7 @@ const TechCard = ({ tech }) => {
   return (
     <StyledCard>
       <StyledCardContent>
-        <StyledDelete onClick={deleteTech} />
+        {idUserLoged === id && <StyledDelete onClick={deleteTech} />}
         <Box m={2}>
           <Typography
             variant="overline"
@@ -83,7 +84,9 @@ const TechCard = ({ tech }) => {
                     Avançado
                   </MenuItem>
                 </Select>
-                <StyledBookmarkBorder onClick={handleChanges} />
+                {idUserLoged === id && (
+                  <StyledBookmarkBorder onClick={handleChanges} />
+                )}
               </Typography>
             </StyledDiv>
           ) : (
@@ -96,7 +99,7 @@ const TechCard = ({ tech }) => {
                 noWrap
               >
                 Status : {newStatus}
-                <StyledEdit onClick={editTech} />
+                {idUserLoged === id && <StyledEdit onClick={editTech} />}
               </Typography>
             </StyledDiv>
           )}

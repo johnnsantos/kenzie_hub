@@ -21,34 +21,23 @@ import Loading from "../components/Loading";
 
 const Routers = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  let token = window.localStorage.getItem("authorizationToken");
+  const token = () => window.localStorage.getItem("authorizationToken");
 
-  const [nextURL, setNextURL] = useState("");
-
-  useEffect(() => {
-    dispatch(handleUsersThunk(nextURL, setNextURL));
-  }, [nextURL]);
-
-  useEffect(() => {
-    token = window.localStorage.getItem("authorizationToken");
-  }, [location]);
-
-  useEffect(
-    () => async () => {
-      let id = window.localStorage.getItem("ID");
-      const user = await requestUser(id);
-      dispatch(handleUserThunk(user));
-    },
-    [nextURL]
-  );
+  const getUser = async () => {
+    console.log("to aqui ");
+    const id = () => window.localStorage.getItem("ID");
+    const user = await requestUser(id());
+    console.log(user);
+    dispatch(handleUserThunk(user));
+    dispatch(handleUsersThunk());
+  };
+  getUser();
 
   const { display } = useSelector((state) => state.Display);
-  console.log(display);
 
   return (
     <>
-      {token ? (
+      {token() ? (
         <>
           <HeaderAuthenticated />
           <Switch>
