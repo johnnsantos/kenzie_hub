@@ -4,6 +4,23 @@ import { Card, CardMedia, Button } from "@material-ui/core";
 export const Container = styled(Card)`
   font-family: Roboto;
   background-color: #e8f1f2;
+  transition: 0.15s;
+
+  :hover {
+    box-shadow: 0px 4px 7px -3px rgba(115, 115, 115, 1);
+  }
+
+  .deleteButton {
+    :hover {
+      color: #e81717;
+    }
+  }
+
+  .editButton {
+    :hover {
+      color: #3127f5;
+    }
+  }
 
   .delete {
     text-align: right;

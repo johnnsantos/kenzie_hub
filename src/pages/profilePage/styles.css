@@ -12,8 +12,8 @@
 }
 
 .techScroll div {
-  margin: 0.8rem 0;
-  max-width: 100%;
+  margin: 0.8rem auto;
+  max-width: 98%;
 }
 
 .profile {
