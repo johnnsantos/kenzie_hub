@@ -4,7 +4,6 @@ const defaultState = { devs: [] };
 
 const Users = (state = defaultState, action) => {
   const { list, type } = action;
-  const { devs } = state;
   switch (type) {
     case users:
       return { devs: [...list] };

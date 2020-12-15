@@ -3,14 +3,25 @@ import { Grid, Container, Typography, Box } from "@material-ui/core";
 import { StyledButton } from "./styles";
 
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DevCard from "../DevCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeShowLoading } from "../../store/modules/Loading/actions";
 
-const DisplayDev = () => {
+const DisplayDev = ({ search }) => {
+  const { devs } = useSelector((state) => state.Users);
+
+  useEffect(() => {
+    console.log("oi");
+  }, []);
+
+  const [arrDevs, setArrDevs] = useState();
+  useEffect(() => {
+    search && setArrDevs(search.devs);
+  }, [search]);
+
   const [devNumber, setDevNumber] = useState(3);
   const location = useLocation();
-  const { devs } = useSelector((state) => state.Users);
   return (
     <>
       <Container maxWidth={location.pathname === "/" ? "md" : "lg"}>
@@ -31,25 +42,40 @@ const DisplayDev = () => {
           justify="center"
           spacing={4}
         >
-          {location.pathname === "/"
-            ? devs
-                .slice(0, devNumber)
-                .map((dev, index) => (
-                  <DevCard
-                    isHome
-                    key={index}
-                    id={dev.id}
-                    name={dev.name}
-                    image={dev.avatar_url}
-                    module={dev.course_module}
-                    stacks={
-                      dev.techs.length !== 0
-                        ? dev.techs.map((tech) => `${tech.title} | `)
-                        : "Sem tecnologias ainda."
-                    }
-                  />
-                ))
-            : devs.map((dev, index) => (
+          {location.pathname === "/" &&
+            devs
+              ?.slice(0, devNumber)
+              .map((dev, index) => (
+                <DevCard
+                  isHome
+                  key={index}
+                  id={dev.id}
+                  name={dev.name}
+                  image={dev.avatar_url}
+                  module={dev.course_module}
+                  stacks={
+                    dev.techs.length !== 0
+                      ? dev.techs.map((tech) => `${tech.title} | `)
+                      : "Sem tecnologias ainda."
+                  }
+                />
+              ))}
+          {arrDevs
+            ? arrDevs.map((dev, index) => (
+                <DevCard
+                  key={index}
+                  id={dev.id}
+                  name={dev.name}
+                  image={dev.avatar_url}
+                  module={dev.course_module}
+                  stacks={
+                    dev.techs.length !== 0
+                      ? dev.techs.map((tech) => `${tech.title} | `)
+                      : "Sem tecnologias ainda."
+                  }
+                />
+              ))
+            : devs?.map((dev, index) => (
                 <DevCard
                   key={index}
                   id={dev.id}

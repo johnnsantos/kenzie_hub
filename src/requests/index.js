@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const token = window.localStorage.getItem("authorizationToken");
-
 const baseURL = "https://kenziehub.me";
+
+const token = () => {
+  return window.localStorage.getItem("authorizationToken");
+};
 
 export const signUpUser = async (data) => {
   try {
@@ -24,10 +26,9 @@ export const signUpUser = async (data) => {
   }
 };
 
-export const getUsersList = async (nextURL) => {
-  const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
-  let res = await axios.get(`${URL}`);
-  return res;
+export const getUsersList = async () => {
+  let res = await axios.get(`${baseURL}/users?perPage=1000000000`);
+  return res.data;
 };
 
 export const login = async (data) => {
@@ -49,10 +50,11 @@ export const login = async (data) => {
 };
 
 export const addTechs = (data) => {
+  const token = window.localStorage.getItem("authorizationToken");
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
   axios.post(`${baseURL}/users/techs`, data, config);
@@ -67,12 +69,53 @@ export const changeImage = async (data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token()}`,
     },
   };
-  let res = await axios
-    .patch(`${baseURL}/users/avatar`, data, config)
-    .catch((e) => console.error(e));
-  console.log(res);
+  let res = await axios.patch(`${baseURL}/users/avatar`, data, config);
+  return res.data;
+};
+
+export const requestEditProfile = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/profile`, data, config);
+  return res.data;
+};
+
+export const deleteTechs = async (id) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.delete(`${baseURL}/users/techs/${id}`, config);
+  return res;
+};
+
+export const editTechs = async (id, data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/users/techs/${id}`, data, config);
+  return res;
+};
+
+export const insertTechs = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.post(`${baseURL}/users/techs/`, data, config);
   return res;
 };

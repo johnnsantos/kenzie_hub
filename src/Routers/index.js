@@ -8,43 +8,38 @@ import { handleUserThunk } from "../store/modules/infoUser/thunks";
 
 import Home from "../pages/home";
 import Register from "../pages/register";
+import ProfileUserPage from "../pages/ProfileUserPage";
+
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 import UsersAuthenticated from "../pages/UsersAuthenticated";
 import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
+import TechCard from "../components/TechCard";
+import InsertTech from "../components/InsertTech";
+import Loading from "../components/Loading";
 
 const Routers = () => {
-  const { devs } = useSelector((state) => state.Users);
   const dispatch = useDispatch();
-  const location = useLocation();
-  let token = window.localStorage.getItem("authorizationToken");
-
-  const [nextURL, setNextURL] = useState("");
+  const token = () => window.localStorage.getItem("authorizationToken");
 
   useEffect(() => {
-    dispatch(handleUsersThunk(nextURL, setNextURL));
-  }, [nextURL]);
+    console.log("ola");
+    dispatch(handleUsersThunk());
+    dispatch(handleUserThunk());
+  }, []);
 
-  useEffect(() => {
-    token = window.localStorage.getItem("authorizationToken");
-  }, [location]);
-
-  useEffect(
-    () => async () => {
-      let id = window.localStorage.getItem("ID");
-      const user = await requestUser(id);
-      dispatch(handleUserThunk(user));
-    },
-    [nextURL]
-  );
+  const { display } = useSelector((state) => state.Display);
+  const { loading } = useSelector((state) => state.Loading);
 
   return (
     <>
-      {token ? (
+      {token() ? (
         <>
           <HeaderAuthenticated />
           <Switch>
+            {display && <InsertTech />}
+            {loading && <Loading />}
             <Route exact path="/">
               <Home />
             </Route>
@@ -58,7 +53,10 @@ const Routers = () => {
               <About />
             </Route>
             <Route exact path="/edit/:id">
-              <ProfilePage />
+              <ProfileUserPage />
+            </Route>
+            <Route exact path="/techs">
+              <TechCard />
             </Route>
           </Switch>
         </>
