@@ -2,10 +2,12 @@ import { TextField, Typography, Button } from "@material-ui/core";
 import styled from "styled-components";
 
 export const OuterContainer = styled.div`
-  width: 80%;
-  margin: 15vh auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5vh auto;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
 `;
 
 export const Render = styled.div`
@@ -16,6 +18,7 @@ export const Render = styled.div`
   width: 40%;
   max-width: 600px;
   min-width: 400px;
+  margin: 0 auto;
   padding: 20px;
   opacity: 95%;
 `;
