@@ -76,7 +76,11 @@ export const FloatingMenu = ({
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem onClick={() => history.push(action1)}>
+        <StyledMenuItem
+          onClick={() =>
+            typeof action1 === "string" ? history.push(action1) : action1()
+          }
+        >
           <ListItemIcon>{icon1}</ListItemIcon>
           <ListItemText primary={option1}></ListItemText>
         </StyledMenuItem>
