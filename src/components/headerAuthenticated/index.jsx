@@ -19,6 +19,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import AssessmentIcon from "@material-ui/icons/Assessment";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import HomeIcon from "@material-ui/icons/Home";
@@ -115,7 +116,7 @@ const HeaderAuthenticated = () => {
       </List>
       <Divider />
       <List>
-        {["Sobre", "Explorar", "Perfil"].map((text, index) => (
+        {["Sobre", "Explorar", "Gráfico", "Perfil"].map((text, index) => (
           <ListItem
             button
             key={text}
@@ -124,6 +125,8 @@ const HeaderAuthenticated = () => {
                 ? history.push("/sobre")
                 : index === 1
                 ? history.push("/devs")
+                : index === 2
+                ? history.push("/graph")
                 : history.push(`/edit/${userLoged.id}`)
             }
           >
@@ -132,6 +135,8 @@ const HeaderAuthenticated = () => {
                 <LiveHelpIcon />
               ) : index === 1 ? (
                 <AssignmentIcon />
+              ) : index === 2 ? (
+                <AssessmentIcon />
               ) : (
                 <AccountBoxIcon />
               )}
@@ -168,6 +173,11 @@ const HeaderAuthenticated = () => {
           <li onClick={() => history.push("/sobre")}>Sobre</li>
 
           <li onClick={() => history.push("/devs")}>Explorar</li>
+
+          <li onClick={() => history.push("/graph")}>
+            Gráficos
+            <AssessmentIcon />
+          </li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}
