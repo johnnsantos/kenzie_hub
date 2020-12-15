@@ -6,7 +6,7 @@ import "./style.css";
 import { signUpUser } from "../../requests";
 import SchoolIcon from "@material-ui/icons/School";
 import { Select, MenuItem } from "@material-ui/core";
-import { NewTypography, NewTextField, StyledButton, OuterDiv } from "./style";
+import { NewTypography, NewTextField, StyledButton } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
@@ -28,11 +28,14 @@ const Register = () => {
     setAnswer(true);
 
     setTimeout(() => {
-      if (message === "Usuário cadastrado com sucesso") {
-        setResponseTrue(true);
-      }
       history.push("/login");
     }, 3000);
+  };
+
+  const messageSet = () => {
+    if (message === "Usuário cadastrado com sucesso") {
+      setResponseTrue(true);
+    }
   };
 
   const [module, setModule] = useState(
@@ -109,7 +112,11 @@ const Register = () => {
                   </MenuItem>
                 </Select>
               </div>
-              <StyledButton className="send" type="submit">
+              <StyledButton
+                className="send"
+                type="submit"
+                onClick={() => messageSet}
+              >
                 Enviar
               </StyledButton>
             </form>

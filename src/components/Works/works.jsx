@@ -1,5 +1,5 @@
 import "./works.css";
-import { NewTypography, StyledButton } from "../../style/styles";
+import { NewTypography, StyledButton } from "../../pages/register/style";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 const Works = () => {
@@ -39,9 +39,7 @@ const Works = () => {
           <h1>{props[0].profile}</h1>
           <div className="textarea">{props[0].work}</div>
           <StyledButton className="linkbutton">
-            <a target="_blank" href={props[3].link}>
-              Link Deploy
-            </a>
+            <a target="_blank" href={props[3].link}></a> Link Deploy
           </StyledButton>
         </div>
         <div className="card">
@@ -51,9 +49,7 @@ const Works = () => {
           <h1>{props[1].profile}</h1>
           <div className="textarea">{props[1].work}</div>
           <StyledButton className="linkbutton">
-            <a target="_blank" href={props[3].link}>
-              Link Deploy
-            </a>
+            <a target="_blank" href={props[3].link}></a> Link Deploy
           </StyledButton>
         </div>
       </div>
@@ -65,9 +61,7 @@ const Works = () => {
           <h1>{props[2].profile}</h1>
           <div className="textarea">{props[2].work}</div>
           <StyledButton className="linkbutton">
-            <a target="_blank" href={props[3].link}>
-              Link Deploy
-            </a>
+            <a target="_blank" href={props[3].link}></a> Link Deploy
           </StyledButton>
         </div>
         <div className="card">
@@ -77,9 +71,8 @@ const Works = () => {
           <h1>{props[3].profile}</h1>
           <div className="textarea">{props[3].work}</div>
           <StyledButton className="linkbutton">
-            <a target="_blank" href={props[3].link}>
-              Link Deploy
-            </a>
+            <a target="_blank" href={props[3].link}></a>
+            Link Deploy
           </StyledButton>
         </div>
       </div>
