@@ -1,12 +1,12 @@
 import { show } from "./types";
 
-const defaultState = { Loading: false };
+const defaultState = { loading: false };
 
 const Loading = (state = defaultState, action) => {
-  const { Loading, type } = action;
+  const { loading, type } = action;
   switch (type) {
     case show:
-      return { Loading: Loading };
+      return { loading: loading };
 
     default:
       return state;

@@ -5,13 +5,17 @@ import { StyledButton } from "./styles";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DevCard from "../DevCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeShowLoading } from "../../store/modules/Loading/actions";
 
 const DisplayDev = ({ search }) => {
   const { devs } = useSelector((state) => state.Users);
-  console.log(devs);
+
+  useEffect(() => {
+    console.log("oi");
+  }, []);
+
   const [arrDevs, setArrDevs] = useState();
-  console.log(arrDevs);
   useEffect(() => {
     search && setArrDevs(search.devs);
   }, [search]);

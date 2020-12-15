@@ -14,7 +14,7 @@ function SimpleBackdrop() {
   const classes = useStyles();
 
   return (
-    <Backdrop className={classes.backdrop}>
+    <Backdrop className={classes.backdrop} open={true}>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

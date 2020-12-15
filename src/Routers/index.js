@@ -23,17 +23,14 @@ const Routers = () => {
   const dispatch = useDispatch();
   const token = () => window.localStorage.getItem("authorizationToken");
 
-  const getUser = async () => {
-    console.log("to aqui ");
-    const id = () => window.localStorage.getItem("ID");
-    const user = await requestUser(id());
-    console.log(user);
-    dispatch(handleUserThunk(user));
+  useEffect(() => {
+    console.log("ola");
     dispatch(handleUsersThunk());
-  };
-  getUser();
+    dispatch(handleUserThunk());
+  }, []);
 
   const { display } = useSelector((state) => state.Display);
+  const { loading } = useSelector((state) => state.Loading);
 
   return (
     <>
@@ -42,7 +39,7 @@ const Routers = () => {
           <HeaderAuthenticated />
           <Switch>
             {display && <InsertTech />}
-            <Loading />
+            {loading && <Loading />}
             <Route exact path="/">
               <Home />
             </Route>
