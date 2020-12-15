@@ -35,9 +35,6 @@ export const StyledCard = styled(Card)`
 
 export const StyledEdit = styled(EditIcon)`
   width: 1rem;
-  :hover {
-    color: #3127f5;
-  }
   /* padding: 0; */
 
   cursor: pointer;
@@ -47,9 +44,6 @@ export const StyledEdit = styled(EditIcon)`
 export const StyledDelete = styled(DeleteIcon)`
   cursor: pointer;
   float: right;
-  :hover {
-    color: #e81717;
-  }
 `;
 
 export const StyledButton = styled(Button)`
