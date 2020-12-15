@@ -5,6 +5,7 @@ export const StyledAvatar = styled(Avatar)`
   width: 120px;
   height: 120px;
   margin: 10px;
+  object-fit: cover;
 `;
 
 export const ProfileHeader = styled.div`

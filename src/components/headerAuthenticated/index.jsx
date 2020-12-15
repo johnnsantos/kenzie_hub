@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { FloatingMenu } from "../floatingCards";
 import { useSelector, useDispatch } from "react-redux";
 import { changeShow } from "../../store/modules/showInsertTechs/actions";
+import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,8 +53,10 @@ const HeaderAuthenticated = () => {
   });
 
   const logout = () => {
-    window.localStorage.setItem("authorizationToken", "");
+    window.localStorage.clear();
+    dispatch(handleUserThunk([]));
     history.push("/");
+    document.location.reload();
   };
 
   const toggleDrawer = (anchor, open) => (event) => {

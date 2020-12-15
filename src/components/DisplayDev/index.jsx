@@ -12,7 +12,7 @@ const DisplayDev = ({ search }) => {
   const { devs } = useSelector((state) => state.Users);
 
   useEffect(() => {
-    console.log("oi");
+    console.log(devs);
   }, []);
 
   const [arrDevs, setArrDevs] = useState();
@@ -42,25 +42,25 @@ const DisplayDev = ({ search }) => {
           justify="center"
           spacing={4}
         >
-          {location.pathname === "/" &&
-            devs
-              ?.slice(0, devNumber)
-              .map((dev, index) => (
-                <DevCard
-                  isHome
-                  key={index}
-                  id={dev.id}
-                  name={dev.name}
-                  image={dev.avatar_url}
-                  module={dev.course_module}
-                  stacks={
-                    dev.techs.length !== 0
-                      ? dev.techs.map((tech) => `${tech.title} | `)
-                      : "Sem tecnologias ainda."
-                  }
-                />
-              ))}
-          {arrDevs
+          {location.pathname === "/"
+            ? devs
+                .slice(0, devNumber)
+                .map((dev, index) => (
+                  <DevCard
+                    isHome
+                    key={index}
+                    id={dev.id}
+                    name={dev.name}
+                    image={dev.avatar_url}
+                    module={dev.course_module}
+                    stacks={
+                      dev.techs.length !== 0
+                        ? dev.techs.map((tech) => `${tech.title} | `)
+                        : "Sem tecnologias ainda."
+                    }
+                  />
+                ))
+            : arrDevs
             ? arrDevs.map((dev, index) => (
                 <DevCard
                   key={index}

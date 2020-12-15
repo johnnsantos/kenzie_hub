@@ -5,6 +5,17 @@
   display: flex;
 }
 
+.techScroll {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.techScroll div {
+  margin: 0.8rem 0;
+  max-width: 100%;
+}
+
 .profile {
   width: 50%;
   display: inline-flex;

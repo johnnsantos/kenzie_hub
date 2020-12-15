@@ -15,7 +15,7 @@ const About = () => {
           <h1>Futuros desenvolvedores full stack</h1>
         </div>
       </div>
-      <div className="container">
+      <div className="containerAbout">
         <div className="teamAnounce">
           <h1>Nossa Equipe</h1>
         </div>
