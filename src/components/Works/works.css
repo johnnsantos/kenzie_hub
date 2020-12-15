@@ -31,3 +31,8 @@
 
   margin-left: 2%;
 }
+
+.delete {
+  margin-left: 90%;
+  cursor: pointer;
+}

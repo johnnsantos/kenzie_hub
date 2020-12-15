@@ -1,5 +1,6 @@
 import "./works.css";
 import { NewTypography, StyledButton } from "../../style/styles";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 const Works = () => {
   const props = [
@@ -32,6 +33,9 @@ const Works = () => {
       </NewTypography>
       <div className="render">
         <div className="card">
+          <div className="delete">
+            <DeleteOutlineIcon onClick={console.log("Test")} />
+          </div>
           <h1>{props[0].profile}</h1>
           <div className="textarea">{props[0].work}</div>
           <StyledButton className="linkbutton">
@@ -41,6 +45,9 @@ const Works = () => {
           </StyledButton>
         </div>
         <div className="card">
+          <div className="delete">
+            <DeleteOutlineIcon onClick={console.log("Test")} />
+          </div>
           <h1>{props[1].profile}</h1>
           <div className="textarea">{props[1].work}</div>
           <StyledButton className="linkbutton">
@@ -52,6 +59,9 @@ const Works = () => {
       </div>
       <div className="render">
         <div className="card">
+          <div className="delete">
+            <DeleteOutlineIcon onClick={console.log("Test")} />
+          </div>
           <h1>{props[2].profile}</h1>
           <div className="textarea">{props[2].work}</div>
           <StyledButton className="linkbutton">
@@ -61,6 +71,9 @@ const Works = () => {
           </StyledButton>
         </div>
         <div className="card">
+          <div className="delete">
+            <DeleteOutlineIcon onClick={console.log("Test")} />
+          </div>
           <h1>{props[3].profile}</h1>
           <div className="textarea">{props[3].work}</div>
           <StyledButton className="linkbutton">
