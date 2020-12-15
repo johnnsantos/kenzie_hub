@@ -12,18 +12,19 @@ import { deleteTechs, requestUser, editTechs } from "../../requests";
 import { useParams } from "react-router-dom";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { Select, MenuItem } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 
-const TechCard = ({ tech, setFilteredUser }) => {
+const TechCard = ({ tech }) => {
   const { status, title, id } = tech;
   const params = useParams();
   const [newStatus, setNewStatus] = useState(status);
   const [editable, setEdit] = useState(false);
 
+  const dispatch = useDispatch();
   const deleteTech = async () => {
     await deleteTechs(id);
     const user = await requestUser(params.id);
-    handleUserThunk(user);
-    setFilteredUser([user]);
+    dispatch(handleUserThunk(user));
   };
 
   const editTech = () => {
@@ -34,8 +35,7 @@ const TechCard = ({ tech, setFilteredUser }) => {
     const tech = { status: newStatus };
     await editTechs(id, tech);
     const user = await requestUser(params.id);
-    handleUserThunk(user);
-    setFilteredUser([user]);
+    dispatch(handleUserThunk(user));
     setEdit(false);
   };
   return (

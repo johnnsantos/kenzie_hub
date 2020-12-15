@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import {
   DialogActions,
   DialogTitle,
@@ -13,9 +12,11 @@ import {
   StyledDialog,
   StyledButton,
 } from "./style";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeShow } from "../../store/modules/showInsertTechs/actions";
-import { insertTechs } from "../../requests";
+import { handleUserThunk } from "../../store/modules/infoUser/thunks";
+import { insertTechs, requestUser } from "../../requests";
+import { useHistory } from "react-router-dom";
 
 const InsertTech = () => {
   const [title, setTitle] = useState();
@@ -33,9 +34,14 @@ const InsertTech = () => {
     dispatch(changeShow(false));
   };
 
+  const { userLoged } = useSelector((state) => state.User);
+
   const handleInsertTech = async () => {
     const data = { title: title, status: status };
     await insertTechs(data);
+    const { id } = userLoged;
+    const user = await requestUser(id);
+    dispatch(handleUserThunk(user));
     dispatch(changeShow(false));
   };
 

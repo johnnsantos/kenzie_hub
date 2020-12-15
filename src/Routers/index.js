@@ -8,6 +8,7 @@ import { handleUserThunk } from "../store/modules/infoUser/thunks";
 
 import Home from "../pages/home";
 import Register from "../pages/register";
+import ProfileUserPage from "../pages/ProfileUserPage";
 
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
@@ -65,7 +66,7 @@ const Routers = () => {
               <About />
             </Route>
             <Route exact path="/edit/:id">
-              <ProfilePage />
+              <ProfileUserPage />
             </Route>
             <Route exact path="/techs">
               <TechCard />
