@@ -109,3 +109,14 @@ export const editTechs = async (id, data) => {
   let res = await axios.put(`${baseURL}/users/techs/${id}`, data, config);
   return res;
 };
+
+export const insertTechs = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.post(`${baseURL}/users/techs/`, data, config);
+  return res;
+};

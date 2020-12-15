@@ -15,6 +15,7 @@ import UsersAuthenticated from "../pages/UsersAuthenticated";
 import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
 import TechCard from "../components/TechCard";
+import InsertTech from "../components/InsertTech";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
@@ -41,12 +42,16 @@ const Routers = () => {
     [nextURL]
   );
 
+  const { display } = useSelector((state) => state.Display);
+  console.log(display);
+
   return (
     <>
       {token ? (
         <>
           <HeaderAuthenticated />
           <Switch>
+            {display && <InsertTech />}
             <Route exact path="/">
               <Home />
             </Route>
