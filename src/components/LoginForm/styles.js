@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const OuterDiv = styled(Card)`
   /* position: relative !important; */
+  padding-top: 2%;
   width: 35%;
   height: 40%;
   background-color: #e8f1f2 !important;
@@ -32,8 +33,8 @@ export const NewTextField = styled(TextField)`
 `;
 
 export const StyledButton = styled(Button)`
-  background-color: #05668d !important;
-  margin: 1.3rem !important;
+  margin: 20px;
+  background-color: #34495e;
   &:hover {
     background-color: #05668d;
   }
