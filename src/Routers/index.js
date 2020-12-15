@@ -17,9 +17,9 @@ import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
 import TechCard from "../components/TechCard";
 import InsertTech from "../components/InsertTech";
+import Loading from "../components/Loading";
 
 const Routers = () => {
-  const { devs } = useSelector((state) => state.Users);
   const dispatch = useDispatch();
   const location = useLocation();
   let token = window.localStorage.getItem("authorizationToken");
@@ -53,6 +53,7 @@ const Routers = () => {
           <HeaderAuthenticated />
           <Switch>
             {display && <InsertTech />}
+            <Loading />
             <Route exact path="/">
               <Home />
             </Route>
