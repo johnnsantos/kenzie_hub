@@ -4,6 +4,7 @@ import {
   StyledLabel,
   StyledContainer,
   StyledProfileData,
+  Container,
 } from "./styles";
 import {
   BookmarkBorder,
@@ -12,17 +13,26 @@ import {
   BookOutlined,
   SchoolOutlined,
 } from "@material-ui/icons/";
-import { MenuItem, Select } from "@material-ui/core";
+
+import {
+  MenuItem,
+  Select,
+  InputAdornment,
+  ListItemIcon,
+} from "@material-ui/core";
 import { useState } from "react";
 import { changeImage, requestEditProfile } from "../../requests";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeShowLoading } from "../../store/modules/Loading/actions";
+import ChangePassword from "../ChangePassword";
+import { StyledButton } from "../ChangePassword/styles";
 
 const EditProfile = ({ setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
   const { avatar_url, name, email, contact, course_module, bio } = userLoged;
 
+  const [changePassword, setChangePassword] = useState(false);
   const [newName, setNewName] = useState(name);
   const [newContact, setNewContact] = useState(contact);
   const [newAvatar, setNewAvatar] = useState(avatar_url);
@@ -67,64 +77,99 @@ const EditProfile = ({ setEdit }) => {
           Trocar imagem
         </StyledLabel>
       </StyledContainer>
+
       <StyledProfileData>
-        <div>
-          <EmailOutlined />
-          <NewTextField
-            value={newEmail}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <WorkOutline />
-          <NewTextField
-            value={newContact}
-            onChange={(e) => setNewContact(e.target.value)}
-          />
-          <div>
-            <SchoolOutlined />
-            <Select
-              name="course_module"
-              value={module}
-              onChange={(e) => {
-                setModule(e.target.value);
-              }}
-            >
-              <MenuItem
-                className="select"
-                value="Primeiro Módulo (Introdução ao Frontend)"
-              >
-                Primeiro módulo (Introdução ao Frontend)
-              </MenuItem>
-              <MenuItem
-                className="select"
-                value="Segundo Módulo (Frontend avançado)"
-              >
-                Segundo módulo (Frontend Avançado)
-              </MenuItem>
-              <MenuItem
-                className="select"
-                value="Terceiro Módulo (Introdução ao Backend)"
-              >
-                Terceiro módulo (Introdução ao Backend)
-              </MenuItem>
-              <MenuItem
-                className="select"
-                value="Quarto Módulo (Backend Avançado)"
-              >
-                Quarto módulo (Backend Avançado)
-              </MenuItem>
-            </Select>
-          </div>
-        </div>
-        <BookOutlined />
         <NewTextField
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailOutlined />
+              </InputAdornment>
+            ),
+          }}
+          value={newEmail}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <NewTextField
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <WorkOutline />
+              </InputAdornment>
+            ),
+          }}
+          value={newContact}
+          onChange={(e) => setNewContact(e.target.value)}
+        />
+
+        <Select
+          fullWidth
+          name="course_module"
+          value={module}
+          onChange={(e) => {
+            setModule(e.target.value);
+          }}
+        >
+          <MenuItem
+            className="select"
+            value="Primeiro Módulo (Introdução ao Frontend)"
+          >
+            <ListItemIcon>
+              <SchoolOutlined />
+            </ListItemIcon>
+            Primeiro módulo (Introdução ao Frontend)
+          </MenuItem>
+          <MenuItem
+            className="select"
+            value="Segundo Módulo (Frontend avançado)"
+          >
+            <ListItemIcon>
+              <SchoolOutlined />
+            </ListItemIcon>
+            Segundo Módulo (Frontend avançado)
+          </MenuItem>
+          <MenuItem
+            className="select"
+            value="Terceiro Módulo (Introdução ao Backend)"
+          >
+            <ListItemIcon>
+              <SchoolOutlined />
+            </ListItemIcon>
+            Terceiro módulo (Introdução ao Backend)
+          </MenuItem>
+          <MenuItem className="select" value="Quarto Módulo (Backend Avançado)">
+            <ListItemIcon>
+              <SchoolOutlined />
+            </ListItemIcon>
+            Quarto módulo (Backend Avançado)
+          </MenuItem>
+        </Select>
+
+        <NewTextField
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <BookOutlined />
+              </InputAdornment>
+            ),
+          }}
           value={newBio}
           onChange={(e) => setNewBio(e.target.value)}
           multiline
-          variant="outlined"
         />
       </StyledProfileData>
+      <Container>
+        <StyledButton
+          variant="outlined"
+          onClick={() => setChangePassword(!changePassword)}
+        >
+          Alterar senha
+        </StyledButton>
+      </Container>
+      {changePassword && <ChangePassword />}
     </>
   );
 };

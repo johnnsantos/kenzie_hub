@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Avatar } from "@material-ui/core";
-import { TextField } from "@material-ui/core/";
+import { TextField, Button } from "@material-ui/core/";
 
 export const StyledAvatar = styled(Avatar)`
   width: 120px;
@@ -10,11 +10,9 @@ export const StyledAvatar = styled(Avatar)`
 `;
 
 export const NewTextField = styled(TextField)`
-  width: 70%;
   color: #34495e;
   background-color: #fff;
-  margin: 10px;
-  padding-left: 10px;
+  margin: 10px auto;
   label {
     color: #05668d !important;
   }
@@ -56,7 +54,7 @@ export const StyledContainer = styled.div`
   flex-wrap: wrap;
   svg {
     position: absolute;
-    top: 22vh;
+    top: 18vh;
     left: 45vw;
     color: gray;
 
@@ -68,15 +66,23 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledProfileData = styled.div`
-  width: 100%;
-  display: block;
-  padding: 5%;
+  width: 80%;
+  margin: 25px auto;
 
-  div {
-  }
   svg {
-    position: initial;
-    margin-top: 10px;
-    margin-right: 10px;
+    color: black;
   }
+`;
+
+export const StyledButton = styled(Button)`
+  span {
+    color: #00356b;
+  }
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 8%;
 `;
