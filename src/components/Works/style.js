@@ -2,54 +2,34 @@ import styled from "styled-components";
 import { Card, CardMedia, Button } from "@material-ui/core";
 
 export const Container = styled(Card)`
-  :hover {
-    box-shadow: 1px 1px 10px #34495e;
-  }
-
-  .render {
-    display: flex;
-    flex-direction: inherit;
-    margin-left: auto;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
-
-  .card {
-    width: 100%;
-    height: 100%;
-    border: solid #34495e 2px;
-    text-align: center;
-    border-radius: 2rem;
-  }
-
-  .outer {
-    text-align: center;
-    background-color: #e8f1f2;
-  }
-
-  .linkbutton {
-    margin-top: 3%;
-  }
-
-  .textarea {
-    width: 95%;
-    height: 65%;
-
-    margin-left: 2%;
-  }
+  font-family: Roboto;
+  background-color: #e8f1f2;
 
   .delete {
-    margin-left: 90%;
-    cursor: pointer;
+    text-align: right;
+
+    svg {
+      margin: 0 1rem;
+      cursor: pointer;
+    }
   }
 `;
 
 export const StyledButton = styled(Button)`
-  background-color: #34495e;
+  background-color: #004c99;
+  color: white;
+  margin: 1rem 0;
 
   &:hover {
     background-color: #05668d;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: white;
   }
 `;
