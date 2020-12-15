@@ -74,7 +74,13 @@ const Header = () => {
           <ListItem
             button
             key={text}
-            onClick={() => history.push(`/${text.toLowerCase()}`)}
+            onClick={() =>
+              index === 0
+                ? history.push("/sobre")
+                : index === 1
+                ? history.push("login")
+                : history.push("register")
+            }
           >
             <ListItemIcon>
               {index === 0 ? (
