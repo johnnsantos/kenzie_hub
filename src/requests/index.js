@@ -141,3 +141,15 @@ export const insertWorks = async (data) => {
   let res = await axios.post(`${baseURL}/users/works/`, data, config);
   return res;
 };
+
+export const requestChangePassword = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/profile`, data, config);
+  console.log(res.data);
+  return res.data;
+};

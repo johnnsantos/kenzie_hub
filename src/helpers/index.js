@@ -54,6 +54,22 @@ export const schemaLogin = yup.object().shape({
     .required("This field is required!"),
 });
 
+export const schemaChangePassword = yup.object().shape({
+  previousPassword: yup
+    .string()
+    .min(6, "São necessários, pelo menos 6 caracteres para a senha.")
+    .required("O campo de senha anterior é obrigatório."),
+  newPassword: yup
+    .string()
+    .min(6, "São necessários, pelo menos 6 caracteres para a senha.")
+    .required("O campo de nova senha é obrigatório."),
+  newPassword_confirmation: yup
+    .string()
+    .required()
+    .oneOf([yup.ref("newPassword")], "As senhas devem ser iguais!")
+    .required("O campo de confirmação de senha é obrigatório."),
+});
+
 export const dataRegister = [
   {
     icon: <EmailIcon />,
