@@ -1,5 +1,6 @@
-import { StyledButton } from "../../pages/register/style";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import { StyledButton } from "./style.js";
+
+import DeleteIcon from "@material-ui/icons/Delete";
 import { Container } from "./style.js";
 
 import { useParams } from "react-router-dom";
@@ -43,29 +44,21 @@ const Works = ({ work }) => {
 
   return (
     <Container>
-      <div className="outer">
-        <div className="render">
-          <div className="card">
-            <div className="delete">
-              {isdAdmin() && (
-                <>
-                  <EditIcon onClick={editWorks} />
-                  <DeleteOutlineIcon onClick={deleteWork} />
-                </>
-              )}
-            </div>
-
-            <h1>{title}</h1>
-            <div className="textarea">{description}</div>
-
-            <StyledButton className="linkbutton">
-              <a target="_blank" href={deploy_url}>
-                Link Deploy
-              </a>
-            </StyledButton>
+      <div className="delete">
+        {isdAdmin() && (
+          <div>
+            <EditIcon onClick={editWorks} />
+            <DeleteIcon onClick={deleteWork} />
           </div>
-        </div>
+        )}
       </div>
+      <h1>{title}</h1>
+      <div className="textarea">{description}</div>
+      <StyledButton>
+        <a target="_blank" href={deploy_url}>
+          Link Deploy
+        </a>
+      </StyledButton>
     </Container>
   );
 };
