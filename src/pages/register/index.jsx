@@ -26,10 +26,11 @@ const Register = () => {
     data = { ...data, course_module: module };
     setMessage(await signUpUser(data));
     setAnswer(true);
-    if (message === "Usuário cadastrado com sucesso") {
-      setResponseTrue(true);
-    }
+
     setTimeout(() => {
+      if (message === "Usuário cadastrado com sucesso") {
+        setResponseTrue(true);
+      }
       history.push("/login");
     }, 3000);
   };
@@ -41,10 +42,12 @@ const Register = () => {
   return (
     <div className="logo">
       <div className="render">
-        <NewTypography variant="h3">Cadastro</NewTypography>
-        <br />
-        <div>
-          <OuterDiv>
+        <NewTypography variant="h3" className="Typography">
+          Cadastro
+        </NewTypography>
+
+        <div className="forms">
+          <div className="container">
             <form onSubmit={handleSubmit(sendForm)}>
               {dataRegister.map((input, index) => (
                 <div key={index} className="inputs">
@@ -70,6 +73,7 @@ const Register = () => {
               <div className="inputs">
                 <SchoolIcon />{" "}
                 <Select
+                  className="Select"
                   name="course_module"
                   id="modules"
                   className="select"
@@ -109,7 +113,8 @@ const Register = () => {
                 Enviar
               </StyledButton>
             </form>
-          </OuterDiv>
+          </div>
+
           {answer ? (
             <div>
               {responseTrue ? (
