@@ -1,37 +1,26 @@
 import { TextField, Typography, Button } from "@material-ui/core";
 import styled from "styled-components";
-import SignupIMG from "../../img/signup.svg";
 
 export const OuterContainer = styled.div`
-  background-image: url(${SignupIMG});
-  background-repeat: no-repeat;
   width: 100%;
-  max-width: 1120px;
-  height: 699px;
-  margin: 0 auto;
-
-  @media (max-width: 650px) {
-    background: #e8f1f2;
-  }
+  max-width: 1200px;
+  margin: 5vh auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 `;
 
 export const Render = styled.div`
   background-color: #e8f1f2;
+  border-radius: 10px;
   color: #34495e;
   text-align: center;
   width: 40%;
-  height: 73%;
-  margin-left: 55%;
-  margin-top: 10%;
+  max-width: 600px;
+  min-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
   opacity: 95%;
-
-  @media (max-width: 650px) {
-    display: inline;
-  }
-
-  @media (max-width: 360px) {
-    display: inline;
-  }
 `;
 
 export const NewTypography = styled(Typography)`
@@ -96,5 +85,13 @@ export const StyledButton = styled(Button)`
 
   a:visited {
     color: white;
+  }
+`;
+
+export const StyledImg = styled.img`
+  width: 50%;
+  height: 50vh;
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
