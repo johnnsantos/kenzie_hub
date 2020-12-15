@@ -72,7 +72,7 @@ export const Container = styled.div`
         padding-right: 2.5rem;
 
         .profilePic {
-          margin-right: 0.8rem;
+          margin-right: 2rem;
           position: absolute;
           height: 60px;
           width: 60px;
