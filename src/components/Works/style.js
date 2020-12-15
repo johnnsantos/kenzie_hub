@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { Card, CardMedia, Button } from "@material-ui/core";
+import { Card, CardContent, Button, TextField } from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import BookmarkBorder from "@material-ui/icons/BookmarkBorder";
 
 export const Container = styled(Card)`
   font-family: Roboto;
@@ -49,4 +52,83 @@ export const StyledButton = styled(Button)`
   a:visited {
     color: white;
   }
+`;
+
+export const StyledCardContent = styled(CardContent)`
+  padding: 8px;
+  padding-bottom: 0;
+  :last-child {
+    padding-bottom: 0;
+  }
+`;
+export const StyledCard = styled(Card)`
+  background-color: #e8f1f2;
+  width: 100%;
+  /* padding: 8px;
+  padding-bottom: 0; */
+  @media (max-width: 768px) {
+    width: 95vw;
+    height: 130px;
+  }
+  &:hover {
+    box-shadow: 1px 1px 2px #34495e;
+  }
+`;
+
+// export const StyledButton = styled(Button)`
+//   background-color: #34495e;
+
+//   &:hover {
+//     background-color: #05668d;
+//   }
+// `;
+
+export const StyledEdit = styled(EditIcon)`
+  width: 1rem;
+  /* padding: 0; */
+
+  cursor: pointer;
+  /* margin-left: 1rem; */
+`;
+
+export const StyledDelete = styled(DeleteIcon)`
+  cursor: pointer;
+  float: right;
+`;
+
+export const StyledBookmark = styled(BookmarkBorder)`
+  width: 2rem;
+  float: right;
+  cursor: pointer;
+`;
+
+export const StyledDiv = styled.div`
+  p {
+    display: flex;
+    align-items: center;
+  }
+  div {
+    font-family: roboto;
+
+    font-size: 0.75rem;
+  }
+`;
+
+export const NewTextField = styled(TextField)`
+  width: 70%;
+  color: #34495e;
+  background-color: transparent;
+  label {
+    color: #05668d !important;
+  }
+  div > fieldset {
+    border-color: #05668d !important;
+  }
+`;
+
+export const ContainerInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 `;

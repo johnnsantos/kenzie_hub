@@ -43,7 +43,7 @@ const TechCard = ({ tech }) => {
   const isdAdmin = () => {
     return idUserLoged === params.id;
   };
-  console.log(isdAdmin());
+
   return (
     <StyledCard>
       <StyledCardContent>

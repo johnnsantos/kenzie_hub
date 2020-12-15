@@ -120,6 +120,17 @@ export const editTechs = async (id, data) => {
   return res;
 };
 
+export const requestEditWork = async (id, data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/users/works/${id}`, data, config);
+  return res;
+};
+
 export const insertTechs = async (data) => {
   const config = {
     headers: {
