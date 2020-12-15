@@ -39,7 +39,10 @@ const InfoProfile = ({ data, setEdit }) => {
         </Typography>
       </StyledProfileData>
       <div className="profile-about">
-        <Typography variant="body1">{bio}</Typography>
+        <Typography variant="body1">
+          <b>Sobre mim: </b>
+          {bio}
+        </Typography>
       </div>
     </>
   );

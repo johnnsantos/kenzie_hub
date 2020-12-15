@@ -40,7 +40,7 @@ const LoginForm = () => {
 
   return (
     <OuterDiv>
-      <NewTypography variant="h3">Login</NewTypography>
+      <NewTypography variant="h4">Login</NewTypography>
       <form onSubmit={handleSubmit(handleLogin)}>
         <div>
           <NewTextField
@@ -63,6 +63,7 @@ const LoginForm = () => {
             size="medium"
             label="Senha"
             name="password"
+            type="password"
             inputRef={register}
             onChange={(e) => setValue("password", e.target.value)}
           />
@@ -73,7 +74,13 @@ const LoginForm = () => {
         {message === "Email e/ou senha incorretos." && (
           <Alert severity="error">{message}</Alert>
         )}
-        <StyledButton color="primary" variant="contained" type="submit">
+        <StyledButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          disableElevation
+        >
           Entrar
         </StyledButton>
       </form>
