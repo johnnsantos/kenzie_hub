@@ -20,12 +20,14 @@ import {
   Inputs,
   Warning,
   StyledForm,
+  StyledImg,
 } from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
 import Alert from "@material-ui/lab/Alert";
 import { useEffect } from "react";
+import SignupIMG from "../../img/signup.svg";
 
 const Register = () => {
   const history = useHistory();
@@ -63,6 +65,7 @@ const Register = () => {
 
   return (
     <OuterContainer>
+      <StyledImg src={SignupIMG} />
       <Render>
         <NewTypography variant="h4">Cadastro</NewTypography>
         <Warning>
