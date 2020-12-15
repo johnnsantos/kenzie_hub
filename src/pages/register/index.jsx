@@ -2,11 +2,25 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import { schemaRegister } from "../../helpers";
-import "./style.css";
 import { signUpUser } from "../../requests";
 import SchoolIcon from "@material-ui/icons/School";
-import { Select, MenuItem } from "@material-ui/core";
-import { NewTypography, NewTextField, StyledButton } from "./style";
+import {
+  Select,
+  MenuItem,
+  ListItemIcon,
+  InputAdornment,
+} from "@material-ui/core";
+import {
+  NewTypography,
+  NewTextField,
+  StyledButton,
+  OuterContainer,
+  Render,
+  Container,
+  Inputs,
+  Warning,
+  StyledForm,
+} from "./style";
 import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
@@ -48,92 +62,96 @@ const Register = () => {
   );
 
   return (
-    <div className="logo">
-      <div className="render">
-        <NewTypography variant="h3" className="Typography">
-          Cadastro
-        </NewTypography>
-
-        <div className="forms">
-          <div className="container">
-            <form onSubmit={handleSubmit(sendForm)}>
-              {dataRegister.map((input, index) => (
-                <div key={index} className="inputs">
-                  {input.icon}
-                  <NewTextField
-                    placeholder={input.placeholder}
-                    name={input.name}
-                    inputRef={register}
-                    type={input.type}
-                  ></NewTextField>
-                </div>
-              ))}
-
-              <div className="warning">
-                {errors.email?.message ||
-                  errors.password?.message ||
-                  errors.password_confirmation?.message ||
-                  errors.name?.message ||
-                  errors.bio?.message ||
-                  errors.contact?.message}
-              </div>
-              <br />
-              <div className="inputs">
-                <SchoolIcon />{" "}
-                <Select
-                  name="course_module"
-                  id="modules"
-                  className="select"
-                  value={module}
-                  onChange={(e) => {
-                    setModule(e.target.value);
+    <OuterContainer>
+      <Render>
+        <NewTypography variant="h4">Cadastro</NewTypography>
+        <Warning>
+          {errors.email?.message ||
+            errors.password?.message ||
+            errors.password_confirmation?.message ||
+            errors.name?.message ||
+            errors.bio?.message ||
+            errors.contact?.message}
+        </Warning>
+        <Container>
+          <StyledForm onSubmit={handleSubmit(sendForm)}>
+            {dataRegister.map((input, index) => (
+              <Inputs key={index}>
+                <NewTextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        {input.icon}
+                      </InputAdornment>
+                    ),
                   }}
-                >
-                  <MenuItem
-                    className="select"
-                    value="Primeiro módulo (Introdução ao Frontend)"
-                    selected
-                  >
-                    Primeiro módulo (Introdução ao Frontend)
-                  </MenuItem>
-                  <MenuItem
-                    className="select"
-                    value="Segundo módulo (Frontend Avançado)"
-                  >
-                    Segundo módulo (Frontend Avançado)
-                  </MenuItem>
-                  <MenuItem
-                    className="select"
-                    value="Terceiro módulo (Introdução ao Backend)"
-                  >
-                    Terceiro módulo (Introdução ao Backend)
-                  </MenuItem>
-                  <MenuItem
-                    className="select"
-                    value="Quarto módulo (Backend Avançado)"
-                  >
-                    Quarto módulo (Backend Avançado)
-                  </MenuItem>
-                </Select>
-              </div>
-              <StyledButton className="send" type="submit">
-                Enviar
-              </StyledButton>
-            </form>
-          </div>
+                  placeholder={input.placeholder}
+                  name={input.name}
+                  inputRef={register}
+                  type={input.type}
+                />
+              </Inputs>
+            ))}
 
-          {answer ? (
-            <div>
-              {responseTrue ? (
-                <Alert severity="success">{message}</Alert>
-              ) : (
-                <Alert severity="error">{message}</Alert>
-              )}
-            </div>
-          ) : null}
-        </div>
-      </div>
-    </div>
+            <Select
+              name="course_module"
+              id="modules"
+              value={module}
+              onChange={(e) => {
+                setModule(e.target.value);
+              }}
+            >
+              <MenuItem
+                value="Primeiro módulo (Introdução ao Frontend)"
+                selected
+              >
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                Primeiro módulo (Introdução ao Frontend)
+              </MenuItem>
+              <MenuItem value="Segundo módulo (Frontend Avançado)">
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                Segundo módulo (Frontend Avançado)
+              </MenuItem>
+              <MenuItem value="Terceiro módulo (Introdução ao Backend)">
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                Terceiro módulo (Introdução ao Backend)
+              </MenuItem>
+              <MenuItem value="Quarto módulo (Backend Avançado)">
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                Quarto módulo (Backend Avançado)
+              </MenuItem>
+            </Select>
+
+            <StyledButton
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+              disableElevation
+            >
+              Enviar
+            </StyledButton>
+          </StyledForm>
+        </Container>
+        {answer ? (
+          <>
+            {responseTrue ? (
+              <Alert severity="success">{message}</Alert>
+            ) : (
+              <Alert severity="error">{message}</Alert>
+            )}
+          </>
+        ) : null}
+      </Render>
+    </OuterContainer>
   );
 };
 
