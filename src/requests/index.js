@@ -27,7 +27,6 @@ export const signUpUser = async (data) => {
 };
 
 export const getUsersList = async (nextURL) => {
-  const token = window.localStorage.getItem("authorizationToken");
   const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
   let res = await axios.get(`${URL}`);
   return res;
@@ -87,4 +86,15 @@ export const requestEditProfile = async (data) => {
   };
   let res = await axios.put(`${baseURL}/profile`, data, config);
   return res.data;
+};
+
+export const deleteTechs = async (id) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.delete(`${baseURL}/users/techs/${id}`, config);
+  return res;
 };

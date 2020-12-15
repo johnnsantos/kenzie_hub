@@ -8,11 +8,13 @@ import { handleUserThunk } from "../store/modules/infoUser/thunks";
 
 import Home from "../pages/home";
 import Register from "../pages/register";
+
 import Header from "../components/header";
 import HeaderAuthenticated from "../components/headerAuthenticated";
 import UsersAuthenticated from "../pages/UsersAuthenticated";
 import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
+import TechCard from "../components/TechCard";
 
 const Routers = () => {
   const { devs } = useSelector((state) => state.Users);
@@ -59,6 +61,9 @@ const Routers = () => {
             </Route>
             <Route exact path="/edit/:id">
               <ProfilePage />
+            </Route>
+            <Route exact path="/techs">
+              <TechCard />
             </Route>
           </Switch>
         </>

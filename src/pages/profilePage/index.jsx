@@ -8,6 +8,7 @@ import InfoProfile from "../../components/InfoProfile";
 import EditProfile from "../../components/EditProfile";
 import WorkIcon from "@material-ui/icons/Work";
 import ComputerIcon from "@material-ui/icons/Computer";
+import TechCard from "../../components/TechCard";
 
 const ProfilePage = (prop) => {
   const params = useParams();
@@ -62,11 +63,12 @@ const ProfilePage = (prop) => {
           <Typography variant="h6">Tecnologias</Typography>
         </div>
         <ul>
-          <li>Test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
+          {techs !== "" &&
+            techs?.map((tech, index) => (
+              <li key={index}>
+                <TechCard tech={tech} setFilteredUser={setFilteredUser} />
+              </li>
+            ))}
         </ul>
         <div className="technologies-title">
           <WorkIcon />
