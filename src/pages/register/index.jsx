@@ -11,6 +11,7 @@ import "../../img/DevCard/signup.svg";
 import { dataRegister } from "../../helpers";
 import { useState } from "react";
 import Alert from "@material-ui/lab/Alert";
+import { useEffect } from "react";
 
 const Register = () => {
   const history = useHistory();
@@ -31,6 +32,10 @@ const Register = () => {
       history.push("/login");
     }, 3000);
   };
+
+  useEffect(() => {
+    messageSet();
+  }, [message]);
 
   const messageSet = () => {
     if (message === "Usuário cadastrado com sucesso") {
@@ -76,7 +81,6 @@ const Register = () => {
               <div className="inputs">
                 <SchoolIcon />{" "}
                 <Select
-                  className="Select"
                   name="course_module"
                   id="modules"
                   className="select"
@@ -112,11 +116,7 @@ const Register = () => {
                   </MenuItem>
                 </Select>
               </div>
-              <StyledButton
-                className="send"
-                type="submit"
-                onClick={() => messageSet}
-              >
+              <StyledButton className="send" type="submit">
                 Enviar
               </StyledButton>
             </form>

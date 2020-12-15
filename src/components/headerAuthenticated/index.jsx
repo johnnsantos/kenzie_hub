@@ -19,6 +19,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import AddBoxIcon from "@material-ui/icons/AddBox";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import HomeIcon from "@material-ui/icons/Home";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -99,14 +100,31 @@ const HeaderAuthenticated = () => {
       </List>
       <Divider />
       <List>
+        {["Adicionar Projeto", "Adicionar Tecnologia"].map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            onClick={index === 0 ? handleAddWork : handleAddTech}
+          >
+            <ListItemIcon>
+              <AddBoxIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
         {["Sobre", "Explorar", "Perfil"].map((text, index) => (
           <ListItem
             button
             key={text}
             onClick={() =>
-              text.toLowerCase() !== "explorar"
-                ? history.push(`/${text.toLowerCase()}`)
-                : history.push(`/devs`)
+              index === 0
+                ? history.push("/sobre")
+                : index === 1
+                ? history.push("/devs")
+                : history.push(`/edit/${userLoged.id}`)
             }
           >
             <ListItemIcon>
