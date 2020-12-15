@@ -47,8 +47,8 @@ const Works = ({ work }) => {
       <div className="delete">
         {isdAdmin() && (
           <div>
-            <EditIcon onClick={editWorks} />
-            <DeleteIcon onClick={deleteWork} />
+            <EditIcon className="editButton" onClick={editWorks} />
+            <DeleteIcon className="deleteButton" onClick={deleteWork} />
           </div>
         )}
       </div>
