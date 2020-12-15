@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Card, CardContent, Button } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import BookmarkBorder from "@material-ui/icons/BookmarkBorder";
 
 export const StyledCardContent = styled(CardContent)`
   padding: 8px;
@@ -24,18 +25,18 @@ export const StyledCard = styled(Card)`
   }
 `;
 
-export const StyledButton = styled(Button)`
-  background-color: #34495e;
+// export const StyledButton = styled(Button)`
+//   background-color: #34495e;
 
-  &:hover {
-    background-color: #05668d;
-  }
-`;
+//   &:hover {
+//     background-color: #05668d;
+//   }
+// `;
 
 export const StyledEdit = styled(EditIcon)`
   width: 1rem;
   /* padding: 0; */
-  float: right;
+
   cursor: pointer;
   /* margin-left: 1rem; */
 `;
@@ -43,4 +44,31 @@ export const StyledEdit = styled(EditIcon)`
 export const StyledDelete = styled(DeleteIcon)`
   cursor: pointer;
   float: right;
+`;
+
+export const StyledButton = styled(Button)`
+  background-color: #05668d !important;
+  margin: 1.3rem !important;
+  &:hover {
+    background-color: #05668d;
+  }
+`;
+
+export const StyledBookmarkBorder = styled(BookmarkBorder)`
+  width: 1rem;
+  /* padding: 0; */
+  /* float: right; */
+  cursor: pointer;
+`;
+
+export const StyledDiv = styled.div`
+  p {
+    display: flex;
+    align-items: center;
+  }
+  div {
+    font-family: roboto;
+
+    font-size: 0.75rem;
+  }
 `;
