@@ -55,13 +55,7 @@ const InsertTech = () => {
           value={title}
           onChange={handleTitle}
         />
-        <Select
-          name="course_module"
-          id="modules"
-          className="select"
-          value={status}
-          onChange={handleStatus}
-        >
+        <Select value={status} onChange={handleStatus}>
           <MenuItem value="Iniciante" selected>
             Iniciante
           </MenuItem>
