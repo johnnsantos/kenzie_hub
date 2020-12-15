@@ -130,3 +130,14 @@ export const insertTechs = async (data) => {
   let res = await axios.post(`${baseURL}/users/techs/`, data, config);
   return res;
 };
+
+export const insertWorks = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.post(`${baseURL}/users/works/`, data, config);
+  return res;
+};

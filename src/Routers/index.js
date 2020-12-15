@@ -17,6 +17,7 @@ import ProfilePage from "../pages/profilePage";
 import About from "../pages/about";
 import TechCard from "../components/TechCard";
 import InsertTech from "../components/InsertTech";
+import InsertWork from "../components/InsertWork";
 import Loading from "../components/Loading";
 
 const Routers = () => {
@@ -29,6 +30,7 @@ const Routers = () => {
   }, []);
 
   const { display } = useSelector((state) => state.Display);
+  const { displayWork } = useSelector((state) => state.DisplayWork);
   const { loading } = useSelector((state) => state.Loading);
 
   return (
@@ -38,6 +40,7 @@ const Routers = () => {
           <HeaderAuthenticated />
           <Switch>
             {display && <InsertTech />}
+            {displayWork && <InsertWork />}
             {loading && <Loading />}
             <Route exact path="/">
               <Home />

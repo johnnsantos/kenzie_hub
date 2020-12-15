@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { FloatingMenu } from "../floatingCards";
 import { useSelector, useDispatch } from "react-redux";
 import { changeShow } from "../../store/modules/showInsertTechs/actions";
+import { changeShowWork } from "../../store/modules/showInsertWorks/actions";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 
 import clsx from "clsx";
@@ -73,6 +74,10 @@ const HeaderAuthenticated = () => {
   const dispatch = useDispatch();
   const handleAddTech = () => {
     dispatch(changeShow(true));
+  };
+
+  const handleAddWork = () => {
+    dispatch(changeShowWork(true));
   };
 
   const list = (anchor) => (
@@ -149,10 +154,10 @@ const HeaderAuthenticated = () => {
           <FloatingMenu
             icon1={<ViewListIcon />}
             icon2={<LanguageIcon />}
-            option1={"Adicionar Stack"}
+            option1={"Adicionar Projeto"}
             option2={"Adicionar Tecnologia"}
             mainIcon={<AddToPhotosIcon />}
-            action1={"/#"}
+            action1={handleAddWork}
             action2={handleAddTech}
           />
           <FloatingMenu
