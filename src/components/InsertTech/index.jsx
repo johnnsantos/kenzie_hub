@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeShow } from "../../store/modules/showInsertTechs/actions";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { insertTechs, requestUser } from "../../requests";
-import { useHistory } from "react-router-dom";
+import { changeShowLoading } from "../../store/modules/Loading/actions";
 
 const InsertTech = () => {
   const [title, setTitle] = useState();
@@ -42,6 +42,7 @@ const InsertTech = () => {
     const { id } = userLoged;
     const user = await requestUser(id);
     dispatch(handleUserThunk(user));
+    dispatch(changeShowLoading(true));
     dispatch(changeShow(false));
   };
 
@@ -54,13 +55,7 @@ const InsertTech = () => {
           value={title}
           onChange={handleTitle}
         />
-        <Select
-          name="course_module"
-          id="modules"
-          className="select"
-          value={status}
-          onChange={handleStatus}
-        >
+        <Select value={status} onChange={handleStatus}>
           <MenuItem value="Iniciante" selected>
             Iniciante
           </MenuItem>

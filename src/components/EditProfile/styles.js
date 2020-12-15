@@ -72,8 +72,11 @@ export const StyledProfileData = styled.div`
   display: block;
   padding: 5%;
 
+  div {
+  }
   svg {
     position: initial;
     margin-top: 10px;
+    margin-right: 10px;
   }
 `;
