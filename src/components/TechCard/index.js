@@ -12,18 +12,20 @@ import { deleteTechs, requestUser, editTechs } from "../../requests";
 import { useParams } from "react-router-dom";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 import { Select, MenuItem } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 
-const TechCard = ({ tech, setFilteredUser }) => {
+const TechCard = ({ tech }) => {
   const { status, title, id } = tech;
+  const idUserLoged = useSelector((state) => state.User.id);
   const params = useParams();
   const [newStatus, setNewStatus] = useState(status);
   const [editable, setEdit] = useState(false);
 
+  const dispatch = useDispatch();
   const deleteTech = async () => {
     await deleteTechs(id);
     const user = await requestUser(params.id);
-    handleUserThunk(user);
-    setFilteredUser([user]);
+    dispatch(handleUserThunk(user));
   };
 
   const editTech = () => {
@@ -34,14 +36,13 @@ const TechCard = ({ tech, setFilteredUser }) => {
     const tech = { status: newStatus };
     await editTechs(id, tech);
     const user = await requestUser(params.id);
-    handleUserThunk(user);
-    setFilteredUser([user]);
+    dispatch(handleUserThunk(user));
     setEdit(false);
   };
   return (
     <StyledCard>
       <StyledCardContent>
-        <StyledDelete onClick={deleteTech} />
+        {idUserLoged === id && <StyledDelete onClick={deleteTech} />}
         <Box m={2}>
           <Typography
             variant="overline"
@@ -83,7 +84,9 @@ const TechCard = ({ tech, setFilteredUser }) => {
                     Avançado
                   </MenuItem>
                 </Select>
-                <StyledBookmarkBorder onClick={handleChanges} />
+                {idUserLoged === id && (
+                  <StyledBookmarkBorder onClick={handleChanges} />
+                )}
               </Typography>
             </StyledDiv>
           ) : (
@@ -96,7 +99,7 @@ const TechCard = ({ tech, setFilteredUser }) => {
                 noWrap
               >
                 Status : {newStatus}
-                <StyledEdit onClick={editTech} />
+                {idUserLoged === id && <StyledEdit onClick={editTech} />}
               </Typography>
             </StyledDiv>
           )}

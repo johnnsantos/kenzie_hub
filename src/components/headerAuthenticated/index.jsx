@@ -4,7 +4,8 @@ import KenzieLogo from "../../img/kenzieLogo.png";
 import { useState, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import { FloatingMenu } from "../floatingCards";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeShow } from "../../store/modules/showInsertTechs/actions";
 
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,6 +65,11 @@ const HeaderAuthenticated = () => {
     }
 
     setState({ ...state, [anchor]: open });
+  };
+
+  const dispatch = useDispatch();
+  const handleAddTech = () => {
+    dispatch(changeShow(true));
   };
 
   const list = (anchor) => (
@@ -144,7 +150,7 @@ const HeaderAuthenticated = () => {
             option2={"Adicionar Tecnologia"}
             mainIcon={<AddToPhotosIcon />}
             action1={"/#"}
-            action2={"/#"}
+            action2={handleAddTech}
           />
           <FloatingMenu
             icon1={<EditIcon />}

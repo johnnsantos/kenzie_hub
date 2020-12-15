@@ -26,10 +26,9 @@ export const signUpUser = async (data) => {
   }
 };
 
-export const getUsersList = async (nextURL) => {
-  const URL = nextURL !== "" ? nextURL : `${baseURL}/users`;
-  let res = await axios.get(`${URL}`);
-  return res;
+export const getUsersList = async () => {
+  let res = await axios.get(`${baseURL}/users?perPage=1000000000`);
+  return res.data;
 };
 
 export const login = async (data) => {
@@ -107,5 +106,16 @@ export const editTechs = async (id, data) => {
     },
   };
   let res = await axios.put(`${baseURL}/users/techs/${id}`, data, config);
+  return res;
+};
+
+export const insertTechs = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.post(`${baseURL}/users/techs/`, data, config);
   return res;
 };
