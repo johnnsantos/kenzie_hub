@@ -47,8 +47,9 @@ export const Container = styled.div`
     list-style: none;
 
     li {
+      display: flex;
+      align-items: center;
       text-transform: uppercase;
-
       text-align: center;
       font-size: 15px;
       font-weight: bold;
