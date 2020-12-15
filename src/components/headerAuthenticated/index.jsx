@@ -19,6 +19,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import AssessmentIcon from "@material-ui/icons/Assessment";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import HomeIcon from "@material-ui/icons/Home";
@@ -168,6 +169,11 @@ const HeaderAuthenticated = () => {
           <li onClick={() => history.push("/sobre")}>Sobre</li>
 
           <li onClick={() => history.push("/devs")}>Explorar</li>
+
+          <li onClick={() => history.push("/graph")}>
+            Gráficos
+            <AssessmentIcon />
+          </li>
 
           <FloatingMenu
             icon1={<ViewListIcon />}
