@@ -98,3 +98,14 @@ export const deleteTechs = async (id) => {
   let res = await axios.delete(`${baseURL}/users/techs/${id}`, config);
   return res;
 };
+
+export const editTechs = async (id, data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token()}`,
+    },
+  };
+  let res = await axios.put(`${baseURL}/users/techs/${id}`, data, config);
+  return res;
+};
