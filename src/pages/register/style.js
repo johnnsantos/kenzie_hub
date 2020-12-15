@@ -12,6 +12,11 @@ export const OuterDiv = styled(Card)`
     width: 70%;
     height: 60%;
   }
+  @media (max-width: 350px) {
+    width: 70%;
+    height: 60%;
+    margin-left: 50%;
+  }
 `;
 
 export const NewTypography = styled(Typography)`
