@@ -56,19 +56,31 @@ const ProfilePage = () => {
           <ComputerIcon />
           <Typography variant="h6">Tecnologias</Typography>
         </div>
-        <ul>
+        <div className="techScroll">
           {techs !== "" &&
             techs?.map((tech, index) => (
-              <li key={index}>
-                <TechCard tech={tech} setFilteredUser={setFilteredUser} />
-              </li>
+              <TechCard
+                key={index}
+                tech={tech}
+                setFilteredUser={setFilteredUser}
+              />
             ))}
-        </ul>
+        </div>
         <div className="technologies-title">
           <WorkIcon />
           <Typography variant="h6">Trabalhos</Typography>
         </div>
-        <Works profile=" " work={works} link="" />
+        <div className="techScroll">
+          {works !== "" &&
+            works?.map((work, index) => (
+              <Works
+                key={index}
+                work={work}
+                setFilteredUser={setFilteredUser}
+              />
+            ))}
+        </div>
+        {/* <Works profile=" " work={works} link="" /> */}
       </div>
     </div>
   );

@@ -24,7 +24,6 @@ const Routers = () => {
   const token = () => window.localStorage.getItem("authorizationToken");
 
   useEffect(() => {
-    console.log("ola");
     dispatch(handleUsersThunk());
     dispatch(handleUserThunk());
   }, []);

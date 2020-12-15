@@ -204,7 +204,7 @@ export const Container = styled.div`
       }
     }
 
-    .container {
+    .containerAbout {
       max-width: 70%;
       margin: 0 auto;
     }
