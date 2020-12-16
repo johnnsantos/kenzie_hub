@@ -1,7 +1,6 @@
 import {
   DialogActions,
   DialogTitle,
-  Slide,
   Select,
   MenuItem,
 } from "@material-ui/core";

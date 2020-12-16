@@ -1,8 +1,7 @@
-import { TextField, Typography, Button, Card } from "@material-ui/core/";
+import { TextField, Typography, Button, Card } from "@material-ui/core";
 import styled from "styled-components";
 
 export const OuterDiv = styled(Card)`
-  /* position: relative !important; */
   padding-top: 2%;
   width: 35%;
   height: 40%;

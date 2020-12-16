@@ -31,7 +31,7 @@ export const schemaRegister = yup.object().shape({
   bio: yup
     .string()
     .min(20, "Minimo de vinte caracteres para a Bio.")
-    .max(100, "Maximo de 100 caracteres para a Bio.")
+    .max(400, "Maximo de 400 caracteres para a Bio.")
     .required("O campo de biografia é obrigatório."),
 
   contact: yup

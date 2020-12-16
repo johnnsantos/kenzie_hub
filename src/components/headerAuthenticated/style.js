@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
   font-family: "Open Sans", sans-serif;
 
   display: flex;
@@ -95,7 +94,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 957px) {
     height: 70px;
     width: inherit;
     margin: 0 2rem;

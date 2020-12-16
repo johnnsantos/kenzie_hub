@@ -1,19 +1,13 @@
-/* eslint-disable */
 import { Grid, Container, Typography, Box } from "@material-ui/core";
 import { StyledButton } from "./styles";
 
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DevCard from "../DevCard";
-import { useDispatch, useSelector } from "react-redux";
-import { changeShowLoading } from "../../store/modules/Loading/actions";
+import { useSelector } from "react-redux";
 
 const DisplayDev = ({ search }) => {
   const { devs } = useSelector((state) => state.Users);
-
-  useEffect(() => {
-    console.log(devs);
-  }, []);
 
   const [arrDevs, setArrDevs] = useState();
   useEffect(() => {

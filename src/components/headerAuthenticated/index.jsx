@@ -207,8 +207,6 @@ const HeaderAuthenticated = () => {
         </ul>
       </div>
 
-      {/* mobile header */}
-
       <div className="headerDropDown">
         {["right"].map((anchor) => (
           <Fragment key={anchor}>

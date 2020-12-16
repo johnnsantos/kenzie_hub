@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
   font-family: "Open Sans", sans-serif;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  /* background-color: rgba(53, 74, 95, 0.2); */
-  /* border-radius: 3px; */
   padding: 2rem 1rem;
   margin: 2rem 0;
 
@@ -72,7 +69,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 957px) {
     width: 95%;
     margin: 2rem auto;
 
