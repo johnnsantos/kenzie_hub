@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 
 export const StyledAvatar = styled(Avatar)`
   width: 120px;
@@ -27,18 +27,26 @@ export const ProfileHeader = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
   }
 `;
 
 export const StyledProfileData = styled.div`
-  width: 100%;
-  display: block;
-  padding: 5%;
+  width: 90%;
+  margin: 20px;
   p {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 10px;
   }
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  margin-left: 10px;
 `;

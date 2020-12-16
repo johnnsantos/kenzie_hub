@@ -95,7 +95,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 957px) {
     height: 70px;
     width: inherit;
     margin: 0 2rem;

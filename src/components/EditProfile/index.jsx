@@ -63,6 +63,14 @@ const EditProfile = ({ setEdit }) => {
     dispatch(handleUserThunk(user));
     setEdit(false);
   };
+
+  const handleNewBio = (e) => {
+    if (e.target.value.length < 400) {
+      setNewBio(e.target.value);
+    }
+    return;
+  };
+
   return (
     <>
       <StyledContainer>
@@ -148,6 +156,7 @@ const EditProfile = ({ setEdit }) => {
         </Select>
 
         <NewTextField
+          rowsMax={5}
           fullWidth
           InputProps={{
             startAdornment: (
@@ -157,7 +166,7 @@ const EditProfile = ({ setEdit }) => {
             ),
           }}
           value={newBio}
-          onChange={(e) => setNewBio(e.target.value)}
+          onChange={handleNewBio}
           multiline
         />
       </StyledProfileData>
