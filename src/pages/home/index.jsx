@@ -5,8 +5,6 @@ import DisplayDev from "../../components/DisplayDev";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { motion } from "framer-motion";
-
 const Home = () => {
   const history = useHistory();
 
@@ -14,12 +12,7 @@ const Home = () => {
 
   const { userLoged } = useSelector((state) => state.User);
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
-    >
+    <>
       <br></br>
       <Container>
         <img src={bannerImg} alt="" />
@@ -50,7 +43,7 @@ const Home = () => {
         )}
       </Container>
       <DisplayDev />
-    </motion.div>
+    </>
   );
 };
 

@@ -10,8 +10,6 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import TechCard from "../../components/TechCard";
 import Works from "../../components/Works/works";
 
-import { motion } from "framer-motion";
-
 const ProfilePage = () => {
   const params = useParams();
   const { id } = params;
@@ -49,48 +47,41 @@ const ProfilePage = () => {
   const { techs, works } = filtereduser[0];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
-    >
-      <div className="root">
-        <StyledContainer className="profile">
-          <InfoProfile data={filtereduser[0]} />
-        </StyledContainer>
-        <div className="section">
-          <div className="technologies-title">
-            <ComputerIcon />
-            <Typography variant="h6">Tecnologias</Typography>
-          </div>
-          <div className="techScroll">
-            {techs !== "" &&
-              techs?.map((tech, index) => (
-                <TechCard
-                  key={index}
-                  tech={tech}
-                  setFilteredUser={setFilteredUser}
-                />
-              ))}
-          </div>
-          <div className="technologies-title">
-            <WorkIcon />
-            <Typography variant="h6">Trabalhos</Typography>
-          </div>
-          <div className="techScroll">
-            {works !== "" &&
-              works?.map((work, index) => (
-                <Works
-                  key={index}
-                  work={work}
-                  setFilteredUser={setFilteredUser}
-                />
-              ))}
-          </div>
+    <div className="root">
+      <StyledContainer className="profile">
+        <InfoProfile data={filtereduser[0]} />
+      </StyledContainer>
+      <div className="section">
+        <div className="technologies-title">
+          <ComputerIcon />
+          <Typography variant="h6">Tecnologias</Typography>
+        </div>
+        <div className="techScroll">
+          {techs !== "" &&
+            techs?.map((tech, index) => (
+              <TechCard
+                key={index}
+                tech={tech}
+                setFilteredUser={setFilteredUser}
+              />
+            ))}
+        </div>
+        <div className="technologies-title">
+          <WorkIcon />
+          <Typography variant="h6">Trabalhos</Typography>
+        </div>
+        <div className="techScroll">
+          {works !== "" &&
+            works?.map((work, index) => (
+              <Works
+                key={index}
+                work={work}
+                setFilteredUser={setFilteredUser}
+              />
+            ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
