@@ -33,10 +33,11 @@ const Routers = () => {
   const { display } = useSelector((state) => state.Display);
   const { displayWork } = useSelector((state) => state.DisplayWork);
   const { loading } = useSelector((state) => state.Loading);
+  const { userLoged } = useSelector((state) => state.User);
 
   return (
     <>
-      {token() ? (
+      {userLoged !== [] ? (
         <>
           <HeaderAuthenticated />
           <Switch>
