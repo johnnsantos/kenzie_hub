@@ -3,7 +3,6 @@ import Login from "../pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
-import { requestUser } from "../requests";
 import { handleUserThunk } from "../store/modules/infoUser/thunks";
 
 import Home from "../pages/home";
@@ -33,11 +32,10 @@ const Routers = () => {
   const { display } = useSelector((state) => state.Display);
   const { displayWork } = useSelector((state) => state.DisplayWork);
   const { loading } = useSelector((state) => state.Loading);
-  const { userLoged } = useSelector((state) => state.User);
 
   return (
     <>
-      {userLoged !== [] ? (
+      {token() ? (
         <>
           <HeaderAuthenticated />
           <Switch>

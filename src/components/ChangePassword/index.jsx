@@ -7,8 +7,6 @@ import { useHistory } from "react-router-dom";
 import { requestChangePassword } from "../../requests";
 import Alert from "@material-ui/lab/Alert";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { handleUserThunk } from "../../store/modules/infoUser/thunks";
 
 const ChangePassword = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +17,6 @@ const ChangePassword = () => {
     resolver: yupResolver(schemaChangePassword),
   });
 
-  const dispatch = useDispatch();
   const changePassword = async (info) => {
     const data = {
       old_password: info.previousPassword,
@@ -29,8 +26,8 @@ const ChangePassword = () => {
     setOpen(true);
     setTimeout(() => {
       window.localStorage.clear();
-      dispatch(handleUserThunk([]));
       history.push("/login");
+      document.location.reload();
     }, 2000);
   };
 
