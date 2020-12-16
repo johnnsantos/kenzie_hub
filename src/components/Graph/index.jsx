@@ -1,5 +1,3 @@
-import { rgbToHex } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
 import { Pie } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
