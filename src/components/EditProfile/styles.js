@@ -49,12 +49,15 @@ export const StyledLabel = styled.label`
 export const StyledContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
+  position: relative;
+
   svg {
     position: absolute;
-    top: 18vh;
-    left: 45vw;
+    top: 0;
+    right: 0;
     color: gray;
 
     :hover {

@@ -9,15 +9,17 @@ export const StyledAvatar = styled(Avatar)`
 `;
 
 export const ProfileHeader = styled.div`
-  width: 70%;
+  width: 90%;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
   svg {
     position: absolute;
-    top: 22vh;
-    left: 45vw;
+    top: 0;
+    right: 0;
     color: gray;
 
     :hover {
