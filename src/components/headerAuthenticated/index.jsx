@@ -59,6 +59,7 @@ const HeaderAuthenticated = () => {
     window.localStorage.clear();
     dispatch(handleUserThunk([]));
     history.push("/");
+    document.location.reload();
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
