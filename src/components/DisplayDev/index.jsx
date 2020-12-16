@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Grid, Container, Typography, Box } from "@material-ui/core";
 import { StyledButton } from "./styles";
 

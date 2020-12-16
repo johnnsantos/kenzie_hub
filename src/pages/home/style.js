@@ -8,8 +8,6 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  /* background-color: rgba(53, 74, 95, 0.2); */
-  /* border-radius: 3px; */
   padding: 2rem 1rem;
   margin: 2rem 0;
 

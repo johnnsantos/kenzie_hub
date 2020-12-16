@@ -80,7 +80,6 @@ const ProfilePage = () => {
               />
             ))}
         </div>
-        {/* <Works profile=" " work={works} link="" /> */}
       </div>
     </div>
   );

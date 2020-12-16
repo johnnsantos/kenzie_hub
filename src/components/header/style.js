@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
   font-family: "Open Sans", sans-serif;
-  /* font-family: 'Roboto', sans-serif; */
 
   display: flex;
   justify-content: space-between;
@@ -11,7 +10,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 4px 5px -5px rgba(0, 0, 0, 0.75);
   background-color: transparent;
-  /* background-color: #34495e; */
+
   padding: 0.3rem;
   height: 60px;
   width: 100%;
@@ -24,12 +23,10 @@ export const Container = styled.div`
 
   img {
     margin-right: 1rem;
-    /* display: none; */
   }
 
   h1 {
     color: gray;
-    /* color: #e8f1f2; */
   }
 
   .headerList {
@@ -52,10 +49,6 @@ export const Container = styled.div`
       transition: 0.25s;
       box-sizing: border-box;
       color: #00356b;
-      /* color: #e8f1f2; */
-      /* border-radius: 2px; */
-      /* background-color: #00356b; */
-      /* padding: 27px 1.3rem; */
 
       :last-child {
         border: 1px solid transparent;
@@ -71,17 +64,11 @@ export const Container = styled.div`
 
       :nth-child(-n + 2):hover {
         border-bottom: 1px solid #00356b;
-        /* background-color: rgba(0, 54, 107, 0.85); */
-        /* background-color: rgba(232, 241, 242, 0.1); */
       }
     }
   }
 
   @media (min-width: 768px) {
-    /* img {
-      display: inherit;
-    } */
-
     width: inherit;
     margin: 0 2rem;
 
