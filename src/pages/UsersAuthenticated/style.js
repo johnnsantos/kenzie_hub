@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextField } from "@material-ui/core/";
+import { TextField } from "@material-ui/core";
 
 export const NewTextField = styled(TextField)`
   margin: 10px;

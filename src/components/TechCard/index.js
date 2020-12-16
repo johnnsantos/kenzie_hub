@@ -1,4 +1,4 @@
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Select, MenuItem } from "@material-ui/core";
 import { useState } from "react";
 import {
   StyledCard,
@@ -11,7 +11,6 @@ import {
 import { deleteTechs, requestUser, editTechs } from "../../requests";
 import { useParams } from "react-router-dom";
 import { handleUserThunk } from "../../store/modules/infoUser/thunks";
-import { Select, MenuItem } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
 const TechCard = ({ tech }) => {

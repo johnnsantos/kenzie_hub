@@ -47,7 +47,7 @@ const ProfilePage = () => {
   const { techs, works } = filtereduser[0];
 
   return (
-    <div className="root">
+    <div className="global">
       <StyledContainer className="profile">
         <InfoProfile data={filtereduser[0]} />
       </StyledContainer>

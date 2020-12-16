@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
   font-family: "Open Sans", sans-serif;
-
   display: flex;
   justify-content: space-between;
   align-items: center;

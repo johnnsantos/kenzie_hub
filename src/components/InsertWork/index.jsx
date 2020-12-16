@@ -1,10 +1,4 @@
-import {
-  DialogActions,
-  DialogTitle,
-  Slide,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { DialogActions, DialogTitle } from "@material-ui/core";
 import { useState } from "react";
 import {
   NewTextField,

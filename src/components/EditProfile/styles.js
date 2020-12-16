@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
-import { Avatar } from "@material-ui/core";
-import { TextField, Button } from "@material-ui/core/";
+import { Avatar, TextField, Button } from "@material-ui/core";
 
 export const StyledAvatar = styled(Avatar)`
   width: 120px;
