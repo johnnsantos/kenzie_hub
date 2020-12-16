@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import { StyledContainer } from "./styles";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InfoProfile from "../../components/InfoProfile";
 import EditProfile from "../../components/EditProfile";
 import WorkIcon from "@material-ui/icons/Work";
