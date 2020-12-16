@@ -1,0 +1,73 @@
+.root {
+  width: 95vw;
+  max-width: 1400px;
+  margin: 30px auto;
+  display: flex;
+}
+
+.techScroll {
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.techScroll div {
+  margin: 0.8rem auto;
+  max-width: 98%;
+}
+
+.profile {
+  width: 50%;
+  border-right: 2px solid #34495e;
+}
+
+.profile-about {
+  width: 80%;
+  margin-top: 5vh;
+  text-align: center;
+}
+
+@media only screen and (max-width: 870px) {
+  .profile-about {
+    width: 100%;
+    margin: 10px auto;
+  }
+}
+
+.section {
+  text-align: center;
+  width: 50%;
+  margin-left: 2vw;
+}
+
+.technologies-title {
+  height: 35px;
+  background-color: rgb(232, 238, 243);
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #34495e;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.technologies-title svg {
+  color: #05668d;
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 870px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile {
+    width: 100%;
+    border: none;
+  }
+  .section {
+    width: 100%;
+    margin: 0;
+  }
+}
