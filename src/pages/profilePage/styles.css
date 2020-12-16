@@ -1,12 +1,12 @@
 .root {
-  width: 90%;
+  width: 95vw;
   max-width: 1400px;
-  margin: 10vh auto;
+  margin: 30px auto;
   display: flex;
 }
 
 .techScroll {
-  max-height: 500px;
+  max-height: 240px;
   overflow-y: auto;
   margin-bottom: 1rem;
 }
@@ -18,22 +18,20 @@
 
 .profile {
   width: 50%;
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
   border-right: 2px solid #34495e;
 }
 
-.profile-data {
-  width: 100%;
-  display: block;
-  padding: 5%;
+.profile-about {
+  width: 80%;
+  margin-top: 5vh;
+  text-align: center;
 }
 
-.profile-about {
-  display: block;
-  padding: 5%;
+@media only screen and (max-width: 870px) {
+  .profile-about {
+    width: 100%;
+    margin: 10px auto;
+  }
 }
 
 .section {
@@ -59,7 +57,7 @@
   margin-right: 15px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 870px) {
   .root {
     display: flex;
     flex-direction: column;

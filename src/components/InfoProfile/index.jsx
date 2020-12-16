@@ -1,4 +1,9 @@
-import { StyledAvatar, ProfileHeader, StyledProfileData } from "./styles";
+import {
+  StyledAvatar,
+  ProfileHeader,
+  StyledProfileData,
+  StyledButton,
+} from "./styles";
 import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -35,7 +40,10 @@ const InfoProfile = ({ data, setEdit }) => {
         </Typography>
         <Typography variant="body1">
           <WorkOutline />
-          <b>Contato: </b> {contact}
+          <b>Contato: </b>
+          <StyledButton href={contact} variant="outlined">
+            Link
+          </StyledButton>
         </Typography>
       </StyledProfileData>
       <div className="profile-about">
