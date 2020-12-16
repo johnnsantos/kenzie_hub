@@ -20,6 +20,8 @@ import InsertWork from "../components/InsertWork";
 import Loading from "../components/Loading";
 import Graph from "../components/Graph";
 
+import { AnimatePresence } from "framer-motion";
+
 const Routers = () => {
   const dispatch = useDispatch();
   const token = () => window.localStorage.getItem("authorizationToken");
@@ -36,7 +38,7 @@ const Routers = () => {
   return (
     <>
       {token() ? (
-        <>
+        <AnimatePresence>
           <HeaderAuthenticated />
           <Switch>
             {display && <InsertTech />}
@@ -64,9 +66,9 @@ const Routers = () => {
               <Graph />
             </Route>
           </Switch>
-        </>
+        </AnimatePresence>
       ) : (
-        <>
+        <AnimatePresence>
           <Header />
           <Switch>
             <Route exact path="/">
@@ -82,7 +84,7 @@ const Routers = () => {
               <About />
             </Route>
           </Switch>
-        </>
+        </AnimatePresence>
       )}
     </>
   );
