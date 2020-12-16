@@ -72,7 +72,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 957px) {
     width: 95%;
     margin: 2rem auto;
 

@@ -20,7 +20,9 @@ const Home = () => {
           <div className="bannerText">
             <h1 className="h1Logged">Seja bem vindo !</h1>
             <h2
-              style={{ borderBottom: "dashed 1px", color: "#3f3d56" }}
+              style={{
+                color: "#3F3D56",
+              }}
               className="h2Logged"
             >
               {userLoged.name}

@@ -41,7 +41,7 @@ const InfoProfile = ({ data, setEdit }) => {
         <Typography variant="body1">
           <WorkOutline />
           <b>Contato: </b>
-          <StyledButton href={contact} variant="outlined">
+          <StyledButton target="_blank" href={contact} variant="outlined">
             Link
           </StyledButton>
         </Typography>
