@@ -3,6 +3,7 @@ import {
   ProfileHeader,
   StyledProfileData,
   StyledButton,
+  BackButton,
 } from "./styles";
 import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -10,15 +11,27 @@ import { useParams } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 import { EmailOutlined, WorkOutline, BookOutlined } from "@material-ui/icons";
 import DefaultAvatar from "../../img/DevCard/avatar.webp";
+import { useHistory } from "react-router-dom";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const InfoProfile = ({ data, setEdit }) => {
   const { userLoged } = useSelector((state) => state.User);
   const params = useParams();
+  const history = useHistory();
   const { avatar_url, name, email, contact, course_module, bio } =
     userLoged.id === params.id ? userLoged : data;
 
   return (
     <>
+      {params.id !== userLoged.id ? (
+        <BackButton
+          target="_blank"
+          onClick={() => history.push("/devs")}
+          variant="outlined"
+        >
+          <ArrowBackIosIcon /> Voltar
+        </BackButton>
+      ) : null}
       <ProfileHeader>
         <StyledAvatar src={avatar_url ? avatar_url : DefaultAvatar} />
         <Typography variant="h5">
