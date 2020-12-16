@@ -52,3 +52,13 @@ export const StyledProfileData = styled.div`
 export const StyledButton = styled(Button)`
   margin-left: 10px;
 `;
+
+export const BackButton = styled(Button)`
+  margin-top: 20px;
+
+  background-color: #004c99;
+  color: white;
+  &:hover {
+    background-color: #05668d;
+  }
+`;
