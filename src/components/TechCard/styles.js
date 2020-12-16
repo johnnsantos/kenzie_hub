@@ -14,8 +14,6 @@ export const StyledCardContent = styled(CardContent)`
 export const StyledCard = styled(Card)`
   background-color: #e8f1f2;
   width: 100%;
-  /* padding: 8px;
-  padding-bottom: 0; */
   @media (max-width: 768px) {
     width: 95vw;
     height: 130px;
@@ -25,20 +23,10 @@ export const StyledCard = styled(Card)`
   }
 `;
 
-// export const StyledButton = styled(Button)`
-//   background-color: #34495e;
-
-//   &:hover {
-//     background-color: #05668d;
-//   }
-// `;
-
 export const StyledEdit = styled(EditIcon)`
   width: 1rem;
-  /* padding: 0; */
 
   cursor: pointer;
-  /* margin-left: 1rem; */
 `;
 
 export const StyledDelete = styled(DeleteIcon)`
@@ -56,8 +44,7 @@ export const StyledButton = styled(Button)`
 
 export const StyledBookmarkBorder = styled(BookmarkBorder)`
   width: 1rem;
-  /* padding: 0; */
-  /* float: right; */
+
   cursor: pointer;
 `;
 

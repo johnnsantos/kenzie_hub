@@ -5,7 +5,6 @@ export const StyledDiv = styled.div`
   margin-top: 50px;
 `;
 export const StyledImg = styled.img`
-  /* position: absolute !important; */
   width: 60%;
   height: 60vh;
   @media (max-width: 650px) {
