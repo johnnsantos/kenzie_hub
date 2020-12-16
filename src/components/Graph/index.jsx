@@ -1,5 +1,6 @@
+import { rgbToHex } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
 const Graph = () => {
@@ -16,11 +17,9 @@ const Graph = () => {
       return { tech: tech, count: count };
     });
   };
-  console.log(countTechs());
 
   let data = {
-    label: "Grafico",
-    datasets: countTechs()
+    labels: countTechs()
       .filter(
         (tech, index) =>
           tech.tech !==
@@ -31,16 +30,36 @@ const Graph = () => {
           ].tech
       )
       .map((techtitle) => {
-        return {
-          label: techtitle.tech,
-          backfroudColor: red,
-          data: techtitle.count,
-        };
+        return techtitle.tech;
       }),
+
+    datasets: [
+      {
+        backgroundColor: countTechs().map(
+          (techs) =>
+            `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+              Math.random() * 256
+            )}, 76)`
+        ),
+        data: countTechs()
+          .filter(
+            (tech, index) =>
+              tech.tech !==
+              countTechs()[
+                index + 1 < countTechs().length
+                  ? index + 1
+                  : countTechs().length - 1
+              ].tech
+          )
+          .map((techtitle) => {
+            return techtitle.count;
+          }),
+      },
+    ],
   };
 
   console.log(data);
-  return <Doughnut data={data} />;
+  return <Pie data={data} />;
 };
 
 export default Graph;
