@@ -5,7 +5,7 @@ const AboutCard = () => {
     <div key={index} className="card">
       <img src={info.image} alt="" />
       <h1>{info.name}</h1>
-      <a href={info.linkedin} target="_blank">
+      <a href={info.linkedin} target="_blank" rel="noreferrer">
         <h2>Linkedin</h2>
       </a>
     </div>

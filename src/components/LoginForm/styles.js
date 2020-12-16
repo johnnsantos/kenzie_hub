@@ -1,4 +1,4 @@
-import { TextField, Typography, Button, Card } from "@material-ui/core/";
+import { TextField, Typography, Button, Card } from "@material-ui/core";
 import styled from "styled-components";
 
 export const OuterDiv = styled(Card)`
