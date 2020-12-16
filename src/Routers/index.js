@@ -19,6 +19,7 @@ import TechCard from "../components/TechCard";
 import InsertTech from "../components/InsertTech";
 import InsertWork from "../components/InsertWork";
 import Loading from "../components/Loading";
+import Graph from "../components/Graph";
 
 const Routers = () => {
   const dispatch = useDispatch();
@@ -59,6 +60,9 @@ const Routers = () => {
             </Route>
             <Route exact path="/techs">
               <TechCard />
+            </Route>
+            <Route exact path="/graph">
+              <Graph />
             </Route>
           </Switch>
         </>
