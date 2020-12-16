@@ -9,8 +9,6 @@ const Login = () => {
       <LoginForm />
     </StyledDiv>
   );
-
-  //rotas autenticadas
 };
 
 export default Login;
