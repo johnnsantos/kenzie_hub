@@ -3,7 +3,6 @@ import Login from "../pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { handleUsersThunk } from "../store/modules/infoDevs/thunks";
-import { requestUser } from "../requests";
 import { handleUserThunk } from "../store/modules/infoUser/thunks";
 
 import Home from "../pages/home";
@@ -21,6 +20,8 @@ import InsertWork from "../components/InsertWork";
 import Loading from "../components/Loading";
 import Graph from "../components/Graph";
 
+import { AnimatePresence } from "framer-motion";
+
 const Routers = () => {
   const dispatch = useDispatch();
   const token = () => window.localStorage.getItem("authorizationToken");
@@ -37,7 +38,7 @@ const Routers = () => {
   return (
     <>
       {token() ? (
-        <>
+        <AnimatePresence>
           <HeaderAuthenticated />
           <Switch>
             {display && <InsertTech />}
@@ -65,9 +66,9 @@ const Routers = () => {
               <Graph />
             </Route>
           </Switch>
-        </>
+        </AnimatePresence>
       ) : (
-        <>
+        <AnimatePresence>
           <Header />
           <Switch>
             <Route exact path="/">
@@ -83,7 +84,7 @@ const Routers = () => {
               <About />
             </Route>
           </Switch>
-        </>
+        </AnimatePresence>
       )}
     </>
   );
